@@ -18,6 +18,9 @@ export default function Home() {
         <Link href="/logo" className='text-white'>
           Logo Animation
         </Link>
+        <Link href="/Navbar" className='text-white'>
+          Navbar
+        </Link>
       </div>
       <SplashCursor />
 
