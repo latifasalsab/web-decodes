@@ -22,6 +22,9 @@ export default function Home() {
         <Link href="/price" className='text-white'>
           Price
         </Link>
+        <Link href="/Navbar" className='text-white'>
+          Navbar
+        </Link>
       </div>
       <SplashCursor />
 
