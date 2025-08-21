@@ -87,7 +87,6 @@
   margin-right: 16px;
 }
 
-/* Hilangkan margin di item terakhir pada setiap barisan agar tidak dobel */
 .item:last-child,
 .item.seamless-end {
   margin-right: 0;
