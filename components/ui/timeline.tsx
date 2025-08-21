@@ -37,9 +37,11 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full max-w-full font-sans md:px-10 mx-auto relative"
       ref={containerRef}
     >
-      <div className="absolute -right-100 top-140 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-[#0421DE] to-[#C1ABF7] opacity-20 blur-3xl rounded-full"></div>
-      <div className="absolute -left-100 top-400 -translate-y-1/2 w-[1000px] h-[800px] bg-gradient-to-r from-[#0421DE] to-[#C1ABF7] opacity-15 blur-3xl rounded-full"></div>
-      <div className="absolute -right-100 top-680 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-to-r from-[#C1ABF7] to-[#0421DE] opacity-15 blur-3xl rounded-full"></div>
+      {/* <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-32 left-1/2 transform -translate-x-1/2 w-[200px] md:w-[300px] h-[200px] md:h-[300px] bg-gradient-to-r from-[#0421DE] to-[#C1ABF7] opacity-20 blur-3xl rounded-full"></div>
+        <div className="absolute top-96 left-1/4 w-[250px] md:w-[350px] h-[250px] md:h-[350px] bg-gradient-to-r from-[#0421DE] to-[#C1ABF7] opacity-15 blur-3xl rounded-full"></div>
+        <div className="absolute bottom-32 right-1/4 w-[250px] md:w-[350px] h-[250px] md:h-[350px] bg-gradient-to-r from-[#C1ABF7] to-[#0421DE] opacity-15 blur-3xl rounded-full"></div>
+      </div> */}
       
       <div ref={ref} className="relative max-w-[80%] mx-auto pb-20">
         {data.map((item, index) => (
@@ -60,7 +62,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   duration: 0.8,
                   ease: "easeInOut",
                 }}
-                className="hidden lg:block text-xl lg:pl-20 lg:text-3xl font-bold text-neutral-500 dark:text-neutral-500"
+                className="hidden lg:block text-xl lg:pl-20 lg:text-3xl font-bold text-white"
               >
                 {item.title}
               </motion.h1>
@@ -75,7 +77,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                   duration: 0.8,
                   ease: "easeInOut",
                 }}
-                className="lg:hidden block text-2xl lg:text-2xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500"
+                className="lg:hidden block text-2xl lg:text-2xl mb-4 text-left font-bold text-white"
               >
                 {item.title}
               </motion.h1>
@@ -87,7 +89,6 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           </div>
         ))}
         
-        {/* Timeline line */}
         <div
           style={{
             height: height + "px",
