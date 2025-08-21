@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import SplashCursor from '@/app/components/SplashCursor/SplashCursor'
+import MagicBento from '@/app/components/MagicBento/MagicBento';
 
 export default function Home() {
   const logos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const loopLogos = [...logos, ...logos];
 
   return (
-    <div className='overflow-hidden bg-[#100425] flex flex-col items-center justify-center h-screen'>
+    <div className='bg-[#100425] flex flex-col items-center justify-center p-8'>
       <div className='flex gap-2 items-center justify-center'>
         <Link href="/login" className='text-white'>
           Login Page
@@ -20,6 +21,9 @@ export default function Home() {
         </Link>
         <Link href="/Navbar" className='text-white'>
           Navbar
+        </Link>
+        <Link href="/price" className='text-white'>
+          Price
         </Link>
       </div>
       <SplashCursor />
@@ -42,6 +46,20 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <br />
+      <MagicBento 
+        textAutoHide={true}
+        enableStars={true}
+        enableSpotlight={true}
+        enableBorderGlow={true}
+        enableTilt={true}
+        enableMagnetism={true}
+        clickEffect={true}
+        spotlightRadius={300}
+        particleCount={12}
+        glowColor="132, 0, 255"
+      />
     </div>
   );
 }
