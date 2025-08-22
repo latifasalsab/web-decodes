@@ -68,8 +68,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      // Navbar selalu fixed di atas
-      className={cn("fixed top-0 left-0 z-50 w-full", className)}
+      className={cn("fixed top-4 left-0 z-50 w-full", className)}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)

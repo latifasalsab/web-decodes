@@ -27,12 +27,10 @@ export default function NavbarDemo() {
 
   return (
     <>
-      {/* Background utama   */}
       <div style={{width: "100vw", height: "100vh", position: "fixed", top: 0, left: 0, zIndex: 0, background: "#100425"}} />
 
 
         <div className="relative w-full" style={{zIndex: 2}}>
-          {/* Navbar dan MobileNav */}
           <Navbar>
             <NavBody>
               <NavbarLogo />
@@ -122,14 +120,10 @@ export default function NavbarDemo() {
               <DarkVeil />
             </div>
             <div style={{position: "relative", zIndex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%"}}>
-              {/* Konten Project Section di sini */}
               <h2 className="text-white text-3xl font-bold mb-4">Featured Project</h2>
-              {/* Tambahkan konten lain sesuai kebutuhan */}
             </div>
           </section>
         </div>
-
-          {/* Dummy untuk scroll */}
           <div className="h-[1000px]" />
         
     </>
