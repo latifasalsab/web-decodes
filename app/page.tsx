@@ -12,20 +12,6 @@ export default function Home() {
   const logos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const loopLogos = [...logos, ...logos];
 
-  // const navbarRef = useRef<HTMLDivElement>(null);
-  // const [navbarHeight, setNavbarHeight] = useState(0);
-
-  // useLayoutEffect(() => {
-  //   if (navbarRef.current) {
-  //     setNavbarHeight(navbarRef.current.offsetHeight);
-  //   }
-  //   const handleResize = () => {
-  //     if (navbarRef.current) setNavbarHeight(navbarRef.current.offsetHeight);
-  //   };
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
-
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   
   const items = useMemo((): ProductItem[] => [
@@ -58,25 +44,83 @@ export default function Home() {
   return (
     <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
       <NavbarProps />
-      <div className="z-10 w-full flex items-center justify-center h-screen"
+      <div className="relative w-full min-h-screen flex flex-col items-center justify-center
+        bg-cover bg-center bg-no-repeat bg-fixed
+        before:absolute before:inset-0 before:bg-black/20 before:z-0"
         style={{
-        backgroundImage: "url('hero-bg.png')",
-        position: "relative",
-        overflow: "hidden",
+          backgroundImage: "url('hero-bg.png')",
         }}
         >
-          <motion.h1
-            initial={{ opacity: 0.5, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeInOut",
-            }}
-            className="mt-8 bg-gradient-to-br from-[#F7DDEE] to-[#C1ABF7] py-4 bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent md:text-6xl"
-          >
-            Empowering Your Digital Future <br /> With Decodes
-          </motion.h1>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 z-0"></div>
+          
+          <div className="absolute bottom-0 z-10 flex flex-col items-center w-full gap-4 sm:px-6 lg:px-8 ">
+            <motion.h1
+              initial={{ opacity: 0.5, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                  delay: 0.3,
+                  duration: 0.8,
+                  ease: "easeInOut",
+              }}
+              className="bg-gradient-to-br from-[#F7DDEE] to-[#C1ABF7] bg-clip-text 
+                         text-center text-2xl sm:text-3xl md:text-4xl lg:text-6xl 
+                         font-medium tracking-tight text-transparent
+                         leading-tight sm:leading-tight md:leading-tight"
+            >
+              EMPOWERING YOUR <br /> DIGITAL FUTURE
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0.5, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                  delay: 0.5,
+                  duration: 0.8,
+                  ease: "easeInOut",
+              }}
+              className="bg-gradient-to-br from-[#F7DDEE] to-[#C1ABF7] bg-clip-text 
+                         text-center text-sm sm:text-base md:text-lg lg:text-xl
+                         font-medium tracking-tight text-transparent
+                         max-w-2xl mx-auto px-4"
+            >
+              Delivering creative solutions that help your brand grow, connect, and lead in the digital era.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0.5, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                  delay: 0.7,
+                  duration: 0.8,
+                  ease: "easeInOut",
+              }}
+            >
+              <Link href="/services">
+                <Button className="text-white justify-center px-6 py-3 sm:px-8 sm:py-4
+                                 text-sm sm:text-base font-medium
+                                 hover:scale-105 transition-transform duration-200">
+                  SEE ALL OUR SERVICES
+                </Button> 
+              </Link>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{
+                  delay: 0.9,
+                  duration: 1,
+                  ease: "easeInOut",
+              }}
+              className="w-full px-4"
+            >
+              <img 
+                src="/home/hero.png" 
+                alt="Hero illustration" 
+                className="w-full h-auto object-contain md:max-h-[40vh]"
+              />
+            </motion.div>
+          </div>
       </div>
       <div className="relative w-full overflow-x-hidden flex h-full lg:h-screen items-center justify-center">
         <div className="absolute top-0 -translate-y-5/6 w-[120%] h-[900px] bg-gradient-to-r from-[#0421DE] to-[#C1ABF7] opacity-40 blur-[80px] rounded-full"></div>
@@ -109,7 +153,77 @@ export default function Home() {
           </div>  
         </div>
       </div>
-      <div className="relative overflow-hidden h-full lg:h-screen w-full flex flex-col items-center justify-center">
+
+      <section className="bg-black py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              The Value Behind{' '}
+              <span className="text-purple-400">Our Solutions</span>
+            </h2>
+          </div>
+
+          {/* Value Cards */}
+          <div className="flex flex-col md:flex-row gap-6">
+            
+            {/* Card 1 - Fast and Flexible Integration */}
+            <div className="flex-1">
+              <div className="bg-gray-800 rounded-2xl p-8 transition-all duration-300 hover:bg-gray-700">
+                <div className="mb-6 text-3xl">⚡</div>
+                <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
+                  Fast and Flexible Integration
+                </h3>
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  Our product is designed to integrate seamlessly with your existing systems, allowing you to launch quickly without disrupting current workflows.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 - Secure and Reliable */}
+            <div className="flex-1">
+              <div className="bg-gray-800 rounded-2xl p-8 transition-all duration-300 hover:bg-gray-700">
+                <div className="mb-6 text-3xl">🔒</div>
+                <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
+                  Secure and Reliable
+                </h3>
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  With enterprise-grade security and continuous monitoring, your data stays safe and your operations run without interruption
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 - Customer-Centric Experience */}
+            <div className="flex-1">
+              <div className="bg-gray-800 rounded-2xl p-8 transition-all duration-300 hover:bg-gray-700">
+                <div className="mb-6 text-3xl">✨</div>
+                <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
+                  Customer-Centric Experience
+                </h3>
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  Every feature is built with the end-user in mind, ensuring a smooth, intuitive, and engaging experience for your customers.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 4 - Scalable for Growth */}
+            <div className="flex-1">
+              <div className="bg-gray-800 rounded-2xl p-8 transition-all duration-300 hover:bg-gray-700">
+                <div className="mb-6 text-3xl">📈</div>
+                <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
+                  Scalable for Growth
+                </h3>
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  Whether you're a startup or an enterprise, our solution grows with you, supporting higher demands without performance loss.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* <div className="relative overflow-hidden h-full lg:h-screen w-full flex flex-col items-center justify-center">
         <div className="absolute translate-y-4/5 w-[120%] h-[900px] bg-gradient-to-r from-[#0421DE] to-[#C1ABF7] opacity-40 blur-[80px] rounded-full"></div>
         <div className="w-full flex items-center justify-center flex-col">
           <div className="w-full flex items-center justify-center mb-8">
@@ -138,7 +252,7 @@ export default function Home() {
             glowColor="132, 0, 255"
           />  
         </div>
-      </div>
+      </div> */}
       <div className="w-full h-screen flex flex-col items-center justify-center z-10">
 
       </div>

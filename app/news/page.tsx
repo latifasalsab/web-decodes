@@ -7,17 +7,6 @@ import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button"
 import ScrollReveal from '@/app/components/ScrollReveal/ScrollReveal';
-import {
-  Navbar,
-  NavBody,
-  NavItems,
-  MobileNav,
-  NavbarLogo,
-  NavbarButton,
-  MobileNavHeader,
-  MobileNavToggle,
-  MobileNavMenu,
-} from "@/components/ui/resizable-navbar";
 import NavbarProps from "../components/Navbar/Navbar";
 import { useState, useRef, useLayoutEffect } from "react";
 
