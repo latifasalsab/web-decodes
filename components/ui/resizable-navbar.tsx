@@ -117,48 +117,68 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 };
 
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
-  const [hovered, setHovered] = useState<number | null>(null);
+  const [openDropdown, setOpenDropdown] = useState<number | null>(null);
+
+  // Optional: close dropdown when clicking outside
+  const containerRef = useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setOpenDropdown(null);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <motion.div
+      ref={containerRef}
       className={cn(
         "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-white transition duration-200 hover:text-white lg:flex lg:space-x-2",
         className
       )}
     >
       {items.map((item, idx) => (
-        <div
-          key={`link-container-${idx}`}
-          className="relative"
-          onMouseEnter={() => setHovered(idx)}
-          onMouseLeave={() => setHovered(null)}
-        >
-          <Link
-            href={item.link}
-            onClick={onItemClick}
-            className="relative flex cursor-pointer items-center gap-1 px-4 py-2 text-white"
-          >
-            {/* Background hover effect */}
-            {hovered === idx && (
-              <motion.div
-                layoutId="hovered"
-                className="absolute inset-0 h-full w-full rounded-full bg-[#100425]"
-              />
-            )}
-            <span className="relative z-10">{item.name}</span>
-            {/* Chevron icon if item has children */}
-            {item.children && (
+        <div key={`link-container-${idx}`} className="relative">
+          {item.children ? (
+            <button
+              type="button"
+              onClick={() => setOpenDropdown(openDropdown === idx ? null : idx)}
+              className="relative flex cursor-pointer items-center gap-1 px-4 py-2 text-white bg-transparent border-none outline-none"
+              style={{ background: "none" }}
+            >
+              {/* Background effect */}
+              {openDropdown === idx && (
+                <motion.div
+                  layoutId="hovered"
+                  className="absolute inset-0 h-full w-full rounded-full bg-[#100425]"
+                />
+              )}
+              <span className="relative z-10">{item.name}</span>
               <IconChevronDown
                 className="relative z-10 h-4 w-4 transition-transform duration-200"
                 style={{
-                  transform:
-                    hovered === idx ? "rotate(180deg)" : "rotate(0deg)",
+                  transform: openDropdown === idx ? "rotate(180deg)" : "rotate(0deg)",
                 }}
               />
-            )}
-          </Link>
+            </button>
+          ) : (
+            <Link
+              href={item.link}
+              onClick={onItemClick}
+              className="relative flex cursor-pointer items-center gap-1 px-4 py-2 text-white"
+            >
+              <span className="relative z-10">{item.name}</span>
+            </Link>
+          )}
           {/* Dropdown Menu */}
-          {hovered === idx && item.children && (
+          {openDropdown === idx && item.children && (
             <div className="absolute left-1/2 top-full mt-2 w-48 -translate-x-1/2 rounded-md bg-[#0a011b] shadow-lg ring-1 ring-black ring-opacity-5">
               <div
                 className="py-1"
@@ -170,7 +190,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
                   <Link
                     key={`child-link-${childIdx}`}
                     href={child.link}
-                    className="block px-4 py-2 text-sm text-[#F7DDEE] hover:bg-[#100425]"
+                    className="block px-4 py-2 text-sm text-[#FFFFFF] hover:bg-[#100425]"
                     role="menuitem"
                   >
                     {child.name}
