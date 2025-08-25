@@ -1,15 +1,15 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { IconMenu2, IconX } from "@tabler/icons-react";
+import { IconChevronDown, IconMenu2, IconX } from "@tabler/icons-react";
 import {
   motion,
   AnimatePresence,
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
+import Link from "next/link";
 
 import React, { useRef, useState } from "react";
-
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -22,11 +22,14 @@ interface NavBodyProps {
   visible?: boolean;
 }
 
+interface NavItem {
+  name: string;
+  link: string;
+  children?: NavItem[];
+}
+
 interface NavItemsProps {
-  items: {
-    name: string;
-    link: string;
-  }[];
+  items: NavItem[];
   className?: string;
   onItemClick?: () => void;
 }
@@ -74,9 +77,9 @@ export const Navbar = ({ children, className }: NavbarProps) => {
         React.isValidElement(child)
           ? React.cloneElement(
               child as React.ReactElement<{ visible?: boolean }>,
-              { visible },
+              { visible }
             )
-          : child,
+          : child
       )}
     </motion.div>
   );
@@ -105,7 +108,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       }}
       className={cn(
         "blur(10px) opacity-98 relative z-[100] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full px-4 py-2 lg:flex text-[#F7DDEE]",
-        className,
+        className
       )}
     >
       {children}
@@ -118,28 +121,65 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
 
   return (
     <motion.div
-      onMouseLeave={() => setHovered(null)}
       className={cn(
         "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium text-white transition duration-200 hover:text-white lg:flex lg:space-x-2",
-        className,
+        className
       )}
     >
       {items.map((item, idx) => (
-        <a
+        <div
+          key={`link-container-${idx}`}
+          className="relative"
           onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative px-4 py-2 text-white"
-          key={`link-${idx}`}
-          href={item.link}
+          onMouseLeave={() => setHovered(null)}
         >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-[#100425] dark:bg-[#100425]"
-            />
+          <Link
+            href={item.link}
+            onClick={onItemClick}
+            className="relative flex cursor-pointer items-center gap-1 px-4 py-2 text-white"
+          >
+            {/* Background hover effect */}
+            {hovered === idx && (
+              <motion.div
+                layoutId="hovered"
+                className="absolute inset-0 h-full w-full rounded-full bg-[#100425]"
+              />
+            )}
+            <span className="relative z-10">{item.name}</span>
+            {/* Chevron icon if item has children */}
+            {item.children && (
+              <IconChevronDown
+                className="relative z-10 h-4 w-4 transition-transform duration-200"
+                style={{
+                  transform:
+                    hovered === idx ? "rotate(180deg)" : "rotate(0deg)",
+                }}
+              />
+            )}
+          </Link>
+          {/* Dropdown Menu */}
+          {hovered === idx && item.children && (
+            <div className="absolute left-1/2 top-full mt-2 w-48 -translate-x-1/2 rounded-md bg-[#0a011b] shadow-lg ring-1 ring-black ring-opacity-5">
+              <div
+                className="py-1"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="options-menu"
+              >
+                {item.children.map((child, childIdx) => (
+                  <Link
+                    key={`child-link-${childIdx}`}
+                    href={child.link}
+                    className="block px-4 py-2 text-sm text-[#F7DDEE] hover:bg-[#100425]"
+                    role="menuitem"
+                  >
+                    {child.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
           )}
-          <span className="relative z-100">{item.name}</span>
-        </a>
+        </div>
       ))}
     </motion.div>
   );
@@ -167,7 +207,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
       className={cn(
         "relative z-120 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
         visible && "bg-[#0a011b] dark:bg-neutral-950/80",
-        className,
+        className
       )}
     >
       {children}
@@ -183,7 +223,7 @@ export const MobileNavHeader = ({
     <div
       className={cn(
         "flex w-full flex-row items-center justify-between",
-        className,
+        className
       )}
     >
       {children}
@@ -206,7 +246,7 @@ export const MobileNavMenu = ({
           exit={{ opacity: 0 }}
           className={cn(
             "absolute inset-x-0 top-16 z-120 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-[#0a011b] px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
-            className,
+            className
           )}
         >
           {children}
@@ -232,7 +272,7 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = () => {
   return (
-    <a
+    <Link
       href="#"
       className="relative z-100 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
     >
@@ -243,7 +283,7 @@ export const NavbarLogo = () => {
         height={60}
       />
       <span className="font-medium text-black dark:text-white"></span>
-    </a>
+    </Link>
   );
 };
 
@@ -267,7 +307,6 @@ export const NavbarButton = ({
   const baseStyles =
     // "px-4 py-2 rounded-md bg-black button bg-gradient-to-r from-[#021278] to-[#BA8EF4]text-white text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
     "px-4 py-2 rounded-md bg-black button bg-gradient-to-r from-[#0421DE] to-[#BA8EF4] text-[#F7DDEE] text-sm font-bold relative cursor-pointer hover:-translate-y-0.5 transition duration-200 inline-block text-center";
-    
 
   const variantStyles = {
     primary:

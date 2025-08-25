@@ -130,13 +130,14 @@ export default function Home() {
           />  
         </div>
       </div>
+      
       {/* Book a Demo */}
       <div className="w-full py-12 px-4 bg-black">
         <div className="max-w-[90%] mx-auto">
           <div className="relative bg-gradient-to-br from-[#1F1F1F] via-[#1F1F1F] to-purple-700/50 rounded-3xl shadow-2xl px-8 py-8 overflow-hidden">
             
             <div className="relative z-10 text-center">
-              {/* Logo */}
+              
               <div className="mb-6 flex flex-col items-center">
                 <img 
                   src="/logo_decodes/logo_decodes.png"
@@ -144,16 +145,15 @@ export default function Home() {
                   width={80}
                   height={96}
                   className="mb-3"/>
-                {/* Decorative line under logo */}
+                
                 <div className="w-70 h-px bg-gradient-to-r from-[#2032E0] to-[#7666EB]"></div>
               </div>
 
-              {/* Main Title */}
+              
               <h1 className="text-white text-base md:text-lg lg:text-xl font-bold mb-6 leading-tight">
                 TRANSFORM YOUR WORKFLOW WITH DECODES!
               </h1>
 
-              {/* Feature List */}
               <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 mb-6 text-sm">
                 <div className="flex items-center gap-2">
                   <div>
@@ -187,7 +187,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
                 <Button 
                   variant="default" 
@@ -239,7 +238,6 @@ export default function Home() {
         <div className="relative z-10 container mx-auto max-w-[90%] py-8 h-full flex flex-col justify-between">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 lg:gap-8">
             
-            {/* Left Side - Logo dan Contact Info */}
             <div className="flex-1 w-full lg:w-auto">
               <div className="mb-4 lg:mb-6">
                 <img
@@ -278,7 +276,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Side - Social Media dan Copyright */}
             <div className="flex flex-col w-full lg:w-auto lg:items-end items-center gap-4 mt-8 lg:mt-8">
               <div className="flex gap-3 lg:gap-2 items-center">
                 <div className="flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid">
@@ -341,7 +338,6 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
   >
       {/* Container utama dengan flex */}
       <div className="flex flex-col md:flex-row h-full">
-        {/* Image Section */}
         <div className={`relative transition-all duration-500 ease-out ${
           isExpanded 
             ? 'w-full h-1/2 md:h-full md:w-80 md:flex-shrink-0' 
@@ -355,7 +351,6 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
             decoding="async"
           />
           
-          {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
         </div>
 
@@ -367,10 +362,10 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
         }`}>
           {/* Content structure */}
           <div className="relative p-4 md:p-6 h-full">
-            {/* Content Area - dengan padding bottom untuk button space */}
+            {/* Content Area */}
             <div className="text-center h-full pb-16 md:pb-16">
               <h1 className="text-lg md:text-2xl font-bold text-white mb-3 md:mb-4">{item.title}</h1>
-              {/* Scrollable description area dengan max height */}
+              {/* Diskripsi area */}
               <div className="h-full overflow-y-auto pr-2 item-center justify-center">
                 <p className="text-white text-xs md:text-sm leading-relaxed text-justify">
                   {item.description}
@@ -378,7 +373,6 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
               </div>
             </div>
 
-            {/* Button - ABSOLUTE POSITIONED di bagian bawah */}
             <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6">
               <Button 
                 className="w-full bg-gradient-to-r from-[#0421DE] to-[#BA8EF4] text-white rounded-3xl shadow-md hover:opacity-90 transition-all px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
