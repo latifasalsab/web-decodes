@@ -1,16 +1,10 @@
 "use client";
-import React, { useState, useRef, useLayoutEffect, useMemo, useCallback } from "react";
-import { AnimatePresence, motion } from 'motion/react';
+import React, { useState, useMemo, useCallback, useLayoutEffect, useRef } from "react";
+import { motion } from 'motion/react';
 import NavbarProps from "./components/Navbar/Navbar";
 import Link from 'next/link';
 import Image from 'next/image';
-import SplashCursor from '@/app/components/SplashCursor/SplashCursor'
-import MagicBento from '@/app/components/MagicBento/MagicBento';
 import { Button } from "@/components/ui/button"
-import { MapPin, Phone } from 'lucide-react';
-
-
-
 
 export default function Home() {
   const logos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -46,29 +40,91 @@ export default function Home() {
     
   }, []);
 
+
   return (
     <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
       <NavbarProps />
-      <div className="z-10 w-full flex items-center justify-center h-screen"
+      <div className="w-full min-h-screen flex flex-col items-center justify-center
+        bg-cover bg-center bg-no-repeat bg-fixed
+        before:absolute before:inset-0 before:bg-black/20 before:z-0 pt-20"
         style={{
-        backgroundImage: "url('hero-bg.png')",
-        position: "relative",
-        overflow: "hidden",
+          backgroundImage: "url('hero-bg.png')",
         }}
         >
-          <motion.h1
-            initial={{ opacity: 0.5, y: 100 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-                delay: 0.3,
-                duration: 0.8,
-                ease: "easeInOut",
-            }}
-            className="mt-8 bg-gradient-to-br from-[#F7DDEE] to-[#C1ABF7] py-4 bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent md:text-6xl"
-          >
-            Empowering Your Digital Future <br /> With Decodes
-          </motion.h1>
+          <div className="z-10 flex flex-col items-center w-full gap-8 sm:px-6 lg:px-8 ">
+            <motion.h1
+              initial={{ opacity: 0.5, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                  delay: 0.3,
+                  duration: 0.8,
+                  ease: "easeInOut",
+              }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white text-center">
+                EMPOWERING YOUR <br /> DIGITAL FUTURE
+              </h2>
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0.5, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                  delay: 0.5,
+                  duration: 0.8,
+                  ease: "easeInOut",
+              }}
+              className="bg-gradient-to-br from-[#F7DDEE] to-[#C1ABF7] bg-clip-text 
+                         text-center text-sm sm:text-base md:text-lg lg:text-xl
+                         font-medium tracking-tight text-transparent
+                         max-w-2xl mx-auto px-4"
+            >
+              Delivering creative solutions that help your brand grow, connect, and lead in the digital era.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0.5, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                  delay: 0.7,
+                  duration: 0.8,
+                  ease: "easeInOut",
+              }}
+            >
+              <Link href="/services">
+                <Button className="text-white justify-center px-6 py-3 sm:px-8 sm:py-4
+                                 text-sm sm:text-base font-medium
+                                 hover:scale-105 transition-transform duration-200">
+                  SEE ALL OUR SERVICES
+                </Button> 
+              </Link>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{
+                  delay: 0.9,
+                  duration: 1,
+                  ease: "easeInOut",
+              }}
+              className="w-full px-4"
+            >
+              <img 
+                src="/home/hero.png" 
+                alt="Hero illustration" 
+                className="w-full max-h-[30vh] object-contain hidden md:flex"
+              />
+              <img 
+                src="/home/hero-mobile.png" 
+                alt="Hero illustration" 
+                className="w-full h-auto object-contain max-h-[40vh] flex md:hidden"
+              />
+            </motion.div>
+          </div>
       </div>
+
+      {/* FEATURED PRODUCT */}
       <div className="relative w-full overflow-x-hidden flex h-full lg:h-screen items-center justify-center">
         <div className="absolute top-0 -translate-y-5/6 w-[120%] h-[900px] bg-gradient-to-r from-[#0421DE] to-[#C1ABF7] opacity-40 blur-[80px] rounded-full"></div>
         <div className="flex flex-col h-full w-full justify-center items-center">
@@ -78,12 +134,16 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
                   delay: 0.3,
-                  duration: 0.3,
+                  duration: 0.6,
                   ease: "easeInOut",
               }}
-              className="bg-gradient-to-br from-[#F7DDEE] to-[#fff] py-4 bg-clip-text text-center text-xl font-medium tracking-tight text-transparent md:text-4xl"
             >
-              Featured Project
+              <div className="text-center my-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-[#9933EF]">
+                  Featured{' '}
+                  <span className="text-white">Product</span>
+                </h2>
+              </div>
             </motion.h1>
           </div>
           <div className="mt-8 flex flex-col md:flex-row justify-center items-center md:items-start gap-4 md:gap-6 py-5 px-4 md:px-0 mx-auto">
@@ -100,7 +160,90 @@ export default function Home() {
           </div>  
         </div>
       </div>
-      <div className="relative overflow-hidden h-full lg:h-screen w-full flex flex-col items-center justify-center">
+
+      {/* THE VALUE */}
+      <section className="bg-black py-16 px-6 md:px-10">
+        <div className="max-w-6xl mx-auto">
+          <motion.h1
+              initial={{ opacity: 0.5, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                  delay: 0.3,
+                  duration: 0.6,
+                  ease: "easeInOut",
+              }}
+          >
+            <div className="mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                The Value Behind{' '}
+                <span className="text-[#9933EF]">Our Solutions</span>
+              </h2>
+            </div>
+          </motion.h1>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div className="group">
+              <div 
+                className="h-full rounded-2xl p-8 transition-all duration-300 hover:scale-105"
+                style={{ backgroundColor: '#1f1f1f' }}
+              >
+                <img src="home/value/1.png" alt="" className="mb-6 w-[36px] h-auto" />
+                <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
+                  Fast and Flexible Integration
+                </h3>
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  Our product is designed to integrate seamlessly with your existing systems, allowing you to launch quickly without disrupting current workflows.
+                </p>
+              </div>
+            </div>
+            <div className="group">
+              <div 
+                className="h-full rounded-2xl p-8 transition-all duration-300 hover:scale-105"
+                style={{ backgroundColor: '#1f1f1f' }}
+              >
+                <img src="home/value/2.png" alt="" className="mb-6 w-[36px] h-auto" />
+                <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
+                  Secure and Reliable
+                </h3>
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  With enterprise-grade security and continuous monitoring, your data stays safe and your operations run without interruption
+                </p>
+              </div>
+            </div>
+            <div className="group">
+              <div 
+                className="h-full rounded-2xl p-8 transition-all duration-300 hover:scale-105"
+                style={{ backgroundColor: '#1f1f1f' }}
+              >
+                <img src="home/value/3.png" alt="" className="mb-6 w-[36px] h-auto" />
+                <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
+                  Customer-Centric Experience
+                </h3>
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  Every feature is built with the end-user in mind, ensuring a smooth, intuitive, and engaging experience for your customers.
+                </p>
+              </div>
+            </div>
+            <div className="group">
+              <div 
+                className="h-full rounded-2xl p-8 transition-all duration-300 hover:scale-105"
+                style={{ backgroundColor: '#1f1f1f' }}
+              >
+                <img src="home/value/4.png" alt="" className="mb-6 w-[36px] h-auto" />
+                <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
+                  Scalable for Growth
+                </h3>
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  Whether you're a startup or an enterprise, our solution grows with you, supporting higher demands without performance loss.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* <div className="relative overflow-hidden h-full lg:h-screen w-full flex flex-col items-center justify-center">
         <div className="absolute translate-y-4/5 w-[120%] h-[900px] bg-gradient-to-r from-[#0421DE] to-[#C1ABF7] opacity-40 blur-[80px] rounded-full"></div>
         <div className="w-full flex items-center justify-center flex-col">
           <div className="w-full flex items-center justify-center mb-8">
@@ -129,11 +272,11 @@ export default function Home() {
             glowColor="132, 0, 255"
           />  
         </div>
-      </div>
-      
-      {/* Book a Demo */}
-      <div className="w-full py-12 px-4 bg-black">
-        <div className="max-w-[90%] mx-auto">
+      </div> */}
+
+      {/* BOOK A DEMO */}
+      <div className="w-full my-10 px-8 md:px-10 bg-black">
+        <div className="max-w-7xl mx-auto">
           <div className="relative bg-gradient-to-br from-[#1F1F1F] via-[#1F1F1F] to-purple-700/50 rounded-3xl shadow-2xl px-8 py-8 overflow-hidden">
             
             <div className="relative z-10 text-center">
@@ -207,6 +350,8 @@ export default function Home() {
         </div>
 
       </div>
+
+      {/* LOGO */}
       <div className="flex max-w-[80%] w-full justify-between items-center my-8">
         <div className='flex justify-center w-[85%]'>
           <div className='wrapper-a max-w-4xl w-full overflow-hidden relative'>

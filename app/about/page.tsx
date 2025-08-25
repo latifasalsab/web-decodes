@@ -50,42 +50,97 @@ export default function AboutPage() {
             About Us <br /> Know Us More Closely
           </motion.h1>
       </div>
-      <div className="w-full max-w-[80%] mx-auto h-screen gap-8 flex flex-col py-8">
-        <p className="text-base text-white">
-          We are a creative digital agency committed to transforming ideas into impactful solutions. With a blend of innovation, strategy, and technology, we help businesses face digital challenges and unlock new opportunities for growth.
-        </p>
-        <div className="flex items-center justify-between w-full">
-          <div className="w-[30%] flex flex-col gap-4">
-            <p className="text-4xl text-white">Our Proven Track Record</p>
-            <div className="bg-white w-full h-[1px] rounded"></div>
-            <div className="flex flex-col items-center h-full">
-              <div className="flex flex-col items-center p-4">
-                <p className="text-xl text-white">100+</p>
-                <p className="text-xs text-white">Project Completed</p>
+      <div className="min-h-screen p-4 md:p-6 lg:p-8">
+        <div className="max-w-5xl mx-auto h-full flex flex-col justify-center">
+          
+          {/* Introduction Text */}
+          <div className="mb-8 lg:mb-12">
+            <p className="text-sm md:text-base lg:text-lg text-white/90 text-center md:text-left leading-relaxed max-w-5xl mx-auto">
+              We are a creative digital agency committed to transforming ideas into impactful solutions. With a blend of innovation, strategy, and technology, we help businesses face digital challenges and unlock new opportunities for growth.
+            </p>
+          </div>
+
+          {/* Main Content Grid */}
+          <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-12 mb-8 lg:mb-12 lg:items-stretch">
+            
+            {/* Stats Section */}
+            <div className="order-2 lg:order-1 mb-8 lg:mb-0 lg:flex lg:flex-col lg:justify-between">
+              <div className="text-center lg:text-left mb-6">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+                  Our Proven<br />Track Record
+                </h2>
+                <div className="w-full h-px bg-white/30 mb-6"></div>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="flex flex-col items-center p-4 border border-solid border-white rounded-md">
-                  <p className="text-xl text-white">5+</p>
-                  <p className="text-xs text-white">Years Of Experience</p>
+
+              {/* Stats Cards */}
+              <div className="space-y-6 lg:flex lg:flex-col lg:justify-center">
+                {/* Main Stat */}
+                <div className="text-center bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
+                  <p className="text-3xl md:text-4xl font-bold text-white mb-2">100+</p>
+                  <p className="text-sm text-white/80">Project Completed</p>
                 </div>
-                <div className="flex flex-col items-center p-4 border border-solid border-white rounded-md">
-                  <p className="text-xl text-white">7+</p>
-                  <p className="text-xs text-white">Company Partners</p>
+
+                {/* Side by side stats */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="text-center bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                    <p className="text-xl md:text-2xl font-bold text-white mb-1">5+</p>
+                    <p className="text-xs text-white/80 leading-tight">Years Of<br />Experience</p>
+                  </div>
+                  <div className="text-center bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                    <p className="text-xl md:text-2xl font-bold text-white mb-1">7+</p>
+                    <p className="text-xs text-white/80 leading-tight">Company<br />Partners</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Images Section */}
+            <div className="order-1 lg:order-2 mb-8 lg:mb-0">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:h-full">
+                
+                {/* Left Column - Two stacked images */}
+                <div className="flex flex-col gap-4 order-2 md:order-1">
+                  <div className="flex-1 min-h-[150px] md:min-h-[140px] lg:min-h-[160px] xl:min-h-[180px]">
+                    <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg overflow-hidden shadow-xl">
+                      <img 
+                        className="w-full h-full object-cover" 
+                        src="/about/about1.png" 
+                        alt="Digital workspace setup"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex-1 min-h-[150px] md:min-h-[140px] lg:min-h-[160px] xl:min-h-[180px]">
+                    <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg overflow-hidden shadow-xl">
+                      <img 
+                        className="w-full h-full object-cover" 
+                        src="/about/about2.png" 
+                        alt="Team collaboration meeting"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column - Single tall image */}
+                <div className="min-h-[250px] md:min-h-[300px] lg:min-h-[340px] xl:min-h-[380px] order-1 md:order-2">
+                  <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg overflow-hidden shadow-xl">
+                    <img 
+                      className="w-full h-full object-cover" 
+                      src="/about/about3.png" 
+                      alt="Modern office environment"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-center h-full gap-6">
-            <div className="flex flex-col items-center justify-between h-96">
-              <img className="w-80 h-45 object-cover rounded-md" src="/about/about1.png" alt="" />
-              <img className="w-80 h-45 object-cover rounded-md" src="/about/about2.png" alt="" />
-            </div>
-            <img className="w-80 h-96 object-cover rounded-md" src="/about/about3.png" alt="" />
+
+          {/* Closing Text */}
+          <div className="text-center lg:text-left">
+            <p className="text-sm md:text-base lg:text-lg text-white/90 leading-relaxed max-w-5xl mx-auto">
+              For us, our clients' success is our success. Let's collaborate to create a digital strategy that is not only effective but also takes your business to the next level.
+            </p>
           </div>
         </div>
-        <p className="text-base text-white">
-          For us, our clients' success is our success. Let's collaborate to create a digital strategy that is not only effective but also takes your business to the next level.
-        </p>
       </div>
       <div className="flex max-w-[80%] w-full justify-between items-center">
         <div className='flex justify-center w-[85%]'>

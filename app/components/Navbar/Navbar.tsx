@@ -37,6 +37,7 @@ export default function NavbarProps() {
   );
 
   const navbarRef = useRef<HTMLDivElement>(null);
+  
 
   return (
     <div ref={navbarRef}>
