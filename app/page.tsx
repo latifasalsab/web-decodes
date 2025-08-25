@@ -61,10 +61,9 @@ export default function Home() {
                   duration: 0.8,
                   ease: "easeInOut",
               }}
+              className="text-4xl md:text-5xl font-bold text-white text-center"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-white text-center">
-                EMPOWERING YOUR <br /> DIGITAL FUTURE
-              </h2>
+              EMPOWERING YOUR <br /> DIGITAL FUTURE
             </motion.h1>
             
             <motion.p
@@ -147,7 +146,7 @@ export default function Home() {
               </div>
             </motion.h1>
           </div>
-          <div className="mt-8 flex flex-col md:flex-row justify-center items-center md:items-start gap-4 md:gap-6 py-5 px-4 md:px-0 mx-auto">
+          <div className="mt-8 flex flex-col md:flex-row justify-center items-center md:items-start gap-4 md:gap-6 py-5 px-6 md:px-10">
             {items.map((item, index) => (
               <ExpandedCard
                 key={item.id}
@@ -164,7 +163,7 @@ export default function Home() {
 
       {/* THE VALUE */}
       <section className="bg-black py-16 px-6 md:px-10">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <motion.h1
               initial={{ opacity: 0.5, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -411,8 +410,8 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
   <div
     className={`relative bg-[#1F1F1F] rounded-2xl shadow-lg overflow-hidden cursor-pointer transition-all duration-500 ease-out ${
       isExpanded 
-        ? 'w-full max-w-sm md:max-w-[90%] md:w-[800px] h-96 md:h-115' 
-        : 'w-full max-w-sm md:w-80 h-96 md:h-115'
+        ? 'w-full md:w-fit md:max-w-[80%] max-w-sm  h-96 md:h-115' 
+        : 'w-full md:w-fit md:max-w-[80%] max-w-sm h-96 md:h-115'
     }`}
     onMouseEnter={() => onMouseEnter(index)}
     onMouseLeave={onMouseLeave}
@@ -441,7 +440,7 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
         {/* Expanded Content Section */}
         <div className={`bg-[#1F1F1F] transition-all duration-500 ease-out overflow-hidden ${
           isExpanded 
-            ? 'w-full h-1/2 md:h-full md:w-100 opacity-100' 
+            ? 'w-full h-1/2 md:h-full md:w-150 opacity-100' 
             : 'w-0 h-0 md:w-0 md:h-auto opacity-0'
         }`}>
           {/* Content structure */}
@@ -457,9 +456,9 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
               </div>
             </div>
 
-            <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6">
+            <div className="absolute bottom-4 md:bottom-6 left-0 right-0 flex justify-center">
               <Button 
-                className="w-full bg-gradient-to-r from-[#0421DE] to-[#BA8EF4] text-white rounded-3xl shadow-md hover:opacity-90 transition-all px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                className="w-70 bg-gradient-to-r from-[#0421DE] to-[#BA8EF4] text-white rounded-3xl shadow-md hover:opacity-90 transition-all px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.stopPropagation();
                   console.log(`Navigating to: ${item.button.link}`);
@@ -472,15 +471,15 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
           </div>
         </div>
       </div>
-
-      {/* Hover indicator */}
-      <div className={`absolute top-3 md:top-4 right-3 md:right-4 transition-all duration-300 ${
-        isExpanded ? 'opacity-100 transform rotate-0' : 'opacity-70 transform rotate-180'
-      }`}>
-        <svg className="w-4 h-4 md:w-5 md:h-5 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </div>
+            <div className={`absolute top-3 md:top-4 right-3 md:right-4 transition-all duration-300 ${
+             isExpanded ? 'opacity-100 transform rotate-0' : 'opacity-70 transform rotate-180'
+            }`}>
+              <svg className="w-4 h-4 md:w-5 md:h-5 text-white drop-shadow-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
     </div>
+
+    
   )
 );
