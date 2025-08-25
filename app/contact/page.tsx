@@ -159,14 +159,12 @@ export default function ContactPage() {
           <div></div>
 
           {/* form contact */}
-          <div className="min-h-screen bg-black flex items-center justify-center p-4">
-            <Card className="w-full max-w-[80%] bg-black border-2 rounded-4xl border-cyan-400">
+          <div className="w-full h-full bg-black flex items-center justify-center p-4">
+            <Card className="w-full max-w-[95%] sm:max-w-[90%] lg:max-w-[80%] bg-black border-2 rounded-4xl border-white">
               <CardContent className="p-0">
                 {/* Container utama dengan 3 bagian: header + form (2 col) + image */}
-                <div className="flex">
-                  {/* Container untuk header dan form (2 kolom) */}
+                <div className="flex flex-col lg:flex-row">
                   <div className="flex-1">
-                    {/* Header section */}
                     <div className="p-6 pb-6">
                       <CardTitle className="text-white text-xl font-semibold mb-2">
                         SEND US A MESSAGES
@@ -180,7 +178,7 @@ export default function ContactPage() {
                     {/* Form content - 2 kolom */}
                     <div className="p-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Left Column: Full Name, Phone Number, Email, Business Name */}
+
                   <div className="space-y-4">
                     <div>
                       <label className="block text-white text-sm mb-2">Full Name</label>
@@ -190,7 +188,7 @@ export default function ContactPage() {
                         placeholder="Enter your full name"
                         value={formData.fullName}
                         onChange={handleInputChange}
-                        className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded px-3 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm"
+                        className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded-md px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm"
                       />
                     </div>
                     
@@ -202,7 +200,7 @@ export default function ContactPage() {
                         placeholder="Enter your phone number"
                         value={formData.phoneNumber}
                         onChange={handleInputChange}
-                        className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded px-3 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm"
+                        className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm"
                       />
                     </div>
                     
@@ -214,7 +212,7 @@ export default function ContactPage() {
                         placeholder="Enter your email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded px-3 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm"
+                        className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm"
                       />
                     </div>
                     
@@ -226,7 +224,7 @@ export default function ContactPage() {
                         placeholder="Enter your business name"
                         value={formData.businessName}
                         onChange={handleInputChange}
-                        className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded px-3 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm"
+                        className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm"
                       />
                     </div>
                   </div>
@@ -240,7 +238,7 @@ export default function ContactPage() {
                           name="subject"
                           value={formData.subject}
                           onChange={handleInputChange}
-                          className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded px-3 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm appearance-none cursor-pointer"
+                          className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded-lg px-3 py-2 text-white focus:outline-none focus:border-cyan-400 text-sm appearance-none cursor-pointer"
                         >
                           <option value="">Choose a subject</option>
                           <option value="general">General Inquiry</option>
@@ -265,17 +263,17 @@ export default function ContactPage() {
                         value={formData.messages}
                         onChange={handleInputChange}
                         rows={6.5}
-                        className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded px-3 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm resize-none"
+                        className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm resize-none"
                       />
                     </div>
                     
-                    <div className="mt-auto">
-                      <button
+                    <div className="mt-auto flex justify-center lg:justify-center ">
+                      <Button
                         onClick={handleSubmit}
-                        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium py-3 px-5 rounded hover:from-blue-700 hover:to-purple-700 transition-all duration-200 text-sm"
+                        className="w-70 sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium py-3 px-24  rounded-3xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 text-sm items-center"
                       >
                         SUBMIT
-                      </button>
+                      </Button>
                     </div>
                   </div>
                       </div>
@@ -283,12 +281,12 @@ export default function ContactPage() {
                   </div>
                   
                   {/* Image section - di samping header dan form */}
-                  <div className="p-6 flex items-start">
+                  <div className="p-6 flex items-start justify-center lg:justify-start lg:order-last">
                     <Image
-                      src="/image_contact.png" 
+                      src="/contact/img_contact.png" 
                       alt="Contact Image"
-                      width={280}
-                      height={280}
+                      width={260}
+                      height={260}
                     />
                   </div>
                 </div>
