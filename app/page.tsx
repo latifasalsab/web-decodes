@@ -1,18 +1,17 @@
 "use client";
-import React, { useState, useRef, useLayoutEffect, useMemo, useCallback } from "react";
-import { AnimatePresence, motion } from 'motion/react';
+import React, { useState, useMemo, useCallback, useLayoutEffect, useRef } from "react";
+import { motion } from 'motion/react';
 import NavbarProps from "./components/Navbar/Navbar";
 import Link from 'next/link';
 import Image from 'next/image';
-import SplashCursor from '@/app/components/SplashCursor/SplashCursor'
-import MagicBento from '@/app/components/MagicBento/MagicBento';
 import { Button } from "@/components/ui/button"
 
 export default function Home() {
   const logos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const loopLogos = [...logos, ...logos];
 
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const [hoveredIndex, setHoveredIndex] = useState<number>(1);
   
   const items = useMemo((): ProductItem[] => [
     { 
@@ -38,22 +37,21 @@ export default function Home() {
   }, []);
 
   const handleMouseLeave = useCallback((): void => {
-    setHoveredIndex(null);
+    
   }, []);
+
 
   return (
     <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
       <NavbarProps />
-      <div className="relative w-full min-h-screen flex flex-col items-center justify-center
+      <div className="w-full min-h-screen flex flex-col items-center justify-center
         bg-cover bg-center bg-no-repeat bg-fixed
-        before:absolute before:inset-0 before:bg-black/20 before:z-0"
+        before:absolute before:inset-0 before:bg-black/20 before:z-0 pt-20"
         style={{
           backgroundImage: "url('hero-bg.png')",
         }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 z-0"></div>
-          
-          <div className="absolute bottom-0 z-10 flex flex-col items-center w-full gap-4 sm:px-6 lg:px-8 ">
+          <div className="z-10 flex flex-col items-center w-full gap-8 sm:px-6 lg:px-8 ">
             <motion.h1
               initial={{ opacity: 0.5, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -62,12 +60,10 @@ export default function Home() {
                   duration: 0.8,
                   ease: "easeInOut",
               }}
-              className="bg-gradient-to-br from-[#F7DDEE] to-[#C1ABF7] bg-clip-text 
-                         text-center text-2xl sm:text-3xl md:text-4xl lg:text-6xl 
-                         font-medium tracking-tight text-transparent
-                         leading-tight sm:leading-tight md:leading-tight"
             >
-              EMPOWERING YOUR <br /> DIGITAL FUTURE
+              <h2 className="text-4xl md:text-5xl font-bold text-white text-center">
+                EMPOWERING YOUR <br /> DIGITAL FUTURE
+              </h2>
             </motion.h1>
             
             <motion.p
@@ -117,11 +113,18 @@ export default function Home() {
               <img 
                 src="/home/hero.png" 
                 alt="Hero illustration" 
-                className="w-full h-auto object-contain md:max-h-[40vh]"
+                className="w-full max-h-[30vh] object-contain hidden md:flex"
+              />
+              <img 
+                src="/home/hero-mobile.png" 
+                alt="Hero illustration" 
+                className="w-full h-auto object-contain max-h-[40vh] flex md:hidden"
               />
             </motion.div>
           </div>
       </div>
+
+      {/* FEATURED PRODUCT */}
       <div className="relative w-full overflow-x-hidden flex h-full lg:h-screen items-center justify-center">
         <div className="absolute top-0 -translate-y-5/6 w-[120%] h-[900px] bg-gradient-to-r from-[#0421DE] to-[#C1ABF7] opacity-40 blur-[80px] rounded-full"></div>
         <div className="flex flex-col h-full w-full justify-center items-center">
@@ -131,12 +134,16 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
                   delay: 0.3,
-                  duration: 0.3,
+                  duration: 0.6,
                   ease: "easeInOut",
               }}
-              className="bg-gradient-to-br from-[#F7DDEE] to-[#fff] py-4 bg-clip-text text-center text-xl font-medium tracking-tight text-transparent md:text-4xl"
             >
-              Featured Project
+              <div className="text-center my-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-[#9933EF]">
+                  Featured{' '}
+                  <span className="text-white">Product</span>
+                </h2>
+              </div>
             </motion.h1>
           </div>
           <div className="mt-8 flex flex-col md:flex-row justify-center items-center md:items-start gap-4 md:gap-6 py-5 px-4 md:px-0 mx-auto">
@@ -154,23 +161,33 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="bg-black py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              The Value Behind{' '}
-              <span className="text-purple-400">Our Solutions</span>
-            </h2>
-          </div>
-
-          {/* Value Cards */}
-          <div className="flex flex-col md:flex-row gap-6">
-            
-            {/* Card 1 - Fast and Flexible Integration */}
-            <div className="flex-1">
-              <div className="bg-gray-800 rounded-2xl p-8 transition-all duration-300 hover:bg-gray-700">
-                <div className="mb-6 text-3xl">⚡</div>
+      {/* THE VALUE */}
+      <section className="bg-black py-16 px-6 md:px-10">
+        <div className="max-w-6xl mx-auto">
+          <motion.h1
+              initial={{ opacity: 0.5, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                  delay: 0.3,
+                  duration: 0.6,
+                  ease: "easeInOut",
+              }}
+          >
+            <div className="mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                The Value Behind{' '}
+                <span className="text-[#9933EF]">Our Solutions</span>
+              </h2>
+            </div>
+          </motion.h1>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div className="group">
+              <div 
+                className="h-full rounded-2xl p-8 transition-all duration-300 hover:scale-105"
+                style={{ backgroundColor: '#1f1f1f' }}
+              >
+                <img src="home/value/1.png" alt="" className="mb-6 w-[36px] h-auto" />
                 <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
                   Fast and Flexible Integration
                 </h3>
@@ -179,11 +196,12 @@ export default function Home() {
                 </p>
               </div>
             </div>
-
-            {/* Card 2 - Secure and Reliable */}
-            <div className="flex-1">
-              <div className="bg-gray-800 rounded-2xl p-8 transition-all duration-300 hover:bg-gray-700">
-                <div className="mb-6 text-3xl">🔒</div>
+            <div className="group">
+              <div 
+                className="h-full rounded-2xl p-8 transition-all duration-300 hover:scale-105"
+                style={{ backgroundColor: '#1f1f1f' }}
+              >
+                <img src="home/value/2.png" alt="" className="mb-6 w-[36px] h-auto" />
                 <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
                   Secure and Reliable
                 </h3>
@@ -192,11 +210,12 @@ export default function Home() {
                 </p>
               </div>
             </div>
-
-            {/* Card 3 - Customer-Centric Experience */}
-            <div className="flex-1">
-              <div className="bg-gray-800 rounded-2xl p-8 transition-all duration-300 hover:bg-gray-700">
-                <div className="mb-6 text-3xl">✨</div>
+            <div className="group">
+              <div 
+                className="h-full rounded-2xl p-8 transition-all duration-300 hover:scale-105"
+                style={{ backgroundColor: '#1f1f1f' }}
+              >
+                <img src="home/value/3.png" alt="" className="mb-6 w-[36px] h-auto" />
                 <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
                   Customer-Centric Experience
                 </h3>
@@ -205,11 +224,12 @@ export default function Home() {
                 </p>
               </div>
             </div>
-
-            {/* Card 4 - Scalable for Growth */}
-            <div className="flex-1">
-              <div className="bg-gray-800 rounded-2xl p-8 transition-all duration-300 hover:bg-gray-700">
-                <div className="mb-6 text-3xl">📈</div>
+            <div className="group">
+              <div 
+                className="h-full rounded-2xl p-8 transition-all duration-300 hover:scale-105"
+                style={{ backgroundColor: '#1f1f1f' }}
+              >
+                <img src="home/value/4.png" alt="" className="mb-6 w-[36px] h-auto" />
                 <h3 className="text-xl font-semibold text-white mb-4 leading-tight">
                   Scalable for Growth
                 </h3>
@@ -253,9 +273,85 @@ export default function Home() {
           />  
         </div>
       </div> */}
-      <div className="w-full h-screen flex flex-col items-center justify-center z-10">
+
+      {/* BOOK A DEMO */}
+      <div className="w-full my-10 px-8 md:px-10 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative bg-gradient-to-br from-[#1F1F1F] via-[#1F1F1F] to-purple-700/50 rounded-3xl shadow-2xl px-8 py-8 overflow-hidden">
+            
+            <div className="relative z-10 text-center">
+              
+              <div className="mb-6 flex flex-col items-center">
+                <img 
+                  src="/logo_decodes/logo_decodes.png"
+                  alt="logo decodes"
+                  width={80}
+                  height={96}
+                  className="mb-3"/>
+                
+                <div className="w-70 h-px bg-gradient-to-r from-[#2032E0] to-[#7666EB]"></div>
+              </div>
+
+              
+              <h1 className="text-white text-base md:text-lg lg:text-xl font-bold mb-6 leading-tight">
+                TRANSFORM YOUR WORKFLOW WITH DECODES!
+              </h1>
+
+              <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 mb-6 text-sm">
+                <div className="flex items-center gap-2">
+                  <div>
+                    <img
+                      src="/icons/checklist.png"
+                      alt="icon checklist"
+                      className="w-4 h-4"
+                      />
+                  </div>
+                  <span className="text-gray-300">Customized setup for your needs</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div>
+                    <img
+                      src="/icons/checklist.png"
+                      alt="icon checklist"
+                      className="w-4 h-4"
+                      />
+                  </div>
+                  <span className="text-gray-300">Fast & secure integration</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div>
+                    <img
+                      src="/icons/checklist.png"
+                      alt="icon checklist"
+                      className="w-4 h-4"
+                      />
+                  </div>
+                  <span className="text-gray-300">Clear and transparent pricing</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
+                <Button 
+                  variant="default" 
+                  className="bg-gradient-to-r from-[#0421DE] to-[#BA8EF4] text-white px-6 py-2.5 rounded-3xl font-semibold hover:opacity-90 transition-all shadow-lg text-sm"
+                >
+                  BOOK A DEMO
+                </Button>
+
+                <Button 
+                  variant="outline" 
+                  className="border-2 border-[#0421DE] bg-transparent text-gray-300 px-6 py-2.5 rounded-3xl font-semibold hover:bg-gray-800 hover:text-white transition-all text-sm"
+                >
+                  LEARN MORE
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
+
+      {/* LOGO */}
       <div className="flex max-w-[80%] w-full justify-between items-center my-8">
         <div className='flex justify-center w-[85%]'>
           <div className='wrapper-a max-w-4xl w-full overflow-hidden relative'>
@@ -278,10 +374,70 @@ export default function Home() {
           <p className="text-lg text-white text-right">Clients We’ve <br /> Worked With</p>
         </div>
       </div>
+
+      {/* Footer Section */}
       <div 
         className="w-full md:h-[30vh] bg-cover bg-center"
         style={{ backgroundImage: "url('footer.png')" }}
-      ></div>
+      >
+        <div className="relative z-10 container mx-auto max-w-[90%] py-8 h-full flex flex-col justify-between">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 lg:gap-8">
+            
+            <div className="flex-1 w-full lg:w-auto">
+              <div className="mb-4 lg:mb-6">
+                <img
+                  src="/logo_decodes/logo_new.png"
+                  alt="logo footer"
+                  className="h-12 lg:h-16" 
+                />
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <div className="flex items-start gap-3">
+                  <div className="w-4 h-4 flex items-center justify-center mt-0.5">
+                    <img
+                      src="icons/location.png"
+                      alt="location"
+                      className="h-4"
+                    />
+                  </div>
+                  <p className="text-white text-sm lg:text-sm xl:text-base leading-relaxed">
+                    Semarang Office - Wologito Utara No.3, Semarang
+                    Barat, Semarang City, Central Java, Indonesia
+                    50148
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-4 h-4 flex items-center justify-center">
+                    <img
+                      src="icons/telephone.png"
+                      alt="telephone"
+                      className="h-4"
+                    />
+                  </div>
+                  <p className="text-white text-sm lg:text-sm xl:text-base">+62-812-2692-2617</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col w-full lg:w-auto lg:items-end items-center gap-4 mt-8 lg:mt-8">
+              <div className="flex gap-3 lg:gap-2 items-center">
+                <div className="flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid">
+                  <p className="text-white text-xs lg:text-sm xl:text-base">INSTAGRAM</p>
+                </div>
+                <div className="flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid">
+                  <p className="text-white text-xs lg:text-sm xl:text-base">LINKEDIN</p>
+                </div>
+              </div>
+              <p className="text-white text-xs lg:text-xs xl:text-sm text-center lg:text-right">
+                ©2025 PT Byde Cloudata Ekosistem. All Rights Reserved
+              </p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -314,10 +470,10 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
   onMouseLeave 
 }) => (
   <div
-    className={`relative bg-black rounded-2xl shadow-lg overflow-hidden cursor-pointer transition-all duration-500 ease-out ${
+    className={`relative bg-[#1F1F1F] rounded-2xl shadow-lg overflow-hidden cursor-pointer transition-all duration-500 ease-out ${
       isExpanded 
-        ? 'w-full max-w-sm md:max-w-none md:w-[700px] md:h-115' 
-        : 'w-full max-w-sm md:w-80 md:h-115'
+        ? 'w-full max-w-sm md:max-w-[90%] md:w-[800px] h-96 md:h-115' 
+        : 'w-full max-w-sm md:w-80 h-96 md:h-115'
     }`}
     onMouseEnter={() => onMouseEnter(index)}
     onMouseLeave={onMouseLeave}
@@ -327,7 +483,6 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
   >
       {/* Container utama dengan flex */}
       <div className="flex flex-col md:flex-row h-full">
-        {/* Image Section */}
         <div className={`relative transition-all duration-500 ease-out ${
           isExpanded 
             ? 'w-full h-1/2 md:h-full md:w-80 md:flex-shrink-0' 
@@ -341,33 +496,31 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
             decoding="async"
           />
           
-          {/* Gradient overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
         </div>
 
         {/* Expanded Content Section */}
-        <div className={`bg-black transition-all duration-500 ease-out overflow-hidden ${
+        <div className={`bg-[#1F1F1F] transition-all duration-500 ease-out overflow-hidden ${
           isExpanded 
             ? 'w-full h-1/2 md:h-full md:w-100 opacity-100' 
             : 'w-0 h-0 md:w-0 md:h-auto opacity-0'
         }`}>
           {/* Content structure */}
           <div className="relative p-4 md:p-6 h-full">
-            {/* Content Area - dengan padding bottom untuk button space */}
+            {/* Content Area */}
             <div className="text-center h-full pb-16 md:pb-16">
               <h1 className="text-lg md:text-2xl font-bold text-white mb-3 md:mb-4">{item.title}</h1>
-              {/* Scrollable description area dengan max height */}
-              <div className="h-full overflow-y-auto pr-2">
+              {/* Diskripsi area */}
+              <div className="h-full overflow-y-auto pr-2 item-center justify-center">
                 <p className="text-white text-xs md:text-sm leading-relaxed text-justify">
                   {item.description}
                 </p>
               </div>
             </div>
 
-            {/* Button - ABSOLUTE POSITIONED di bagian bawah */}
             <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 right-4 md:right-6">
               <Button 
-                className="w-full bg-gradient-to-r from-[#0421DE] to-[#BA8EF4] text-white rounded-lg shadow-md hover:opacity-90 transition-all px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                className="w-full bg-gradient-to-r from-[#0421DE] to-[#BA8EF4] text-white rounded-3xl shadow-md hover:opacity-90 transition-all px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.stopPropagation();
                   console.log(`Navigating to: ${item.button.link}`);

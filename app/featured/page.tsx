@@ -25,7 +25,8 @@ interface ExpandedCardProps {
 }
 
 export default function FeaturedProducts() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  // Card 'AI Chatbot' ada di index 1, jadi default 1
+  const [hoveredIndex, setHoveredIndex] = useState<number>(1);
 
   // Memoize items dengan data 
   const items = useMemo((): ProductItem[] => [
@@ -51,8 +52,9 @@ export default function FeaturedProducts() {
     setHoveredIndex(index);
   }, []);
 
+  // Jangan reset hoveredIndex ke null agar card tetap terbuka
   const handleMouseLeave = useCallback((): void => {
-    setHoveredIndex(null);
+    // Tidak melakukan apapun
   }, []);
 
   return (
