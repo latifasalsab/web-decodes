@@ -4,14 +4,10 @@ import { motion } from 'motion/react';
 import NavbarProps from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Link from 'next/link';
-import Image from 'next/image';
+import Logos from './components/Logos/Logos';
 import { Button } from "@/components/ui/button"
 
 export default function Home() {
-  const logos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  const loopLogos = [...logos, ...logos];
-
-
   const [hoveredIndex, setHoveredIndex] = useState<number>(1);
   
   const items = useMemo((): ProductItem[] => [
@@ -351,29 +347,7 @@ export default function Home() {
 
       </div>
 
-      {/* LOGO */}
-      <div className="flex max-w-[80%] w-full justify-between items-center my-8">
-        <div className='flex justify-center w-[85%]'>
-          <div className='wrapper-a max-w-4xl w-full overflow-hidden relative'>
-            <div className='wrapper-b'>
-              {loopLogos.map((num, idx) => (
-                <Image
-                  key={idx}
-                  src={`/logo/logo${num}.png`}
-                  alt={`Logo ${num}`}
-                  width={60}
-                  height={60}
-                  className="item"
-                  style={{ animationDelay: `calc(20s / ${logos.length} * (${logos.length} - ${idx}) * -1)` }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-        <div>
-          <p className="text-lg text-white text-right">Clients We’ve <br /> Worked With</p>
-        </div>
-      </div>
+      <Logos />
 
       <Footer />
     </div>

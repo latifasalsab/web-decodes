@@ -114,7 +114,6 @@ export default function AboutPage() {
 
       <Logos />
 
-      {/* FOOTER */}
       <Footer />
     </div>
   );
