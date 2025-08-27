@@ -5,13 +5,13 @@ import Footer from '../components/Footer/Footer';
 import Logos from '../components/Logos/Logos';
 export default function AboutPage() {
   return (
-    <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
+    <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center w-full mx-auto'>
       <NavbarProps />
       <div className="relative w-full flex items-center justify-center h-screen">
         <div 
           className="absolute inset-0 bg-cover bg-center brightness-65"
           style={{
-              backgroundImage: "url('about/hero.png')",
+              backgroundImage: "url('/about/hero.png')",
           }}
         ></div>
         <motion.h1

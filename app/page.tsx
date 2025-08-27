@@ -3,6 +3,7 @@ import React, { useState, useMemo, useCallback} from "react";
 import { motion } from 'motion/react';
 import NavbarProps from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
+import BookADemo from "./components/BookADemo/BookADemo";
 import Link from 'next/link';
 import Logos from './components/Logos/Logos';
 import { Button } from "@/components/ui/button"
@@ -45,7 +46,7 @@ export default function Home() {
         bg-cover bg-center bg-no-repeat bg-fixed
         before:absolute before:inset-0 before:bg-black/20 before:z-0 pt-20"
         style={{
-          backgroundImage: "url('hero-bg.png')",
+          backgroundImage: "url('/hero-bg.png')",
         }}
         >
           <div className="z-10 flex flex-col items-center w-full gap-8 sm:px-6 lg:px-8 ">
@@ -158,7 +159,7 @@ export default function Home() {
       </div>
 
       {/* THE VALUE */}
-      <section className="bg-black py-16 px-6 md:px-10">
+      <section className="py-16 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
           <motion.h1
               initial={{ opacity: 0.5, y: 40 }}
@@ -270,82 +271,7 @@ export default function Home() {
         </div>
       </div> */}
 
-      {/* BOOK A DEMO */}
-      <div className="w-full my-10 px-8 md:px-10 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative bg-gradient-to-br from-[#1F1F1F] via-[#1F1F1F] to-purple-700/50 rounded-3xl shadow-2xl px-8 py-8 overflow-hidden">
-            
-            <div className="relative z-10 text-center">
-              
-              <div className="mb-6 flex flex-col items-center">
-                <img 
-                  src="/logo_decodes/logo_decodes.png"
-                  alt="logo decodes"
-                  width={80}
-                  height={96}
-                  className="mb-3"/>
-                
-                <div className="w-70 h-px bg-gradient-to-r from-[#2032E0] to-[#7666EB]"></div>
-              </div>
-
-              
-              <h1 className="text-white text-base md:text-lg lg:text-xl font-bold mb-6 leading-tight">
-                TRANSFORM YOUR WORKFLOW WITH DECODES!
-              </h1>
-
-              <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 mb-6 text-sm">
-                <div className="flex items-center gap-2">
-                  <div>
-                    <img
-                      src="/icons/checklist.png"
-                      alt="icon checklist"
-                      className="w-4 h-4"
-                      />
-                  </div>
-                  <span className="text-gray-300">Customized setup for your needs</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div>
-                    <img
-                      src="/icons/checklist.png"
-                      alt="icon checklist"
-                      className="w-4 h-4"
-                      />
-                  </div>
-                  <span className="text-gray-300">Fast & secure integration</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div>
-                    <img
-                      src="/icons/checklist.png"
-                      alt="icon checklist"
-                      className="w-4 h-4"
-                      />
-                  </div>
-                  <span className="text-gray-300">Clear and transparent pricing</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
-                <Button 
-                  variant="default" 
-                  className="bg-gradient-to-r from-[#0421DE] to-[#BA8EF4] text-white px-6 py-2.5 rounded-3xl font-semibold hover:opacity-90 transition-all shadow-lg text-sm"
-                >
-                  BOOK A DEMO
-                </Button>
-
-                <Button 
-                  variant="outline" 
-                  className="border-2 border-[#0421DE] bg-transparent text-gray-300 px-6 py-2.5 rounded-3xl font-semibold hover:bg-gray-800 hover:text-white transition-all text-sm"
-                >
-                  LEARN MORE
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <BookADemo />
 
       <Logos />
 
@@ -393,7 +319,6 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
     tabIndex={0}
     aria-label={`View ${item.alt}`}
   >
-      {/* Container utama dengan flex */}
       <div className="flex flex-col md:flex-row h-full">
         <div className={`relative transition-all duration-500 ease-out ${
           isExpanded 
@@ -411,18 +336,14 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
           <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
         </div>
 
-        {/* Expanded Content Section */}
         <div className={`bg-[#1F1F1F] transition-all duration-500 ease-out overflow-hidden ${
           isExpanded 
             ? 'w-full h-1/2 md:h-full md:w-150 opacity-100' 
             : 'w-0 h-0 md:w-0 md:h-auto opacity-0'
         }`}>
-          {/* Content structure */}
           <div className="relative p-4 md:p-6 h-full">
-            {/* Content Area */}
             <div className="text-center h-full pb-16 md:pb-16">
               <h1 className="text-lg md:text-2xl font-bold text-white mb-3 md:mb-4">{item.title}</h1>
-              {/* Diskripsi area */}
               <div className="h-full overflow-y-auto pr-2 item-center justify-center">
                 <p className="text-white text-xs md:text-sm leading-relaxed text-justify">
                   {item.description}

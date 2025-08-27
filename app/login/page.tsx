@@ -25,7 +25,6 @@ interface ServiceInfo {
 
 type RegisterStep = PersonalInfo | BusinessInfo | ServiceInfo;
 
-// Updated interface to be more flexible
 interface RegisterStepConfig {
     label: string;
     render: (values: any, setValues: (values: any) => void) => JSX.Element;
@@ -162,23 +161,14 @@ const registerSteps: RegisterStepConfig[] = [
 ];
 
 export default function Login(): JSX.Element {
-    // Main state management
     const [currentView, setCurrentView] = useState<'login' | 'register' | 'forgot' | 'reset'>('login');
-    
-    // Login state
     const [loginData, setLoginData] = useState({ email: '', password: '' });
-    
-    // Forgot password state
     const [forgotEmail, setForgotEmail] = useState('');
-    
-    // Reset password state
     const [resetData, setResetData] = useState({ newPassword: '', confirmPassword: '' });
 
-    // Register stepper state
     const [step, setStep] = useState<number>(0);
     const [registerValues, setRegisterValues] = useState<RegisterStep[]>([{}, {}, {}]);
 
-    // Reset all states
     const resetStates = (): void => {
         setStep(0);
         setRegisterValues([{}, {}, {}]);
@@ -187,7 +177,6 @@ export default function Login(): JSX.Element {
         setResetData({ newPassword: '', confirmPassword: '' });
     };
 
-    // Navigation handlers
     const handleShowLogin = (): void => {
         setCurrentView('login');
         resetStates();
@@ -207,7 +196,6 @@ export default function Login(): JSX.Element {
         setCurrentView('reset');
     };
 
-    // Stepper navigation
     const handleNext = (): void => setStep(s => Math.min(s + 1, registerSteps.length - 1));
     const handleBack = (): void => setStep(s => Math.max(s - 1, 0));
     
@@ -219,7 +207,6 @@ export default function Login(): JSX.Element {
         });
     };
 
-    // Check if current step is valid
     const isStepValid = (stepIndex: number): boolean => {
         const values = registerValues[stepIndex];
         switch(stepIndex) {
@@ -306,7 +293,6 @@ export default function Login(): JSX.Element {
                                 />
                             </div>
                             
-                            {/* Background Effect */}
                             <div className="absolute inset-0 bg-gradient-to-br from-[#1e1b4b]/20 via-transparent to-[#581c87]/20"></div>
                             <div className="absolute top-10 left-10 w-32 h-32 bg-[#6366f1]/10 rounded-full blur-3xl"></div>
                             <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#8b5cf6]/10 rounded-full blur-3xl"></div>
@@ -319,7 +305,7 @@ export default function Login(): JSX.Element {
                             }}>
                             <div className="relative w-full min-h-[80vh] flex items-start justify-center">
                                 
-                                {/* Login Form */}
+                                {/* Login */}
                                 <div
                                     className={`absolute top-0 left-0 w-full min-h-[80vh] flex flex-col justify-start transition-all duration-500 ${
                                         currentView === 'login'
@@ -411,7 +397,7 @@ export default function Login(): JSX.Element {
                                     </div>
                                 </div>
 
-                                {/* Forgot Password Form */}
+                                {/* Forgot Password */}
                                 <div
                                     className={`absolute top-0 left-0 w-full min-h-[80vh] flex flex-col justify-start transition-all duration-500 ${
                                         currentView === 'forgot'
@@ -481,7 +467,7 @@ export default function Login(): JSX.Element {
                                     </div>
                                 </div>
 
-                                {/* Reset Password Form */}
+                                {/* Reset Password*/}
                                 <div
                                     className={`absolute top-0 left-0 w-full min-h-[80vh] flex flex-col justify-start transition-all duration-500 ${
                                         currentView === 'reset'
@@ -562,7 +548,7 @@ export default function Login(): JSX.Element {
                                     </div>
                                 </div>
                                 
-                                {/* Register Stepper Form */}
+                                {/* Register */}
                                 <div
                                     className={`absolute top-0 left-0 w-full min-h-[80vh] flex flex-col justify-start transition-all duration-500 ${
                                         currentView === 'register'
