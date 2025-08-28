@@ -132,7 +132,6 @@ export default function CRNService() {
         <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center mx-auto custom-scrollbar'>
             <NavbarProps />
             
-            {/* Hero Section */}
             <div className="relative w-full flex items-center justify-center h-screen">
                 <div 
                 className="absolute inset-0 bg-cover bg-center brightness-65"
@@ -161,9 +160,7 @@ export default function CRNService() {
                 </motion.h1>
             </div>
             
-            {/* Content Section - Responsive 50/50 Layout */}
             <div className="w-full min-h-screen flex flex-col lg:flex-row">
-                {/* Image Section */}
                 <div className="w-full lg:w-1/2 h-64 md:h-96 lg:h-screen">
                     <Image
                         src="/services/service-crm.png"
@@ -174,7 +171,6 @@ export default function CRNService() {
                     />
                 </div>
                 
-                {/* Text Content Section */}
                 <div className="w-full lg:w-1/2 flex flex-col justify-center p-6 md:p-10 xl:p-16">
                     <div className="max-w-2xl mx-auto lg:mx-0">
                         <h2 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-center">
@@ -244,7 +240,7 @@ export default function CRNService() {
                         <p className="text-base md:text-lg text-white mb-4">Maximum Performance at The Best Price</p>
                     </div>
                 </motion.h1>
-                {/* Pricing Grid */}
+
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 w-full max-w-7xl mx-auto">
                     {plans.map((plan) => (
                     <div
@@ -273,10 +269,10 @@ export default function CRNService() {
                         </div>
 
                         <div className="space-y-3 mb-8">
-                        {plan.features.map((feature, index) => (
-                            <div key={index} className="flex">
-                                <img src="/icons/checklist.png" className='h-5 mr-3 flex-shrink-0' alt="" />
-                                <span className="text-gray-300 text-sm">{feature}</span>
+                        {plan.features.map((feature) => (
+                            <div key={feature} className="flex">
+                            <img src="/icons/checklist.png" className="h-5 mr-3 flex-shrink-0" alt="" />
+                            <span className="text-gray-300 text-sm">{feature}</span>
                             </div>
                         ))}
                         </div>
@@ -295,7 +291,6 @@ export default function CRNService() {
                     ))}
                 </div>
 
-                {/* Payment Modal Popup */}
                 {selectedPlan && selectedPlanData && (
                     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
                     <div className="bg-[#2a2a2a] rounded-3xl max-w-3xl w-full mx-auto relative">
@@ -310,9 +305,9 @@ export default function CRNService() {
                         <h3 className="text-white text-xl font-semibold mb-4 text-center">Choose Payment Method</h3>
                         
                         <div className="grid grid-cols-2 gap-3 mb-6">
-                            <div 
-                                role="button"
-                                className={` border rounded-lg py-4 px-4 md:px-10 cursor-pointer transition-all ${
+                            <button
+                                type="button"
+                                className={`border rounded-lg py-4 px-4 md:px-10 cursor-pointer text-left transition-all ${
                                     selectedPaymentMethod === 'credit-card' 
                                     ? 'border-[#3740E4] bg-[#3740E4]/10' 
                                     : 'border-gray-600 hover:border-gray-500'
@@ -323,22 +318,22 @@ export default function CRNService() {
                                     <p className="text-white font-medium text-sm">Credit Card (Subscription)</p>
                                     <p className="text-gray-400 text-sm">Enjoy automatic renewal</p>
                                 </div>
-                            </div>
-                            
-                            <div 
-                            className={`border rounded-lg py-4 px-4 md:px-10 cursor-pointer transition-all ${
-                                selectedPaymentMethod === 'bank-transfer' 
-                                ? 'border-[#3740E4] bg-[#3740E4]/10' 
-                                : 'border-gray-600 hover:border-gray-500'
-                            }`}
-                            onClick={() => setSelectedPaymentMethod('bank-transfer')}
+                            </button>
+
+                            <button
+                                type="button"
+                                className={`border rounded-lg py-4 px-4 md:px-10 cursor-pointer text-left transition-all ${
+                                    selectedPaymentMethod === 'bank-transfer' 
+                                    ? 'border-[#3740E4] bg-[#3740E4]/10' 
+                                    : 'border-gray-600 hover:border-gray-500'
+                                }`}
+                                onClick={() => setSelectedPaymentMethod('bank-transfer')}
                             >
-                            <div className="text-white font-medium text-sm">Bank Transfer / QRIS</div>
-                            <div className="text-gray-400 text-xs">Pay once and top up as needed</div>
-                            </div>
+                                <div className="text-white font-medium text-sm">Bank Transfer / QRIS</div>
+                                <div className="text-gray-400 text-xs">Pay once and top up as needed</div>
+                            </button>
                         </div>
 
-                        {/* Selected Plan Info */}
                         <div className="bg-[#3a3a3a] rounded-lg p-4 mb-6 flex justify-between items-center mb-2">
                             <div className="flex flex-col justify-between">
                                 <div className="text-white font-medium">{selectedPlanData.name.toUpperCase()}</div>
@@ -347,14 +342,12 @@ export default function CRNService() {
                             <div className="text-white font-bold">{(parseFloat(selectedPlanData.price.replace('.', '').replace('K', '000')) * 3 * 0.95).toLocaleString('id-ID')} IDR</div>
                         </div>
 
-                        {/* Duration Info */}
                         <div className="bg-[#4a4a4a] rounded-lg p-3 mb-6">
                             <div className="text-gray-300 text-sm text-center">
                             The {selectedPlanData.name} plan will be active for 3 months, from today until November 14, 2025.
                             </div>
                         </div>
 
-                        {/* Pricing Breakdown */}
                         <div className="space-y-2 mb-4 text-sm">
                             <div className="flex justify-between text-white">
                             <span>Plan Price</span>
