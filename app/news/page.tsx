@@ -1,337 +1,295 @@
 "use client";
-import { Timeline } from "@/components/ui/timeline"; 
-import { Magnetic } from '@/components/motion-primitives/magnetic'; 
-import { InView } from '@/components/ui/in-view';
-import { Cursor } from '@/components/motion-primitives/cursor';
-import { AnimatePresence, motion } from 'motion/react';
-import Link from 'next/link';
-import { Button } from "@/components/ui/button"
-import ScrollReveal from '@/app/components/ScrollReveal/ScrollReveal';
+import { motion } from 'motion/react';
 import NavbarProps from "../components/Navbar/Navbar";
-import { useState, useRef, useLayoutEffect } from "react";
+import Footer from '../components/Footer/Footer';
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input";
+import Image from "next/image";
+
+
+type CategoryType = "Design" | "Technology" | "Business Security";
+
+interface NewsItem {
+  id: number;
+  category: CategoryType;
+  tittle: string;
+  description: string;
+  date: string;
+  image: string;
+}
 
 export default function NewsPage() {
-    const [isHovering, setIsHovering] = useState(false);
-    const targetRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const newsData: NewsItem[] = [
+    {
+      id: 1,
+      category: "Design",
+      tittle: "Creative Branding Strategies to Elevate Business Identity",
+      description:
+        "Decodes introduces a revolutionary approach that blends modern design principles with data-driven insights. This strategy allows businesses to create impactful brand stories, improve market reach.",
+      date: "22 January, 2025",
+      image: "/news/news_2.png",
+    },
+    {
+      id: 2,
+      category: "Technology",
+      tittle: "Building Scalable Websites for the Future of Digital Business",
+      description:
+        "To meet the growing demand for performance and security, Decodes has launched its next-generation web development services. These solutions are tailored to ensure faster load times, seamless integrations, and adaptive designs that provide an excellent user experience on any device.",
+      date: "25 January, 2025",
+      image: "/news/news_3.png",
+    },
+    {
+      id: 3,
+      category: "Business Security",
+      tittle: "Enhancing Cybersecurity Measures in the Modern Digital Landscape",
+      description:
+        "In response to the increasing cyber threats faced by businesses today, Decodes has developed advanced cybersecurity solutions. These measures include real-time threat detection, robust encryption protocols, and comprehensive risk assessments to safeguard sensitive data and ensure business continuity.",
+      date: "28 January, 2025",
+      image: "/news/news_4.png",
+    },
+  ];
 
-    const handlePositionChange = (x: number, y: number) => {
-      let hovering = false;
-      targetRefs.current.forEach(ref => {
-        if (ref) {
-          const rect = ref.getBoundingClientRect();
-          if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
-            hovering = true;
-          }
-        }
-      });
-      setIsHovering(hovering);
-    };
+  // const getCategoryColor = (category: CategoryType): string => {
+  //   const colors: Record<CategoryType, string> = {
+  //     Design: "text-blue-700",
+  //     Technology: "text-purple-300",
+  //     "Business Security": "text-purple-700",
+  //   };
+  //   return colors[category];
+  // };
 
-    const data = [
-      {
-        title: "Decodes Launches Next-Gen AI-Powered Project Management Tool",
-        slug: "ai-project-management-tool", // tambahkan slug
-        content: (
-          <div className="flex flex-col gap-4">
-            <InView
-              variants={{
-                hidden: { opacity: 0, y: 70, filter: 'blur(4px)' },
-                visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
-              }}
-              viewOptions={{ margin: '0px 0px -200px 0px' }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-            >
-              <Magnetic>
-                <Link href={`/news/ai-project-management-tool`}>
-                  <div ref={el => { targetRefs.current[0] = el; }}>
-                  <img
-                    src="news/news1.jpg"
-                    alt="startup template"
-                    className="h-50 sm:h-60 md:h-80 lg:h-60 xl:h-80 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60 cursor-pointer transition-transform hover:scale-[1.02]"
-                  />
-                  </div>
-                </Link>
-              </Magnetic>
-            </InView>
-            <ScrollReveal
-              baseOpacity={0.1}
-              enableBlur={true}
-              baseRotation={0}
-              blurStrength={0}
-              textClassName="text-sm font-normal text-neutral-500 md:text-sm"
-            >
-              August 10, 2025
-            </ScrollReveal>
-            <ScrollReveal
-              baseOpacity={0.1}
-              enableBlur={true}
-              baseRotation={0}
-              blurStrength={0}
-              textClassName="text-justify text-sm font-normal text-white md:text-base dark:text-neutral-200"
-            >
-              Decodes Software House has taken a bold step into the future of productivity with the launch of its AI-powered project management tool. Designed for teams of all sizes, this innovative platform combines task automation, predictive analytics, and smart collaboration features into one seamless experience. Early testers have described it as "the assistant you never knew you needed," thanks to its ability to anticipate bottlenecks and provide solutions before they become problems.
-              Decodes Software House has taken a bold step into the future of productivity with the launch of its AI-powered project management tool. Designed for teams of all sizes, this innovative platform combines task automation, predictive analytics, and smart collaboration features into one seamless experience. Early testers have described it as "the assistant you never knew you needed," thanks to its ability to anticipate bottlenecks and provide solutions before they become problems.
-            </ScrollReveal>
-            <Link href={`/news/ai-project-management-tool`}>
-              <Button className="text-white justify-start">
-                View More
-              </Button> 
-            </Link>
-          </div>
-        ),
-      },
-      // {
-      //   title: "Partnership with Global Fintech Leader to Enhance Security Systems",
-      //   slug: "fintech-security-partnership",
-      //   content: (
-      //     <div className="flex flex-col gap-4">
-      //       <InView
-      //         variants={{
-      //           hidden: { opacity: 0, y: 70, filter: 'blur(4px)' },
-      //           visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
-      //         }}
-      //         viewOptions={{ margin: '0px 0px -200px 0px' }}
-      //         transition={{ duration: 0.5, ease: 'easeInOut' }}
-      //       >
-      //         <Magnetic>
-      //           <Link href={`/news/fintech-security-partnership`}>
-      //             <div ref={el => { targetRefs.current[1] = el; }}>
-      //             <img
-      //               src="news/news2.jpg"
-      //               alt="startup template"
-      //               className="h-50 sm:h-60 md:h-80 lg:h-60 xl:h-80 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60 cursor-pointer transition-transform hover:scale-[1.02]"
-      //             />
-      //             </div>
-      //           </Link>
-      //         </Magnetic>
-      //       </InView>
-      //       <ScrollReveal
-      //         baseOpacity={0.1}
-      //         enableBlur={true}
-      //         baseRotation={0}
-      //         blurStrength={0}
-      //         textClassName="text-sm font-normal text-neutral-500 md:text-sm"
-      //       >
-      //         July 28, 2025
-      //       </ScrollReveal>
-      //       <ScrollReveal
-      //         baseOpacity={0.1}
-      //         enableBlur={true}
-      //         baseRotation={0}
-      //         blurStrength={0}
-      //         textClassName="text-justify text-sm font-normal text-neutral-500 md:text-base"
-      //       >
-      //         In a significant move for the fintech and software development industries, Decodes has announced a strategic alliance with one of the world's top fintech enterprises. The collaboration focuses on building next-generation security infrastructure for digital transactions, integrating AI-driven fraud detection, biometric verification, and blockchain-powered audit trails.
-      //         The partnership comes at a time when digital fraud is becoming increasingly sophisticated. By pooling their expertise, the two companies aim to stay ahead of cybercriminals with proactive security measures that can detect and neutralize threats in real time. This will not only protect end-users but also restore trust in digital financial platforms worldwide.
-      //       </ScrollReveal>
-              
-      //       <Link href={`/news/fintech-security-partnership`}>
-      //         <Button className="text-white justify-start">
-      //           View More
-      //         </Button>
-      //       </Link>
-      //     </div>
-      //   ),
-      // },
-      // {
-      //   title: "Decodes Expands Operations with New Development Hub in Singapore",
-      //   slug: "singapore-development-hub",
-      //   content: (
-      //     <div className="flex flex-col gap-4">
-      //       <InView
-      //         variants={{
-      //           hidden: { opacity: 0, y: 70, filter: 'blur(4px)' },
-      //           visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
-      //         }}
-      //         viewOptions={{ margin: '0px 0px -200px 0px' }}
-      //         transition={{ duration: 0.5, ease: 'easeInOut' }}
-      //       >
-      //         <Magnetic>
-      //           <Link href={`/news/singapore-development-hub`}>
-      //             <div ref={el => { targetRefs.current[2] = el; }}>
-      //               <img
-      //                 src="news/news3.jpg"
-      //                 alt="startup template"
-      //                 className="h-50 sm:h-60 md:h-80 lg:h-60 xl:h-80 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60 cursor-pointer transition-transform hover:scale-[1.02]"
-      //               />
-      //             </div>
-      //           </Link>
-      //         </Magnetic>
-      //       </InView>
-      //       <ScrollReveal
-      //         baseOpacity={0.1}
-      //         enableBlur={true}
-      //         baseRotation={0}
-      //         blurStrength={0}
-      //         textClassName="text-sm font-normal text-neutral-500 md:text-sm"
-      //       >
-      //         July 12, 2025
-      //       </ScrollReveal>
-      //       <ScrollReveal
-      //         baseOpacity={0.1}
-      //         enableBlur={true}
-      //         baseRotation={0}
-      //         blurStrength={0}
-      //         textClassName="text-justify text-sm font-normal text-neutral-500 md:text-base"
-      //       >
-      //         To meet the growing demand for high-quality software solutions in Southeast Asia, Decodes has opened a brand-new development hub in Singapore. This expansion enables the company to provide faster response times, localized support, and closer collaboration with regional clients.
-      //         The Singapore hub will focus on emerging technologies, including AI, IoT, and cloud-native solutions, while also serving as a center for innovation and talent development. With this move, Decodes strengthens its presence in the region and reaffirms its commitment to delivering world-class digital solutions.
-      //       </ScrollReveal>
-      //       <Link href={`/news/singapore-development-hub`}>
-      //         <Button className="text-white justify-start">
-      //           View More
-      //         </Button>
-      //       </Link>
-      //     </div>
-      //   ),
-      // },
-    ];
+  const [email, setEmail] = useState('');
 
-  const navbarRef = useRef<HTMLDivElement>(null);
-  const [navbarHeight, setNavbarHeight] = useState(0);
+  const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.log('Email submitted:', email);
+    // Handle form submission here
+  };
 
-  useLayoutEffect(() => {
-    if (navbarRef.current) {
-      setNavbarHeight(navbarRef.current.offsetHeight);
-    }
-    const handleResize = () => {
-      if (navbarRef.current) setNavbarHeight(navbarRef.current.offsetHeight);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+
+  
+
   return (
-    <>
-      <Cursor
-        attachToParent
-        variants={{
-          initial: { scale: 0.3, opacity: 0 },
-          animate: { scale: 1, opacity: 1 },
-          exit: { scale: 0.3, opacity: 0 },
-        }}
-        springConfig={{
-          bounce: 0.001,
-        }}
-        transition={{
-          ease: 'easeInOut',
-          duration: 0.15,
-        }}
-        onPositionChange={handlePositionChange}
-      >
-        <motion.div
-          animate={{
-            width: isHovering ? 100 : 16,
-            height: isHovering ? 32 : 16,
+    <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
+      <NavbarProps />
+      <div className="relative w-full flex items-center justify-center h-screen">
+        <div
+          className="absolute inset-0 bg-cover bg-center brightness-65"
+          style={{ backgroundImage: "url('news/hero_news.png')" }}
+        ></div>
+        <motion.h1
+          initial={{ opacity: 0.5, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
           }}
-          className='flex items-center justify-center rounded-[24px] bg-gray-500/40 backdrop-blur-md dark:bg-gray-300/40'
+          className="mt-8 py-4 text-white bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent md:text-6xl z-10"
         >
-          <AnimatePresence>
-            {isHovering ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.6 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.6 }}
-                className='inline-flex w-full items-center justify-center'
-              >
-                <div className='inline-flex items-center text-sm text-white dark:text-black'>
-                  View More
+          News <br /> Know Us More Closely
+        </motion.h1>
+      </div>
+
+      {/* CONTENT */}
+      <div className="w-full bg-black min-h-screen">
+
+        {/* search */}
+        <div className="pt-6 sm:pt-6">
+          <div className="max-w-7xl mx-auto px-8 sm:px-6 lg:px-0">
+            <div className="flex justify-end mb-8">
+              <div className="relative w-64">
+                <Input
+                  type="text"
+                  placeholder="Search"
+                  className="w-full bg-gray-800 text-white px-3 py-4 rounded-full border-gray-800 pl-10 pr-10 focus:bg-gray-700 text-sm"
+                />
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
+                  <img
+                    src="/icons/icon_search.png"
+                    alt="icon search"
+                    width="18"
+                    height="18"
+                    className="opacity-70"
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* semua news */}
+        <div className="w-full px-6 min-h-screen">
+          {/* news trend */}
+          <div className="h-auto min-h-96 flex items-center py-6 px-1">
+            <div className="container mx-auto">
+              <div className="grid grid-cols-1 gap-8 items-center lg:grid-cols-[1fr_2fr]">
+                {/* img news 1 */}
+                <div className="oder-2 lg:order-1">
+                  <div className="relative rounded-2xl oferflow-hidden shadow-2xl">
+                    <img
+                      src="/news/news_1.png"
+                      alt="News Image"
+                      width={400}
+                      height={200}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
                 </div>
-              </motion.div>
-            ) : null}
-          </AnimatePresence>
-        </motion.div>
-      </Cursor>
-      <div className='relative w-screen bg-[#100425] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
-          <div ref={navbarRef}>
-            <NavbarProps />
-          </div>
-          <div className="w-full flex items-center justify-center"
-              style={{
-              paddingTop: navbarHeight,
-              minHeight: `calc(100vh - ${navbarHeight}px)`,
-              backgroundImage: "url('hero-bg.png')",
-              // background: "linear-gradient(180deg, #100425 10%, #7A6AFF 60%, #BA8EF4 100%)",
-              // borderRadius: "0 0 1rem 1rem",
-              boxShadow: "0 0 0 1px #222a35, 0 8px 32px 0 rgba(34,42,53,0.12)",
-              position: "relative",
-              overflow: "hidden",
-              }}
-              
-              >
-                <motion.h1
-                  initial={{ opacity: 0.5, y: 100 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{
-                      delay: 0.3,
-                      duration: 0.8,
-                      ease: "easeInOut",
-                  }}
-                  className="mt-8 bg-gradient-to-br from-[#F7DDEE] to-[#C1ABF7] py-4 bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent md:text-6xl"
-                >
-                  News & Stories <br /> from Decodes Software House
-                </motion.h1>
-          </div>
-          <Timeline data={data} />
-          {/* <div className="w-full max-w-full relative mx-auto overflow-hidden h-full">
-            <div className="absolute -right-100 top-140 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-[#0421DE] to-[#C1ABF7] opacity-20 blur-3xl rounded-full"></div>
-            <div className="absolute -left-100 top-400 -translate-y-1/2 w-[1000px] h-[800px] bg-gradient-to-r from-[#0421DE] to-[#C1ABF7] opacity-15 blur-3xl rounded-full"></div>
-            <div className="absolute -right-100 top-680 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-to-r from-[#C1ABF7] to-[#0421DE] opacity-15 blur-3xl rounded-full"></div>
-            <Timeline data={data} />
-          </div> */}
-          <div 
-            className="w-full md:h-[50vh] bg-cover bg-center relative"
-            style={{ backgroundImage: "url('footer.png')" }}
-          >
-            <div className="absolute top-0 inset-0 flex flex-col p-4 xl:p-10 h-full justify-between">
-              <div className="text-white px-8 md:px-16 lg:px-32 pt-4">
-                <p className="text-sm lg:text-sm xl:text-base font-light">DIGITAL DESIGN EXPERIENCE</p>
-                <h1 className="text-7xl lg:text-7xl xl:text-8xl font-medium">GET IN TOUCH</h1>
-              </div>
-              <div className="pl-[30%] flex flex-col justify-center">
-                <p className="text-4xl lg:text-3xl xl:text-4xl text-white italic">business@bydecodes.com </p>
-              </div>
-              <div className="flex flex-col lg:flex-row items-start justify-between px-8">
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-4">
-                    <div className="w-4 h-4 flex items-center justify-center">
-                      <img
-                        src="icons/location.png"
-                        alt="location"
-                        className="h-4"
-                      />
-                    </div>
-                    <p className="text-white text-sm max-w-xs md:max-w-md md:text-lg lg:text-sm lg:max-w-xs xl:max-w-sm xl:text-base">
-                      Semarang Office - Wologito Utara No.3, Semarang
-                      Barat, Semarang City, Central Java, Indonesia
-                      50148
+
+                {/* kategori */}
+                <div className="order-1 lg:order-2 py-0 px-2">
+                  <div className="inline-block">
+                    <span className="text-white text-sm uppercase-wider font-medium">
+                      Web Development
+                    </span>
+                  </div>
+
+                  <div>
+                    <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-tight">
+                      Building Scalable Website for
+                      <span className="block text-white">
+                        the Future of Digital Business
+                      </span>
+                    </h1>
+                  </div>
+
+                  {/* deskripsi */}
+                  <div>
+                    <p className="text-white text-sm leading-relaxed max-w-7xl">
+                      To meet the growing demand for performance and security,
+                      Decades has launched its next-generation web development
+                      services. These solutions are tailored to ensure faster
+                      load times, seamless integrations, and adaptive designs
+                      that provide an excellent user experience on any device.
                     </p>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-4 h-4 flex items-center justify-center">
-                      <img
-                        src="icons/telephone.png"
-                        alt="telephone"
-                        className="h-4"
-                      />
-                    </div>
-                    <p className="text-white text-sm md:text-lg lg:text-sm xl:text-base">+62-812-2692-2617</p>
-                  </div>
-                </div>
-                <div className="flex flex-col justify-between lg:items-end items-center">
-                  <div className="flex gap-2 md:gap-8 lg:gap-2 items-center">
-                    <div className="flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid">
-                      <p className="text-white text-xs md:text-lg lg:text-sm xl:text-base">INSTAGRAM</p>
-                    </div>
-                    <div className="flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid">
-                      <p className="text-white text-xs md:text-lg lg:text-sm xl:text-base">LINKEDIN</p>
+
+                  <div className="flex items-center space-x-3 pt-2">
+                    <div className="flex-shrink-0">
+                      <div className="text-white text-xs">
+                        28 Januari 2025
+                      </div>
                     </div>
                   </div>
-                  <p className="text-white md:text-lg lg:text-sm xl:text-base">©2025 PT Byde Cloudata Ekosistem. All Rights Reserved</p>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* article 3 */}
+          <div className="h-auto flex items-center px-2 md:px-10">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {newsData.map((news) => (
+                  <div
+                    key={news.id}
+                    className="bg-[#1F1F1F] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/20 group"
+                  >
+                    <div className="relative overflow-hidden">
+                      <div className="w-full h-48 bg-gray-800 relative">
+                        <img
+                          src={news.image}
+                          alt={news.tittle}
+                          className="w-full h-full object-cover group group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </div>
+
+                    {/* content */}
+                    <div className="p-3">
+                      <div className="mb-1">
+                        <span className="text-xs font-semibold text-white">
+                          {news.category}
+                        </span>
+                      </div>
+
+                      {/* Tittle */}
+                      <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 group-hover:text-purple-400 transition-colors duration-200">
+                        {news.tittle}
+                      </h3>
+
+                      {/* Deskripsi */}
+                      <p className="text-white text-sm leading-relaxed mb-3 line-clamp-2">
+                        {news.description}
+                      </p>
+
+                      {/* footer */}
+                      <div className="pt-2">
+                        {/* Date */}
+                        <div className="flex items-center space-x-2">
+                          <span className="text-white text-sm">
+                            {news.date}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* join */}
+        <div className="w-full my-10 px-8 md:px-10 py-10 bg-black">
+          <div className="max-w-7xl mx-auto">
+            <div className="relative bg-gradient-to-br from-[#1F1F1F] via-[#1F1F1F] to-purple-700/50 rounded-3xl shadow-2xl px-8 py-8 overflow-hidden">
+              
+              <div className="relative z-10 justify-start">
+                
+                <div className="mb-4 flex flex-col items-start">
+                  <img 
+                    src="/logo_decodes/logo_decodes.png"
+                    alt="logo decodes"
+                    width={80}
+                    height={96}
+                    className="mb-3"/>
+                  
+                  <div className="w-70 md:w-100 h-px bg-gradient-to-r from-[#2032E0] to-[#7666EB]"></div>
+                </div>
+
+                
+                <h1 className="text-white text-base md:text-lg lg:text-xl font-bold mb-8 leading-tight">
+                  JOIN OUR DIGITAL INSIGHT!
+                </h1>
+
+                <div className="flex flex-col md:flex-row justify-start items-start text-white gap-4 md:gap-6 mb-6 text-sm">
+                  <div>
+                    <p>
+                      Tren updates, Technology and Exclusive Tips Straight to Your Inbox
+                    </p>
+                  </div>
+                  
+                </div>
+
+                <div className="flex flex-col sm:flex-row justify-start items-start gap-3">
+                  <div className="relative">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email"
+                      className="w-full sm:w-96 md:w-96 lg:w-120 bg-transparent backdrop-blur-sm text-white placeholder-white/70 px-2 py-2 pr-32 rounded-full border border-blue-900 max-w-7xl transition-all duration-200
+                      focus:ring-0 focus:outline-none"
+                    />
+                    <button
+                      onClick={handleSubmit}
+                      className="absolute right-1 top-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-600 to-purple-500 text-white px-6 py-1 rounded-full font-semibold hover:from-blue-700 hover:to-purple-600 transition-all duration-300 text-sm"
+                    >
+                      JOIN NOW
+                    </button>
+                  </div> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* FOOTER */}
+        <Footer />
       </div>
-    </>
+    </div>
   );
 }
