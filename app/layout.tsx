@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden w-screen antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden w-screen antialiased custom-scrollbar`}
       >
         {children}
       </body>

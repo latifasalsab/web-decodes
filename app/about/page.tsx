@@ -5,7 +5,7 @@ import Footer from '../components/Footer/Footer';
 import Logos from '../components/Logos/Logos';
 export default function AboutPage() {
   return (
-    <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center w-full mx-auto'>
+    <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center w-full mx-auto custom-scrollbar'>
       <NavbarProps />
       <div className="relative w-full flex items-center justify-center h-screen">
         <div 
@@ -22,9 +22,16 @@ export default function AboutPage() {
               duration: 0.8,
               ease: "easeInOut",
           }}
-          className="mt-8 py-4 text-white bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent md:text-6xl z-10"
+          className="mt-8 py-4 text-white bg-clip-text text-center tracking-tight text-transparent z-10"
         >
-          About Us <br /> Know Us More Closely
+          <div>
+            <h1 className='text-2xl font-medium md:text-5xl mb-2'>
+                ABOUT US
+            </h1>
+            <h6 className='text-2xl font-normal md:text-5xl'>
+                Know Us More Closely
+            </h6>
+          </div>
         </motion.h1>
       </div>
 

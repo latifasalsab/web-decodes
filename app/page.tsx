@@ -240,37 +240,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <div className="relative overflow-hidden h-full lg:h-screen w-full flex flex-col items-center justify-center">
-        <div className="absolute translate-y-4/5 w-[120%] h-[900px] bg-gradient-to-r from-[#0421DE] to-[#C1ABF7] opacity-40 blur-[80px] rounded-full"></div>
-        <div className="w-full flex items-center justify-center flex-col">
-          <div className="w-full flex items-center justify-center mb-8">
-            <motion.h1
-              initial={{ opacity: 0.5, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                  delay: 0.3,
-                  duration: 0.3,
-                  ease: "easeInOut",
-              }}
-              className="bg-gradient-to-br from-[#F7DDEE] to-[#fff] py-4 bg-clip-text text-center text-xl font-medium tracking-tight text-transparent md:text-4xl"
-            >
-              Price & Packages
-            </motion.h1>
-          </div>
-          <MagicBento 
-            textAutoHide={true}
-            enableStars={true}
-            enableSpotlight={true}
-            enableBorderGlow={true}
-            enableMagnetism={true}
-            clickEffect={true}
-            spotlightRadius={300}
-            particleCount={12}
-            glowColor="132, 0, 255"
-          />  
-        </div>
-      </div> */}
-
       <BookADemo />
 
       <Logos />
@@ -353,7 +322,7 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
 
             <div className="absolute bottom-4 md:bottom-6 left-0 right-0 flex justify-center">
               <Button 
-                className="w-70 bg-gradient-to-r from-[#0421DE] to-[#BA8EF4] text-white rounded-3xl shadow-md hover:opacity-90 transition-all px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                className="w-70 bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white rounded-3xl shadow-md hover:opacity-90 transition-all px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.stopPropagation();
                   console.log(`Navigating to: ${item.button.link}`);

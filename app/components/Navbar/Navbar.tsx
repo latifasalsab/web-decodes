@@ -132,7 +132,7 @@ export default function NavbarProps() {
               <NavbarButton
                 href="/login"
                 variant="secondary"
-                className="w-full bg-gradient-to-r from-[#0421DE] to-[#BA8EF4] text-white"
+                className="w-full bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white"
               >
                 Login
               </NavbarButton>

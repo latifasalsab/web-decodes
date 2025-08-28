@@ -29,7 +29,7 @@ export default function BookADemo() {
                         <div>
                         <img
                             src="/icons/checklist.png"
-                            alt="icon checklist"
+                            alt="icon-checklist"
                             className="w-4 h-4"
                             />
                         </div>
@@ -39,7 +39,7 @@ export default function BookADemo() {
                         <div>
                         <img
                             src="/icons/checklist.png"
-                            alt="icon checklist"
+                            alt="icon-checklist"
                             className="w-4 h-4"
                             />
                         </div>
@@ -49,7 +49,7 @@ export default function BookADemo() {
                         <div>
                         <img
                             src="/icons/checklist.png"
-                            alt="icon checklist"
+                            alt="icon-checklist"
                             className="w-4 h-4"
                             />
                         </div>
@@ -60,7 +60,7 @@ export default function BookADemo() {
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
                     <Button 
                         variant="default" 
-                        className="bg-gradient-to-r from-[#0421DE] to-[#BA8EF4] text-white px-6 py-2.5 rounded-3xl font-semibold hover:opacity-90 transition-all shadow-lg text-sm"
+                        className="bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white px-6 py-2.5 rounded-3xl font-semibold hover:opacity-90 transition-all shadow-lg text-sm"
                     >
                         BOOK A DEMO
                     </Button>

@@ -91,6 +91,23 @@
   margin-right: 0;
 }
 
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #8b5cf6;
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a78bfa;
+}
+
 :root {
   --radius: 0.625rem;
   --background: #100425;
@@ -167,4 +184,11 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.gradient-border-price {
+  background: 
+    linear-gradient(#111827, #111827) padding-box,
+    linear-gradient(to right, #0421DE, #5D56E9) border-box;
+  border: 2px solid transparent;
 }

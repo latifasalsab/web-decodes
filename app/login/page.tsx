@@ -254,25 +254,6 @@ export default function Login(): JSX.Element {
 
     return (
         <>
-            <style jsx>{`
-                .custom-scrollbar::-webkit-scrollbar {
-                    width: 6px;
-                }
-                
-                .custom-scrollbar::-webkit-scrollbar-track {
-                    background: transparent;
-                }
-                
-                .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background: #8b5cf6;
-                    border-radius: 3px;
-                }
-                
-                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                    background: #a78bfa;
-                }
-            `}</style>
-            
             <div className="h-screen w-full bg-[#000] relative flex items-center justify-center overflow-x-hidden">
                 <div 
                 className="absolute inset-0 bg-cover bg-center"

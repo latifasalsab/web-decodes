@@ -36,7 +36,7 @@ const MOBILE_BREAKPOINT = 768;
 
 const cardData: BentoCardProps[] = [
   {
-    color: "#0A011B",
+    color: "#1f1f1f",
     title: "Free",
     description: "Basic tools for small teams or individuals.",
     label: "$0",
@@ -49,7 +49,7 @@ const cardData: BentoCardProps[] = [
     button: { text: "Sign Up Now", variant: "secondary" },
   },
   {
-    color: "#0A011B",
+    color: "#1f1f1f",
     title: "Pro",
     description: "Advanced boost for growing teams.",
     label: "$19",
@@ -64,7 +64,7 @@ const cardData: BentoCardProps[] = [
     button: { text: "Start Free Trial", variant: "primary" },
   },
   {
-    color: "#0A011B",
+    color: "#1f1f1f",
     title: "Team",
     description: "Complete collaboration for larger teams.",
     label: "$49",
@@ -774,7 +774,7 @@ const MagicBento: React.FC<BentoProps> = ({
                   <button
                     className={`w-full py-2 rounded-lg text-sm font-medium mt-auto ${
                       card.button?.variant === "primary"
-                        ? "bg-gradient-to-r from-[#0421DE] to-[#BA8EF4] text-white hover:bg-green-600"
+                        ? "bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white hover:bg-green-600"
                         : "text-white border border-solid border-[#392e4e]"
                     }`}
                   >

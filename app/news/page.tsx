@@ -250,7 +250,7 @@ export default function NewsPage() {
               paddingTop: navbarHeight,
               minHeight: `calc(100vh - ${navbarHeight}px)`,
               backgroundImage: "url('hero-bg.png')",
-              // background: "linear-gradient(180deg, #100425 10%, #7A6AFF 60%, #BA8EF4 100%)",
+              // background: "linear-gradient(180deg, #100425 10%, #7A6AFF 60%, #5D56E9 100%)",
               // borderRadius: "0 0 1rem 1rem",
               boxShadow: "0 0 0 1px #222a35, 0 8px 32px 0 rgba(34,42,53,0.12)",
               position: "relative",
