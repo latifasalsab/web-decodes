@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <div 
     className="w-full md:h-[30vh] bg-cover bg-center"
-    style={{ backgroundImage: "url('footer.png')" }}
+    style={{ backgroundImage: "url('/footer.png')" }}
     >
     <div className="relative z-10 container mx-auto max-w-[90%] py-8 h-full flex flex-col justify-between">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 lg:gap-8">

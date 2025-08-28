@@ -48,12 +48,12 @@ export default function ContactPage() {
   };
 
   return (
-    <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
+    <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto custom-scrollbar'>
       <NavbarProps />
       <div className="relative w-full flex items-center justify-center h-screen">
         <div
           className="absolute inset-0 bg-cover bg-center brightness-65"
-          style={{ backgroundImage: "url('contact/img_herocontact.png')" }}
+          style={{ backgroundImage: "url('/contact/img_herocontact.png')" }}
         ></div>
         <motion.h1
           initial={{ opacity: 0.5, y: 100 }}
@@ -63,9 +63,16 @@ export default function ContactPage() {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="mt-8 py-4 text-white bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent md:text-6xl z-10"
+          className="mt-8 py-4 text-white bg-clip-text text-center tracking-tight text-transparent z-10"
         >
-          Contact Us <br /> Get In Touch With Us Today
+          <div>
+            <h1 className='text-2xl font-medium md:text-5xl mb-2'>
+                CONTACT US
+            </h1>
+            <h6 className='text-2xl font-normal md:text-5xl'>
+                Get In Touch With Us Today
+            </h6>
+        </div>
         </motion.h1>
       </div>
 
@@ -158,7 +165,7 @@ export default function ContactPage() {
         <div className="w-full h-full bg-black flex items-center justify-center py-12">
           <Card className="w-full max-w-7xl bg-black border-2 rounded-4xl border-white">
             <CardContent className="p-0">
-              {/* Container utama dengan 3 bagian: header + form (2 col) + image */}
+
               <div className="flex flex-col lg:flex-row">
                 <div className="flex-1">
                   <div className="p-6 pb-6">
@@ -171,7 +178,6 @@ export default function ContactPage() {
                     </CardDescription>
                   </div>
 
-                  {/* Form content - 2 kolom */}
                   <div className="p-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-4">

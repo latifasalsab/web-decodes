@@ -50,33 +50,25 @@ export default function NewsPage() {
     },
   ];
 
-  // const getCategoryColor = (category: CategoryType): string => {
-  //   const colors: Record<CategoryType, string> = {
-  //     Design: "text-blue-700",
-  //     Technology: "text-purple-300",
-  //     "Business Security": "text-purple-700",
-  //   };
-  //   return colors[category];
-  // };
 
   const [email, setEmail] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log('Email submitted:', email);
-    // Handle form submission here
+
   };
 
 
   
 
   return (
-    <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
+    <div className='relative bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
       <NavbarProps />
       <div className="relative w-full flex items-center justify-center h-screen">
         <div
           className="absolute inset-0 bg-cover bg-center brightness-65"
-          style={{ backgroundImage: "url('news/hero_news.png')" }}
+          style={{ backgroundImage: "url('/news/hero_news.png')" }}
         ></div>
         <motion.h1
           initial={{ opacity: 0.5, y: 100 }}
@@ -86,16 +78,22 @@ export default function NewsPage() {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="mt-8 py-4 text-white bg-clip-text text-center text-2xl font-medium tracking-tight text-transparent md:text-6xl z-10"
+          className="mt-8 py-4 text-white bg-clip-text text-center text-2xl font-medium tracking-tight md:text-6xl z-10"
         >
-          News <br /> Know Us More Closely
+          <div>
+            <h1 className='text-2xl font-medium md:text-5xl mb-2'>
+                News
+            </h1>
+            <h6 className='text-2xl font-normal md:text-5xl'>
+                Know Us More Closely
+            </h6>
+        </div>
         </motion.h1>
       </div>
 
       {/* CONTENT */}
       <div className="w-full bg-black min-h-screen">
 
-        {/* search */}
         <div className="pt-6 sm:pt-6">
           <div className="max-w-7xl mx-auto px-8 sm:px-6 lg:px-0">
             <div className="flex justify-end mb-8">
@@ -121,13 +119,18 @@ export default function NewsPage() {
 
         {/* semua news */}
         <div className="w-full px-6 min-h-screen">
-          {/* news trend */}
+
           <div className="h-auto min-h-96 flex items-center py-6 px-1">
             <div className="container mx-auto">
               <div className="grid grid-cols-1 gap-8 items-center lg:grid-cols-[1fr_2fr]">
-                {/* img news 1 */}
+
                 <div className="oder-2 lg:order-1">
                   <div className="relative rounded-2xl oferflow-hidden shadow-2xl">
+                    <div className="absolute -top-3 left-3/4 transform -translate-x-1/2">
+                      <span className="bg-gradient-to-r from-[#FA8E49] to-[#FF6300] text-white px-3 py-1 rounded-full text-sm font-medium">
+                          Popular
+                      </span>
+                    </div>
                     <img
                       src="/news/news_1.png"
                       alt="News Image"
@@ -138,7 +141,6 @@ export default function NewsPage() {
                   </div>
                 </div>
 
-                {/* kategori */}
                 <div className="order-1 lg:order-2 py-0 px-2">
                   <div className="inline-block">
                     <span className="text-white text-sm uppercase-wider font-medium">
@@ -155,7 +157,6 @@ export default function NewsPage() {
                     </h1>
                   </div>
 
-                  {/* deskripsi */}
                   <div>
                     <p className="text-white text-sm leading-relaxed max-w-7xl">
                       To meet the growing demand for performance and security,
@@ -178,7 +179,6 @@ export default function NewsPage() {
             </div>
           </div>
 
-          {/* article 3 */}
           <div className="h-auto flex items-center px-2 md:px-10">
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -197,7 +197,6 @@ export default function NewsPage() {
                       </div>
                     </div>
 
-                    {/* content */}
                     <div className="p-3">
                       <div className="mb-1">
                         <span className="text-xs font-semibold text-white">
@@ -205,19 +204,15 @@ export default function NewsPage() {
                         </span>
                       </div>
 
-                      {/* Tittle */}
                       <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 group-hover:text-purple-400 transition-colors duration-200">
                         {news.tittle}
                       </h3>
 
-                      {/* Deskripsi */}
                       <p className="text-white text-sm leading-relaxed mb-3 line-clamp-2">
                         {news.description}
                       </p>
 
-                      {/* footer */}
                       <div className="pt-2">
-                        {/* Date */}
                         <div className="flex items-center space-x-2">
                           <span className="text-white text-sm">
                             {news.date}
@@ -274,12 +269,12 @@ export default function NewsPage() {
                       className="w-full sm:w-96 md:w-96 lg:w-120 bg-transparent backdrop-blur-sm text-white placeholder-white/70 px-2 py-2 pr-32 rounded-full border border-blue-900 max-w-7xl transition-all duration-200
                       focus:ring-0 focus:outline-none"
                     />
-                    <button
+                    <Button
                       onClick={handleSubmit}
-                      className="absolute right-1 top-1/2 -translate-y-1/2 bg-gradient-to-r from-blue-600 to-purple-500 text-white px-6 py-1 rounded-full font-semibold hover:from-blue-700 hover:to-purple-600 transition-all duration-300 text-sm"
+                      className="absolute right-1 top-1/2 -translate-y-1/2 bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white px-6 py-1 rounded-full font-semibold text-sm"
                     >
                       JOIN NOW
-                    </button>
+                    </Button>
                   </div> 
                 </div>
               </div>
@@ -287,7 +282,6 @@ export default function NewsPage() {
           </div>
         </div>
 
-        {/* FOOTER */}
         <Footer />
       </div>
     </div>
