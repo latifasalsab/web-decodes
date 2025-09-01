@@ -161,7 +161,7 @@ export default function CRNService() {
             </div>
             
             <div className="w-full min-h-screen flex flex-col lg:flex-row">
-                <div className="w-full lg:w-1/2 h-64 md:h-96 lg:h-screen">
+                <div className="w-full lg:w-1/2 p-6 md:p-10 xl:p-0">
                     <Image
                         src="/services/service-crm.png"
                         alt="service-chatbot"
@@ -233,11 +233,11 @@ export default function CRNService() {
                     }}
                     className="flex flex-col items-center"
                 >
-                    <div className="mb-10 flex flex-col items-center">
+                    <div className="mb-10 flex flex-col items-center text-center">
                         <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
                         Price & Packages
                         </h2>
-                        <p className="text-base md:text-lg text-white mb-4">Maximum Performance at The Best Price</p>
+                        <p className="text-base font-light md:text-lg text-white mb-4">Maximum Performance at The Best Price</p>
                     </div>
                 </motion.h1>
 

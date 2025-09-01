@@ -161,7 +161,7 @@ export default function ChatbotService() {
             </div>
             
             <div className="w-full min-h-screen flex flex-col lg:flex-row">
-                <div className="w-full lg:w-1/2 h-64 md:h-96 lg:h-screen">
+                <div className="w-full lg:w-1/2 p-6 md:p-10 xl:p-0">
                     <Image
                         src="/services/service-chatbot.png"
                         alt="service-chatbot"
@@ -234,11 +234,11 @@ export default function ChatbotService() {
                     }}
                     className="flex flex-col items-center"
                 >
-                    <div className="mb-10 flex flex-col items-center">
+                    <div className="mb-10 flex flex-col items-center text-center">
                         <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
                         Price & Packages
                         </h2>
-                        <p className="text-base md:text-lg text-white mb-4">Maximum Performance at The Best Price</p>
+                        <p className="text-base font-light md:text-lg text-white mb-4">Maximum Performance at The Best Price</p>
                     </div>
                 </motion.h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 w-full max-w-7xl mx-auto">
@@ -296,7 +296,7 @@ export default function ChatbotService() {
                     <div className="bg-[#2a2a2a] rounded-3xl max-w-3xl w-full mx-auto relative">
                         <button
                             onClick={closeModal}
-                            className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors p-2 z-10"
+                            className="absolute cursor-pointer top-4 right-4 text-gray-400 hover:text-white transition-colors p-2 z-10"
                         >
                             <X className="w-6 h-6" />
                         </button>
@@ -370,9 +370,12 @@ export default function ChatbotService() {
                         </div>
 
                         <div className="p-6 pt-0">
-                        <button className="w-full bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] hover:from-[#4338ca] hover:to-[#6d28d9] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300">
+                        <Button 
+                            className="w-full transition-all duration-300 cursor-pointer"
+                            onClick={closeModal}
+                        >
                             CONFIRM AND PAY
-                        </button>
+                        </Button>
                         </div>
                     </div>
                     </div>
