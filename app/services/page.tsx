@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useLayoutEffect } from "react";
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import NavbarProps from "../components/Navbar/Navbar";
 import Link from 'next/link';
 

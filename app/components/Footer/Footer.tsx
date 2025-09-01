@@ -20,7 +20,7 @@ export default function Footer() {
             <div className="flex items-start gap-3">
                 <div className="w-4 h-4 flex items-center justify-center mt-0.5">
                 <img
-                    src="icons/location.png"
+                    src="/icons/location.png"
                     alt="location"
                     className="h-4"
                 />
@@ -35,7 +35,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
                 <div className="w-4 h-4 flex items-center justify-center">
                 <img
-                    src="icons/telephone.png"
+                    src="/icons/telephone.png"
                     alt="telephone"
                     className="h-4"
                 />

@@ -2,11 +2,10 @@
 import { motion } from 'motion/react';
 import NavbarProps from "../components/Navbar/Navbar";
 import Footer from '../components/Footer/Footer';
-import React, { useState } from "react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button"
+import React from "react";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
+import JoinUs from '../components/JoinUs/JoinUs';
+import Link from "next/link";
 
 
 type CategoryType = "Design" | "Technology" | "Business Strategy";
@@ -45,7 +44,7 @@ export default function NewsPage() {
     },
     {
       id: 2,
-      slug: "AI-Powered Chatbots",
+      slug: "AI-Powered-Chatbots",
       category: "Technology",
       tittle: "AI-Powered Chatbots Transforming Customer Engagement",
       description:
@@ -55,7 +54,7 @@ export default function NewsPage() {
     },
     {
       id: 3,
-      slug: "Decodes Collaborates",
+      slug: "Decodes-Collaborates",
       category: "Business Strategy",
       tittle: "Decodes Collaborates with Local Startups to Drive Digital Transformation",
       description:
@@ -64,18 +63,6 @@ export default function NewsPage() {
       image: "/news/news_4.png",
     },
   ];
-
-
-  const [email, setEmail] = useState('');
-
-  const handleSubmit = (e: React.FormEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    console.log('Email submitted:', email);
-
-  };
-
-
-  
 
   return (
     <div className='relative bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
@@ -166,9 +153,9 @@ export default function NewsPage() {
 
                   <div>
                     <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-tight">
-                      Building Scalable Website for
+                      Decodes Officially Reaches 100+
                       <span className="block text-white">
-                        the Future of Digital Business
+                        Clients by 2025
                       </span>
                     </h1>
                   </div>
@@ -201,9 +188,7 @@ export default function NewsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {newsData.map((news) => (
                   <Link href={`/news/${news.slug}`} key={news.id} className="block">
-                    <div
-                      className="bg-[#1F1F1F] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/20 group cursor-pointer"
-                    >
+                    <div className="bg-[#1F1F1F] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/20 group cursor-pointer">
                       <div className="relative overflow-hidden">
                         <div className="w-full h-48 bg-gray-800 relative">
                           <img
@@ -241,64 +226,20 @@ export default function NewsPage() {
                   </Link>
                 ))}
               </div>
-            </div>
+            </div>      
           </div>
         </div>
-
-        {/* join */}
-        <div className="w-full my-10 px-8 md:px-10 py-10 bg-black">
-          <div className="max-w-7xl mx-auto">
-            <div className="relative bg-gradient-to-br from-[#1F1F1F] via-[#1F1F1F] to-purple-700/50 rounded-3xl shadow-2xl px-8 py-8 overflow-hidden">
-              
-              <div className="relative z-10 justify-start">
-                
-                <div className="mb-4 flex flex-col items-start">
-                  <img 
-                    src="/logo_decodes/logo_decodes.png"
-                    alt="logo decodes"
-                    width={80}
-                    height={96}
-                    className="mb-3"/>
-                  
-                  <div className="w-70 md:w-100 h-px bg-gradient-to-r from-[#2032E0] to-[#7666EB]"></div>
-                </div>
-
-                
-                <h1 className="text-white text-base md:text-lg lg:text-xl font-bold mb-8 leading-tight">
-                  JOIN OUR DIGITAL INSIGHT!
-                </h1>
-
-                <div className="flex flex-col md:flex-row justify-start items-start text-white gap-4 md:gap-6 mb-6 text-sm">
-                  <div>
-                    <p>
-                      Tren updates, Technology and Exclusive Tips Straight to Your Inbox
-                    </p>
-                  </div>
-                  
-                </div>
-
-                <div className="flex flex-col sm:flex-row justify-start items-start gap-3">
-                  <div className="relative">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email"
-                      className="w-full sm:w-96 md:w-96 lg:w-120 bg-transparent backdrop-blur-sm text-white placeholder-white/70 px-2 py-2 pr-32 rounded-full border border-blue-900 max-w-7xl transition-all duration-200
-                      focus:ring-0 focus:outline-none"
-                    />
-                    <Button
-                      onClick={handleSubmit}
-                      className="absolute right-1 top-1/2 -translate-y-1/2 bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white px-6 py-1 rounded-full font-semibold text-sm"
-                    >
-                      JOIN NOW
-                    </Button>
-                  </div> 
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="flex justify-center">
+          <Link
+            href={`/news/`}
+            className="inline-flex items-center gap-2 mt-8 px-8 py-1 rounded-full bg-transparent border border-white text-white font-semibold"
+            >
+            SEE ALL
+            <img src="/icons/panah.png" alt="Arrow Right" className="w-4 h-4" />
+          </Link>
         </div>
+
+        <JoinUs />
 
         <Footer />
       </div>

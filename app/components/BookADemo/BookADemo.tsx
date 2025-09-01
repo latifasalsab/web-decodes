@@ -67,7 +67,7 @@ export default function BookADemo() {
     
                     <Button 
                         variant="outline" 
-                        className="border-2 border-[#0421DE] bg-transparent text-gray-300 px-6 py-2.5 rounded-3xl font-semibold hover:bg-gray-800 hover:text-white transition-all text-sm"
+                        className="border-2 border-[#0421DE] bg-transparent text-gray-300 px-6 py-2.5 rounded-3xl font-semibold hover:bg-transparent hover:text-gray-300 transition-all text-sm"
                     >
                         LEARN MORE
                     </Button>
