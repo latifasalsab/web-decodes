@@ -140,12 +140,9 @@ const newsData = [
       }
     ]
   },
-
-  
-
-
  
 ];
+
 
 const otherNews = [
   {
@@ -178,6 +175,38 @@ const otherNews = [
     date: "28 January, 2025",
     image: "/news/news_4.png",
   },
+  {
+    id: 5,
+    slug: "Decodes-Strengthens",
+    category: "Business Strategy",
+    tittle: "Decodes Strengthens Cybersecurity for Local Businesses",
+    description:
+      "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
+    date: "27 January, 2025",
+    image: "/news/news_5.png",
+  },
+
+  {
+    id: 6,
+    slug: "Decodes-Hosts",
+    category: "Technology",
+    tittle: "Decodes Hosts Tech Forum 2025 to Accelerate Indonesia’s Digital Future",
+    description:
+      "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
+    date: "30 December, 2025",
+    image: "/news/news_6.png",
+  },
+
+  {
+    id: 7,
+    slug: "Decodes-Introduces",
+    category: "Design",
+    tittle: "Decodes Introduces Cloud Solutions for Agile Digital Transformation",
+    description:
+      "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
+    date: "10 December, 2025",
+    image: "/news/news_7.png",
+  },
 ];
 
 export default function NewsDetailPage() {
@@ -193,7 +222,7 @@ export default function NewsDetailPage() {
     <div className="min-h-screen bg-black text-white">
       <NavbarProps />
       <div className="bg-black max-w-7xl mx-auto px-8 sm:px-6 lg:px-0">
-        {/* Title */}
+
         <div>
           <h1 className="text-2xl md:text-4xl font-bold mb-2 pt-32 leading-tight">
             {selectedNews.title}
@@ -205,7 +234,7 @@ export default function NewsDetailPage() {
           <span>{selectedNews.author}</span>
         </div>
 
-        {/* gambar */}
+
         <div className="mb-8 rounded-lg overflow-hidden">
           <img
             src={selectedNews.image}
@@ -215,7 +244,7 @@ export default function NewsDetailPage() {
           />
         </div>
 
-        {/* Content */}
+
         <div className="prose prose-invert max-w-none mb-8">
           {selectedNews.content.map((p, i) => (
             <p key={i} className="text-gray-300 leading-relaxed mb-4">
@@ -224,7 +253,7 @@ export default function NewsDetailPage() {
           ))}
         </div>
 
-        {/* Program Details */}
+
         <div className="mb-8">
           <h3 className="font-bold mb-2">Program Details</h3>
           <ul className="list-disc pl-6 text-gray-300">
@@ -234,7 +263,7 @@ export default function NewsDetailPage() {
           </ul>
         </div>
 
-        {/* Objectives */}
+
         <div className="mb-8">
           <h3 className="font-bold mb-2">Objectives & Impact</h3>
           <ul className="list-disc pl-6 text-gray-300">
@@ -244,7 +273,7 @@ export default function NewsDetailPage() {
           </ul>
         </div>
 
-        {/* Quotes */}
+
         <div className="mb-8">
           <h3 className="font-bold mb-2">Quote from a source</h3>
           {selectedNews.quotes.map((q, i) => (
@@ -269,7 +298,7 @@ export default function NewsDetailPage() {
         <div className="mt-16">
           <h2 className="text-2xl font-bold mb-8">Other News</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {filteredOtherNews.map((news, i) => (
+              {filteredOtherNews.slice(0, 3).map((news, i) => (
               <Link href={`/news/${news.slug}`} key={i} className="block group">
                 <div className="bg-[#1F1F1F] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/20 group cursor-pointer">
                   <div className="relative overflow-hidden">

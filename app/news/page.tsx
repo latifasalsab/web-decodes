@@ -62,6 +62,39 @@ export default function NewsPage() {
       date: "28 January, 2025",
       image: "/news/news_4.png",
     },
+
+    {
+      id: 5,
+      slug: "Decodes-Strengthens",
+      category: "Business Strategy",
+      tittle: "Decodes Strengthens Cybersecurity for Local Businesses",
+      description:
+        "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
+      date: "27 January, 2025",
+      image: "/news/news_5.png",
+    },
+
+    {
+      id: 6,
+      slug: "Decodes-Hosts",
+      category: "Technology",
+      tittle: "Decodes Hosts Tech Forum 2025 to Accelerate Indonesia’s Digital Future",
+      description:
+        "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
+      date: "30 December, 2025",
+      image: "/news/news_6.png",
+    },
+
+    {
+      id: 7,
+      slug: "Decodes-Introduces",
+      category: "Design",
+      tittle: "Decodes Introduces Cloud Solutions for Agile Digital Transformation",
+      description:
+        "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
+      date: "10 December, 2025",
+      image: "/news/news_7.png",
+    },
   ];
 
   return (
