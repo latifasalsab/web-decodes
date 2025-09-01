@@ -8,7 +8,7 @@ import {
   useMotionValueEvent,
 } from "motion/react";
 import Link from "next/link";
-
+import { usePathname } from "next/navigation";
 import React, { useRef, useState } from "react";
 
 interface NavbarProps {
@@ -95,7 +95,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
           : "none",
         width: visible ? "40%" : "100%",
         y: visible ? 20 : 0,
-        backgroundColor: "#0A011B",
+        backgroundColor: "#140025",
         color: "#F7DDEE",
       }}
       transition={{
@@ -119,7 +119,6 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 
-  // Optional: close dropdown when clicking outside
   const containerRef = useRef<HTMLDivElement>(null);
   React.useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -136,6 +135,25 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
     };
   }, []);
 
+  const pathname = usePathname();
+  
+  const isItemActive = (item: any): boolean => {
+    if (pathname === item.link) return true;
+    if (item.children) {
+      return item.children.some((child: any) => pathname === child.link);
+    }
+    return false;
+  };
+
+  const isChildActive = (child: any): boolean => {
+    return pathname === child.link;
+  };
+
+  const isServiceActive = (child: any): boolean => {
+    if (pathname === "/services/chatbot" || pathname === "/services/crm") return true;
+    return false;
+  };
+
   return (
     <motion.div
       ref={containerRef}
@@ -144,7 +162,10 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         className
       )}
     >
-      {items.map((item, idx) => (
+      {items.map((item, idx) => {
+        const isActive = isItemActive(item);
+        const isActiveService = isServiceActive(item);
+        return (
         <div key={`link-container-${idx}`} className="relative">
           {item.children ? (
             <button
@@ -153,16 +174,15 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
               className="relative flex cursor-pointer items-center gap-1 px-4 py-2 text-white bg-transparent border-none outline-none"
               style={{ background: "none" }}
             >
-              {/* Background effect */}
               {openDropdown === idx && (
                 <motion.div
                   layoutId="hovered"
                   className="absolute inset-0 h-full w-full rounded-full bg-[#100425]"
                 />
               )}
-              <span className="relative z-10">{item.name}</span>
+              <span className={cn("relative z-10", isActiveService ? "text-[#71DFE5] font-bold" : "text-white")}>{item.name}</span>
               <IconChevronDown
-                className="relative z-10 h-4 w-4 transition-transform duration-200"
+                className={cn("relative z-10 h-4 w-4 transition-transform duration-200", isActiveService ? "text-[#71DFE5] font-bold" : "text-white")}
                 style={{
                   transform: openDropdown === idx ? "rotate(180deg)" : "rotate(0deg)",
                 }}
@@ -172,35 +192,38 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
             <Link
               href={item.link}
               onClick={onItemClick}
-              className="relative flex cursor-pointer items-center gap-1 px-4 py-2 text-white"
+              className="relative flex cursor-pointer items-center gap-1 px-4 py-2"
             >
-              <span className="relative z-10">{item.name}</span>
+              <span className={cn("relative z-10", isActive ? "text-[#71DFE5] font-bold" : "text-white")}>
+                {item.name}
+              </span>
             </Link>
           )}
-          {/* Dropdown Menu */}
           {openDropdown === idx && item.children && (
-            <div className="absolute left-1/2 top-full mt-2 w-48 -translate-x-1/2 rounded-md bg-[#0a011b] shadow-lg ring-1 ring-black ring-opacity-5">
+            <div className="absolute left-1/2 top-full mt-2 w-48 -translate-x-1/2 rounded-md bg-[#140025] shadow-lg ring-1 ring-black ring-opacity-5">
               <div
                 className="py-1"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="options-menu"
               >
-                {item.children.map((child, childIdx) => (
+                {item.children.map((child, childIdx) => { 
+                  const isChildActiveState = isChildActive(child);
+                  return (
                   <Link
                     key={`child-link-${childIdx}`}
                     href={child.link}
-                    className="block px-4 py-2 text-sm text-[#FFFFFF] hover:bg-[#100425]"
+                    className={cn("block px-4 py-2 text-sm hover:bg-[#100425]", isChildActiveState ? "text-[#71DFE5] font-bold" : "text-white")}
                     role="menuitem"
                   >
                     {child.name}
                   </Link>
-                ))}
+                )})}
               </div>
             </div>
           )}
         </div>
-      ))}
+      )})}
     </motion.div>
   );
 };
@@ -225,8 +248,8 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         damping: 50,
       }}
       className={cn(
-        "relative z-120 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent px-0 py-2 lg:hidden",
-        visible && "bg-[#0a011b] dark:bg-neutral-950/80",
+        "relative z-120 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-[#140025] px-0 py-2 lg:hidden",
+        visible && "bg-[#140025]",
         className
       )}
     >
@@ -242,7 +265,7 @@ export const MobileNavHeader = ({
   return (
     <div
       className={cn(
-        "flex w-full flex-row items-center justify-between",
+        "flex w-full flex-row items-center justify-between px-2",
         className
       )}
     >
@@ -265,7 +288,7 @@ export const MobileNavMenu = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className={cn(
-            "absolute inset-x-0 top-16 z-120 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-[#0a011b] px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
+            "absolute inset-x-0 top-16 z-120 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-[#140025] px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
             className
           )}
         >

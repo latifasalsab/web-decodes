@@ -5,6 +5,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import Link from 'next/link';
 import { Button } from "@/components/ui/button"
+import { useRouter } from 'next/navigation';
 
 interface PersonalInfo {
     fullName?: string;
@@ -246,10 +247,12 @@ export default function Login(): JSX.Element {
         }
     };
 
+    const router = useRouter();
+
     const handleRegister = (): void => {
         const [personal, business, service] = registerValues as [PersonalInfo, BusinessInfo, ServiceInfo];
         alert(`Register:\nName: ${personal.fullName}\nEmail: ${personal.email}\nBusiness: ${business.businessName}\nService: ${service.selectedService}`);
-        handleShowLogin();
+        router.push('/');
     };
 
     return (
@@ -284,8 +287,13 @@ export default function Login(): JSX.Element {
                             scrollbarWidth: 'thin',
                             scrollbarColor: '#8b5cf6 transparent'
                             }}>
+
+                            {/* <div className="absolute inset-0 bg-gradient-to-br from-[#1e1b4b]/20 via-transparent to-[#581c87]/20"></div> */}
+                            <div className="absolute -top-25 left-0 w-32 h-32 bg-[#6366f1]/60 rounded-full blur-3xl w-full"></div>
+                            {/* <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#8b5cf6]/10 rounded-full blur-3xl"></div> */}
+
                             <div className="relative w-full min-h-[80vh] flex items-start justify-center">
-                                
+
                                 {/* Login */}
                                 <div
                                     className={`absolute top-0 left-0 w-full min-h-[80vh] flex flex-col justify-start transition-all duration-500 ${
@@ -357,15 +365,15 @@ export default function Login(): JSX.Element {
                                                     
                                                     <Button 
                                                         onClick={handleLogin}
-                                                        className="w-full px-3 py-2 xl:px-4 xl:py-3 rounded-lg text-white text-base"
+                                                        className="w-full px-3 py-2 xl:px-4 xl:py-3 rounded-lg text-white text-base cursor-pointer"
                                                     >
-                                                        LOGIN
+                                                        SIGN IN
                                                     </Button>
                                                     
                                                     <p className="text-white/70 text-sm text-center">
                                                         Don't have an account?{" "}
                                                         <button
-                                                            className="text-[#8b5cf6] hover:text-[#a78bfa] transition-colors font-medium"
+                                                            className="text-[#8b5cf6] hover:text-[#a78bfa] transition-colors font-medium cursor-pointer"
                                                             onClick={handleShowRegister}
                                                             type="button"
                                                         >
@@ -387,17 +395,17 @@ export default function Login(): JSX.Element {
                                     }`}
                                 >
                                     <div className="relative w-full p-10 min-h-[80vh] flex flex-col justify-center py-16">
-                                        <Link href="/" className="flex gap-2 items-center absolute top-4 left-4">
+                                        <div className="flex gap-2 items-center absolute top-4 left-4">
                                             <Image 
                                                 src="/login/back.png"
                                                 width={100}
                                                 height={100} alt="Logo Decodes" 
                                                 className="h-3 w-auto"                          
                                             />
-                                            <Button variant="link" className="text-white p-0 m-0">
+                                            <Button variant="link" onClick={handleShowLogin} className="text-white p-0 m-0">
                                                 Back
                                             </Button>
-                                        </Link>
+                                        </div>
 
                                         <div className="flex flex-col gap-6 h-fit mt-16">
                                             <div className="text-center">
@@ -428,15 +436,15 @@ export default function Login(): JSX.Element {
                                                 <p className="text-white/70 text-sm text-center">
                                                     Back to{" "}
                                                     <button
-                                                        className="text-[#8b5cf6] hover:text-[#a78bfa] transition-colors font-medium"
+                                                        className="text-[#8b5cf6] hover:text-[#a78bfa] transition-colors font-medium cursor-pointer"
                                                         onClick={handleShowLogin}
                                                         type="button"
                                                     >
-                                                        LOGIN
+                                                        SIGN IN
                                                     </button>
                                                     {" "}or{" "}
                                                     <button
-                                                        className="text-[#8b5cf6] hover:text-[#a78bfa] transition-colors font-medium"
+                                                        className="text-[#8b5cf6] hover:text-[#a78bfa] transition-colors font-medium cursor-pointer"
                                                         onClick={handleShowRegister}
                                                         type="button"
                                                     >
@@ -457,17 +465,17 @@ export default function Login(): JSX.Element {
                                     }`}
                                 >
                                     <div className="relative w-full p-10 min-h-[80vh] flex flex-col justify-center py-16">
-                                        <Link href="/" className="flex gap-2 items-center absolute top-4 left-4">
+                                        <div className="flex gap-2 items-center absolute top-4 left-4">
                                             <Image 
                                                 src="/login/back.png"
                                                 width={100}
                                                 height={100} alt="Logo Decodes" 
                                                 className="h-3 w-auto"                          
                                             />
-                                            <Button variant="link" className="text-white p-0 m-0">
+                                            <Button onClick={handleShowForgot} variant="link" className="text-white p-0 m-0">
                                                 Back
                                             </Button>
-                                        </Link>
+                                        </div>
 
                                         <div className="flex flex-col gap-6 h-fit mt-16">
                                             <div className="text-center">
@@ -513,7 +521,7 @@ export default function Login(): JSX.Element {
                                                         onClick={handleShowLogin}
                                                         type="button"
                                                     >
-                                                        LOGIN
+                                                        SIGN IN
                                                     </button>
                                                     {" "}or{" "}
                                                     <button
@@ -619,13 +627,13 @@ export default function Login(): JSX.Element {
                                             </div>
                                             
                                             <p className="text-white/70 text-sm text-center">
-                                                Sudah punya akun?{" "}
+                                                Already have an account?{" "}
                                                 <button
-                                                    className="text-[#a084f7] underline hover:text-[#8f6ff7] transition-colors"
+                                                    className="text-[#a084f7] underline hover:text-[#8f6ff7] transition-colors cursor-pointer"
                                                     onClick={handleShowLogin}
                                                     type="button"
                                                 >
-                                                    Login
+                                                    Sign In
                                                 </button>
                                             </p>
                                         </div>

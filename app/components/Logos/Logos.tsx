@@ -23,7 +23,10 @@ export default function Logos() {
             </div>
         </div>
         <div className="w-[20%] md:w-[10%]">
-            <p className="w-full text-lg text-white text-right">Clients We’ve <br /> Worked With</p>
+            <div className="w-full text-lg text-[#9933EF] text-right">Clients We’ve {' '} 
+                <p className='text-white'>Worked With</p> 
+            </div>
+
         </div>
     </div>
   );
