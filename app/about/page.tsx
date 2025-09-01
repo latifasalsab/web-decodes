@@ -25,7 +25,7 @@ export default function AboutPage() {
           className="mt-8 py-4 text-white bg-clip-text text-center tracking-tight text-transparent z-10"
         >
           <div>
-            <h1 className='text-2xl font-medium md:text-5xl mb-2'>
+            <h1 className='text-2xl font-bold md:text-5xl mb-2'>
                 ABOUT US
             </h1>
             <h6 className='text-2xl font-normal md:text-5xl'>

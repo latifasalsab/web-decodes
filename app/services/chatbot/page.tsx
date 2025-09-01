@@ -150,7 +150,7 @@ export default function ChatbotService() {
                 className="mt-8 py-4 text-white bg-clip-text text-center tracking-tight z-10"
                 >
                     <div>
-                        <h1 className='text-2xl font-medium md:text-5xl mb-2'>
+                        <h1 className='text-2xl font-bold md:text-5xl mb-2'>
                             SERVICE
                         </h1>
                         <h6 className='text-2xl font-normal md:text-5xl'>
