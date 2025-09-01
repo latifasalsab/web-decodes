@@ -3,12 +3,13 @@ import { motion } from 'motion/react';
 import NavbarProps from "../components/Navbar/Navbar";
 import Footer from '../components/Footer/Footer';
 import React, { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
 
 
-type CategoryType = "Design" | "Technology" | "Business Security";
+type CategoryType = "Design" | "Technology" | "Business Strategy";
 
 interface NewsItem {
   id: number;
@@ -20,9 +21,21 @@ interface NewsItem {
 }
 
 export default function NewsPage() {
-  const newsData: NewsItem[] = [
+
+  const trendingNews: NewsItem & { slug: string } = {
+  id: 4,
+  slug: "decodes-officially-reaches",
+  category: "Technology",
+  tittle: "Decodes Officially Reaches 100+ Clients by 2025",
+  description: "Decodes has officially surpassed 100+ clients, marking a major achievement in its journey as a trusted digital partner. This milestone reflects the company’s commitment to innovation, quality, and building lasting collaborations across industries.",
+  date: "28 Januari, 2025",
+  image: "/news/news_1.png"
+  };
+
+  const newsData: (NewsItem & { slug: string })[] = [
     {
       id: 1,
+      slug: "creative-branding-strategies",
       category: "Design",
       tittle: "Creative Branding Strategies to Elevate Business Identity",
       description:
@@ -32,8 +45,9 @@ export default function NewsPage() {
     },
     {
       id: 2,
+      slug: "AI-Powered Chatbots",
       category: "Technology",
-      tittle: "Building Scalable Websites for the Future of Digital Business",
+      tittle: "AI-Powered Chatbots Transforming Customer Engagement",
       description:
         "To meet the growing demand for performance and security, Decodes has launched its next-generation web development services. These solutions are tailored to ensure faster load times, seamless integrations, and adaptive designs that provide an excellent user experience on any device.",
       date: "25 January, 2025",
@@ -41,10 +55,11 @@ export default function NewsPage() {
     },
     {
       id: 3,
-      category: "Business Security",
-      tittle: "Enhancing Cybersecurity Measures in the Modern Digital Landscape",
+      slug: "Decodes Collaborates",
+      category: "Business Strategy",
+      tittle: "Decodes Collaborates with Local Startups to Drive Digital Transformation",
       description:
-        "In response to the increasing cyber threats faced by businesses today, Decodes has developed advanced cybersecurity solutions. These measures include real-time threat detection, robust encryption protocols, and comprehensive risk assessments to safeguard sensitive data and ensure business continuity.",
+        "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
       date: "28 January, 2025",
       image: "/news/news_4.png",
     },
@@ -120,12 +135,13 @@ export default function NewsPage() {
         {/* semua news */}
         <div className="w-full px-6 min-h-screen">
 
-          <div className="h-auto min-h-96 flex items-center py-6 px-1">
+          <div className="h-auto min-h-96 flex items-center justify-center py-6 px-1">
+            <Link href={`/news/${trendingNews.slug}`} key={trendingNews.id} className="block">
             <div className="container mx-auto">
               <div className="grid grid-cols-1 gap-8 items-center lg:grid-cols-[1fr_2fr]">
 
-                <div className="oder-2 lg:order-1">
-                  <div className="relative rounded-2xl oferflow-hidden shadow-2xl">
+                <div className="lg:order-1">
+                  <div className="relative rounded-2xl shadow-2xl">
                     <div className="absolute -top-3 left-3/4 transform -translate-x-1/2">
                       <span className="bg-gradient-to-r from-[#FA8E49] to-[#FF6300] text-white px-3 py-1 rounded-full text-sm font-medium">
                           Popular
@@ -143,7 +159,7 @@ export default function NewsPage() {
 
                 <div className="order-1 lg:order-2 py-0 px-2">
                   <div className="inline-block">
-                    <span className="text-white text-sm uppercase-wider font-medium">
+                    <span className="text-white text-sm font-medium">
                       Web Development
                     </span>
                   </div>
@@ -177,50 +193,52 @@ export default function NewsPage() {
                 </div>
               </div>
             </div>
+            </Link>
           </div>
 
           <div className="h-auto flex items-center px-2 md:px-10">
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {newsData.map((news) => (
-                  <div
-                    key={news.id}
-                    className="bg-[#1F1F1F] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/20 group"
-                  >
-                    <div className="relative overflow-hidden">
-                      <div className="w-full h-48 bg-gray-800 relative">
-                        <img
-                          src={news.image}
-                          alt={news.tittle}
-                          className="w-full h-full object-cover group group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="p-3">
-                      <div className="mb-1">
-                        <span className="text-xs font-semibold text-white">
-                          {news.category}
-                        </span>
+                  <Link href={`/news/${news.slug}`} key={news.id} className="block">
+                    <div
+                      className="bg-[#1F1F1F] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/20 group cursor-pointer"
+                    >
+                      <div className="relative overflow-hidden">
+                        <div className="w-full h-48 bg-gray-800 relative">
+                          <img
+                            src={news.image}
+                            alt={news.tittle}
+                            className="w-full h-full object-cover group group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
                       </div>
 
-                      <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 group-hover:text-purple-400 transition-colors duration-200">
-                        {news.tittle}
-                      </h3>
-
-                      <p className="text-white text-sm leading-relaxed mb-3 line-clamp-2">
-                        {news.description}
-                      </p>
-
-                      <div className="pt-2">
-                        <div className="flex items-center space-x-2">
-                          <span className="text-white text-sm">
-                            {news.date}
+                      <div className="p-3">
+                        <div className="mb-1">
+                          <span className="text-xs font-semibold text-white">
+                            {news.category}
                           </span>
+                        </div>
+
+                        <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 group-hover:text-purple-400 transition-colors duration-200">
+                          {news.tittle}
+                        </h3>
+
+                        <p className="text-white text-sm leading-relaxed mb-3 line-clamp-2">
+                          {news.description}
+                        </p>
+
+                        <div className="pt-2">
+                          <div className="flex items-center space-x-2">
+                            <span className="text-white text-sm">
+                              {news.date}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

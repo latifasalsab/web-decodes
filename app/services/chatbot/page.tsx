@@ -147,7 +147,7 @@ export default function ChatbotService() {
                     duration: 0.8,
                     ease: "easeInOut",
                 }}
-                className="mt-8 py-4 text-white bg-clip-text text-center tracking-tight text-transparent z-10"
+                className="mt-8 py-4 text-white bg-clip-text text-center tracking-tight z-10"
                 >
                     <div>
                         <h1 className='text-2xl font-medium md:text-5xl mb-2'>
@@ -334,7 +334,7 @@ export default function ChatbotService() {
                             </button>
                         </div>
 
-                        <div className="bg-[#3a3a3a] rounded-lg p-4 mb-6 flex justify-between items-center mb-2">
+                        <div className="bg-[#3a3a3a] rounded-lg p-4 flex justify-between items-center mb-2">
                             <div className="flex flex-col justify-between">
                                 <div className="text-white font-medium">{selectedPlanData.name.toUpperCase()}</div>
                                 <div className="text-gray-400 text-sm">3 Months (-5% Discount)</div>
