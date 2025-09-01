@@ -2,11 +2,10 @@
 import { motion } from 'motion/react';
 import NavbarProps from "../components/Navbar/Navbar";
 import Footer from '../components/Footer/Footer';
-import React from "react";
+import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import JoinUs from '../components/JoinUs/JoinUs';
 import Link from "next/link";
-
 
 type CategoryType = "Design" | "Technology" | "Business Strategy";
 
@@ -20,15 +19,17 @@ interface NewsItem {
 }
 
 export default function NewsPage() {
+  const [visibleCount, setVisibleCount] = useState(3);
+  const [loading, setLoading] = useState(false);
 
   const trendingNews: NewsItem & { slug: string } = {
-  id: 4,
-  slug: "decodes-officially-reaches",
-  category: "Technology",
-  tittle: "Decodes Officially Reaches 100+ Clients by 2025",
-  description: "Decodes has officially surpassed 100+ clients, marking a major achievement in its journey as a trusted digital partner. This milestone reflects the company’s commitment to innovation, quality, and building lasting collaborations across industries.",
-  date: "28 Januari, 2025",
-  image: "/news/news_1.png"
+    id: 4,
+    slug: "decodes-officially-reaches",
+    category: "Technology",
+    tittle: "Decodes Officially Reaches 100+ Clients by 2025",
+    description: "Decodes has officially surpassed 100+ clients, marking a major achievement in its journey as a trusted digital partner. This milestone reflects the company's commitment to innovation, quality, and building lasting collaborations across industries.",
+    date: "28 Januari, 2025",
+    image: "/news/news_1.png"
   };
 
   const newsData: (NewsItem & { slug: string })[] = [
@@ -62,7 +63,6 @@ export default function NewsPage() {
       date: "28 January, 2025",
       image: "/news/news_4.png",
     },
-
     {
       id: 5,
       slug: "Decodes-Strengthens",
@@ -73,18 +73,16 @@ export default function NewsPage() {
       date: "27 January, 2025",
       image: "/news/news_5.png",
     },
-
     {
       id: 6,
       slug: "Decodes-Hosts",
       category: "Technology",
-      tittle: "Decodes Hosts Tech Forum 2025 to Accelerate Indonesia’s Digital Future",
+      tittle: "Decodes Hosts Tech Forum 2025 to Accelerate Indonesia's Digital Future",
       description:
         "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
       date: "30 December, 2025",
       image: "/news/news_6.png",
     },
-
     {
       id: 7,
       slug: "Decodes-Introduces",
@@ -96,6 +94,28 @@ export default function NewsPage() {
       image: "/news/news_7.png",
     },
   ];
+
+  // Function to handle load more
+  const handleLoadMore = async () => {
+    setLoading(true);
+  
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    setVisibleCount(prev => Math.min(prev + 3, newsData.length));
+    setLoading(false);
+  };
+
+  const handleLoadLess = async () => {
+    setLoading(true);
+    
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    setVisibleCount(3);
+    setLoading(false);
+  }
+
+  const visibleNews = newsData.slice(0, visibleCount);
+  const hasMore = visibleCount < newsData.length;
 
   return (
     <div className='relative bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
@@ -126,7 +146,6 @@ export default function NewsPage() {
         </motion.h1>
       </div>
 
-      {/* CONTENT */}
       <div className="w-full bg-black min-h-screen">
 
         <div className="pt-6 sm:pt-6">
@@ -219,7 +238,7 @@ export default function NewsPage() {
           <div className="h-auto flex items-center px-2 md:px-10">
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {newsData.map((news) => (
+                {visibleNews.map((news) => (
                   <Link href={`/news/${news.slug}`} key={news.id} className="block">
                     <div className="bg-[#1F1F1F] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/20 group cursor-pointer">
                       <div className="relative overflow-hidden">
@@ -261,17 +280,51 @@ export default function NewsPage() {
               </div>
             </div>      
           </div>
-        </div>
-        <div className="flex justify-center">
-          <Link
-            href={`/news/`}
-            className="inline-flex items-center gap-2 mt-8 px-8 py-1 rounded-full bg-transparent border border-white text-white font-semibold"
-            >
-            SEE ALL
-            <img src="/icons/panah.png" alt="Arrow Right" className="w-4 h-4" />
-          </Link>
-        </div>
 
+          {hasMore && (
+            <div className="flex justify-center mt-12 mb-8">
+              <button
+                onClick={handleLoadMore}
+                disabled={loading}
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-transparent border border-white text-white font-semibold cursor-pointer transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Loading...
+                  </>
+                ) : (
+                  <>
+                    SHOW ALL
+                    <img src="/icons/panah.png" alt="Arrow Right" className="w-4 h-4" />
+                  </>
+                )}
+              </button>
+            </div>
+          )}
+
+          {!hasMore && newsData.length > 3 && (
+            <div className="flex justify-center mt-12 mb-8">
+              <button
+                onClick={handleLoadLess}
+                disabled={loading}
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-transparent border border-white text-white font-semibold cursor-pointer transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Loading...
+                  </>
+                ) : (
+                  <>
+                    SHOW LESS
+                  </>
+                )}
+              </button>
+            </div>
+          )}
+        </div>
+        
         <JoinUs />
 
         <Footer />

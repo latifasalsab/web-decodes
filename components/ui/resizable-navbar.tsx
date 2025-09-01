@@ -139,9 +139,13 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   
   const isItemActive = (item: any): boolean => {
     if (pathname === item.link) return true;
+    
+    if (item.name === "News" && pathname.startsWith("/news")) return true;
+    
     if (item.children) {
       return item.children.some((child: any) => pathname === child.link);
     }
+    
     return false;
   };
 
@@ -151,6 +155,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
 
   const isServiceActive = (child: any): boolean => {
     if (pathname === "/services/chatbot" || pathname === "/services/crm") return true;
+    if (pathname.startsWith("/services")) return true;
     return false;
   };
 
