@@ -91,7 +91,7 @@ export default function Home() {
               <Link href="/services">
                 <Button className="text-white justify-center px-6 py-3 sm:px-8 sm:py-4
                                  text-sm sm:text-base font-medium
-                                 hover:scale-105 transition-transform duration-200">
+                                 hover:scale-105 transition-transform duration-200 cursor-pointer">
                   SEE ALL OUR SERVICES
                 </Button> 
               </Link>
@@ -322,10 +322,9 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
 
             <div className="absolute bottom-4 md:bottom-6 left-0 right-0 flex justify-center">
               <Button 
-                className="w-70 bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white rounded-3xl shadow-md hover:opacity-90 transition-all px-6 md:px-8 py-2 md:py-3 text-sm md:text-base"
+                className="w-70 bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white rounded-3xl shadow-md hover:opacity-90 transition-all px-6 md:px-8 py-2 md:py-3 text-sm md:text-base cursor-pointer"
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.stopPropagation();
-                  console.log(`Navigating to: ${item.button.link}`);
                 }}
                 aria-label={`${item.button.text} for ${item.alt}`}
               >

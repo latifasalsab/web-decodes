@@ -73,7 +73,7 @@ export default function NavbarProps() {
             <NavbarButton
               href="/login"
               variant="primary"
-              className="rounded-full shadow-md"
+              className="rounded-full shadow-md cursor-pointer"
             >
               LOGIN
             </NavbarButton>
@@ -104,11 +104,11 @@ export default function NavbarProps() {
                           openMobileDropdown === item.name ? null : item.name
                         )
                       }
-                      className={cn("flex w-full items-center justify-between", isActiveService ? "text-[#71DFE5] font-bold" : "text-white")}
+                      className={cn("flex w-full items-center justify-between cursor-pointer", isActiveService ? "text-[#71DFE5] font-bold" : "text-white")}
                     >
                       <span>{item.name}</span>
                       <IconChevronDown
-                        className={cn("h-4 w-4 transition-transform duration-200", isActiveService ? "text-[#71DFE5] font-bold" : "text-white")}
+                        className={cn("h-4 w-4 transition-transform duration-200 cursor-pointer", isActiveService ? "text-[#71DFE5] font-bold" : "text-white")}
                         style={{
                           transform:
                             openMobileDropdown === item.name
@@ -160,7 +160,7 @@ export default function NavbarProps() {
               <NavbarButton
                 href="/login"
                 variant="secondary"
-                className="w-full bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white"
+                className="w-full bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white cursor-pointer"
               >
                 Login
               </NavbarButton>

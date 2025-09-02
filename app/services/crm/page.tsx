@@ -296,7 +296,7 @@ export default function CRNService() {
                     <div className="bg-[#2a2a2a] rounded-3xl max-w-3xl w-full mx-auto relative">
                         <button
                             onClick={closeModal}
-                            className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors p-2 z-10"
+                            className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors p-2 z-10 cursor-pointer"
                         >
                             <X className="w-6 h-6" />
                         </button>
@@ -371,7 +371,7 @@ export default function CRNService() {
 
                         {/* Action Buttons */}
                         <div className="p-6 pt-0">
-                        <button className="w-full bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] hover:from-[#4338ca] hover:to-[#6d28d9] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300">
+                        <button className="w-full bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] hover:from-[#4338ca] hover:to-[#6d28d9] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 cursor-pointer">
                             CONFIRM AND PAY
                         </button>
                         </div>

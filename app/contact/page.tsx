@@ -276,7 +276,7 @@ export default function ContactPage() {
                         <div className="mt-auto flex justify-center">
                           <Button
                             onClick={handleSubmit}
-                            className="w-auto sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium py-3 px-24 sm:px-24 rounded-3xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 text-sm items-center"
+                            className="w-auto sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium py-3 px-24 sm:px-24 rounded-3xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 text-sm items-center cursor-pointer"
                           >
                             SUBMIT
                           </Button>
