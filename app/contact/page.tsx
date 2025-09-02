@@ -2,7 +2,6 @@
 import { motion } from 'motion/react';
 import NavbarProps from "../components/Navbar/Navbar";
 import Footer from '../components/Footer/Footer';
-import Logos from '../components/Logos/Logos';
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button"
 import {
@@ -16,8 +15,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
-  CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
@@ -182,7 +179,7 @@ export default function ContactPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-white text-sm mb-2">Full Name</label>
+                          <label htmlFor="fullName" className="block text-white text-sm mb-2">Full Name</label>
                           <input
                             type="text"
                             name="fullName"
@@ -194,7 +191,7 @@ export default function ContactPage() {
                         </div>
 
                         <div>
-                          <label className="block text-white text-sm mb-2">Phone Number</label>
+                          <label htmlFor="phoneNumber" className="block text-white text-sm mb-2">Phone Number</label>
                           <input
                             type="tel"
                             name="phoneNumber"
@@ -206,7 +203,7 @@ export default function ContactPage() {
                         </div>
 
                         <div>
-                          <label className="block text-white text-sm mb-2">Email</label>
+                          <label htmlFor="email" className="block text-white text-sm mb-2">Email</label>
                           <input
                             type="email"
                             name="email"
@@ -218,7 +215,7 @@ export default function ContactPage() {
                         </div>
 
                         <div>
-                          <label className="block text-white text-sm mb-2">Business Name</label>
+                          <label htmlFor="businessName" className="block text-white text-sm mb-2">Business Name</label>
                           <input
                             type="text"
                             name="businessName"
@@ -233,7 +230,7 @@ export default function ContactPage() {
                       
                       <div className="space-y-4">
                         <div>
-                          <label className="block text-white text-sm mb-2">Subject</label>
+                          <label htmlFor="subject" className="block text-white text-sm mb-2">Subject</label>
                           <div className="relative">
                             <select
                               name="subject"
@@ -262,7 +259,7 @@ export default function ContactPage() {
                         </div>
 
                         <div className="flex-1">
-                          <label className="block text-white text-sm mb-2">Messages</label>
+                          <label htmlFor="messages" className="block text-white text-sm mb-2">Messages</label>
                           <textarea
                             name="messages"
                             placeholder="Enter your messages"
@@ -303,7 +300,6 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* FOOTER */}
       <Footer />
     </div>
   );

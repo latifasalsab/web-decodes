@@ -19,10 +19,11 @@ import { usePathname } from "next/navigation";
 
 export default function NavbarProps() {
   const navItems = [
-    { name: "Home", link: "/" },
-    { name: "Contact", link: "/contact" },
-    { name: "About Us", link: "/about" },
+    { id: 1, name: "Home", link: "/" },
+    { id: 2, name: "Contact", link: "/contact" },
+    { id: 3, name: "About Us", link: "/about" },
     {
+      id: 4,
       name: "Services",
       link: "/services",
       children: [
@@ -30,7 +31,7 @@ export default function NavbarProps() {
         { name: "CRM Integration", link: "/services/crm" },
       ],
     },
-    { name: "News", link: "/news" },
+    { id: 5, name: "News", link: "/news" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -95,7 +96,7 @@ export default function NavbarProps() {
               const isActive = isItemActive(item);
               const isActiveService = isServiceActive(item);
               return (
-              <React.Fragment key={`mobile-link-fragment-${idx}`}>
+              <React.Fragment key={`mobile-link-fragment-${item.id}`}>
                 {item.children ? (
                   <div className="w-full">
                     <button
@@ -133,13 +134,16 @@ export default function NavbarProps() {
                             const isChildActiveState = isChildActive(child);
                             return (
                             <Link
-                              key={`mobile-child-link-${childIdx}`}
-                              href={child.link}
-                              onClick={() => setIsMobileMenuOpen(false)}
-                              className={cn("relative", isChildActiveState ? "text-[#71DFE5] font-bold" : "text-white")}
-                            >
-                              <span>{child.name}</span>
-                            </Link>
+                            key={`mobile-child-link-${child.link}`}
+                            href={child.link}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className={cn(
+                              "relative",
+                              isChildActiveState ? "text-[#71DFE5] font-bold" : "text-white"
+                            )}
+                          >
+                            <span>{child.name}</span>
+                          </Link>
                           )})}
                         </motion.div>
                       )}

@@ -276,7 +276,7 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
   onMouseEnter, 
   onMouseLeave 
 }) => (
-  <div
+  <button
     className={`relative bg-[#1F1F1F] rounded-2xl shadow-lg overflow-hidden cursor-pointer transition-all duration-500 ease-out ${
       isExpanded 
         ? 'w-full md:w-fit md:max-w-[80%] max-w-sm  h-96 md:h-115' 
@@ -284,7 +284,6 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
     }`}
     onMouseEnter={() => onMouseEnter(index)}
     onMouseLeave={onMouseLeave}
-    role="button"
     tabIndex={0}
     aria-label={`View ${item.alt}`}
   >
@@ -341,7 +340,7 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </div>
-    </div>
+    </button>
 
     
   )
