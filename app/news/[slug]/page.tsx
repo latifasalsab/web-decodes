@@ -286,10 +286,12 @@ export default function NewsDetailPage() {
         <div className="flex justify-end">
           <Link
             href={`/news/${nextSlug}`}
-            className="inline-flex items-center gap-2 mt-8 px-4 py-1 rounded-full bg-transparent border border-white text-white font-semibold"
+            className="group inline-flex items-center gap-2 mt-8 px-6 py-2 rounded-full bg-transparent border border-white text-white font-semibold transition-all duration-300 disabled:opacity-50 cursor-pointer
+            hover:bg-white hover:text-black active:bg-gray-200 active:text-black"
           >
             NEXT
-            <img src="/icons/panah.png" alt="Arrow Right" className="w-4 h-4" />
+            <img src="/icons/panah.png" alt="Arrow Right" className="w-4 h-4 block group-hover:hidden" />
+            <img src="/icons/panah_hitam.png" alt="Arrow Right" className="w-4 h-4 hidden group-hover:block"/>
           </Link>
         </div>
 

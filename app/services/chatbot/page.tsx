@@ -281,8 +281,8 @@ export default function ChatbotService() {
                         onClick={() => openModal(plan.id)}
                         className={`w-full transition-all duration-300 cursor-pointer ${
                             plan.popular
-                            ? 'text-white'
-                            : 'bg-transparent border-2 border-[#363FE4] text-white'
+                            ? 'bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white'
+                            : 'bg-transparent border-2 border-[#363FE4] text-white hover:bg-gradient-to-r hover:from-[#0421DE] hover:to-[#5D56E9] hover:text-white hover:border-none'
                         }`}
                         >
                             REGIST NOW
@@ -296,7 +296,7 @@ export default function ChatbotService() {
                     <div className="bg-[#2a2a2a] rounded-3xl max-w-3xl w-full mx-auto relative">
                         <button
                             onClick={closeModal}
-                            className="absolute cursor-pointer top-4 right-4 text-gray-400 hover:text-white transition-colors p-2 z-10 cursor-pointer"
+                            className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors p-2 z-10 cursor-pointer"
                         >
                             <X className="w-6 h-6" />
                         </button>
@@ -307,7 +307,7 @@ export default function ChatbotService() {
                         <div className="grid grid-cols-2 gap-3 mb-6">
                             <button
                                 type="button"
-                                className={`border rounded-lg py-4 px-4 md:px-10 cursor-pointer text-left transition-all cursor-pointer ${
+                                className={`border rounded-lg py-4 px-4 md:px-10 text-left transition-all cursor-pointer ${
                                     selectedPaymentMethod === 'credit-card' 
                                     ? 'border-[#3740E4] bg-[#3740E4]/10' 
                                     : 'border-gray-600 hover:border-gray-500'
@@ -371,6 +371,7 @@ export default function ChatbotService() {
 
                         <div className="p-6 pt-0">
                         <Button 
+                            variant="gradientOutline"
                             className="w-full transition-all duration-300 cursor-pointer"
                             onClick={closeModal}
                         >

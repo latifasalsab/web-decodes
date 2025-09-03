@@ -173,7 +173,8 @@ export default function NewsPage() {
               <button
                 onClick={handleLoadMore}
                 disabled={loading}
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-transparent border border-white text-white font-semibold transition-all duration-300 disabled:opacity-50 cursor-pointer"
+                className="inline-flex items-center gap-2 px-8 py-2 rounded-full bg-transparent border border-white text-white font-semibold transition-all duration-300 disabled:opacity-50 cursor-pointer
+                hover:bg-white hover:text-black active:bg-gray-200 active:text-black"
               >
                 {loading ? "Loading..." : "SHOW ALL"}
               </button>
@@ -184,7 +185,8 @@ export default function NewsPage() {
               <button
                 onClick={handleLoadLess}
                 disabled={loading}
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-transparent border border-white text-white font-semibold transition-all duration-300 disabled:opacity-50 cursor-pointer"
+                className="inline-flex items-center gap-2 px-8 py-2 rounded-full bg-transparent border border-white text-white font-semibold transition-all duration-300 disabled:opacity-50 cursor-pointer
+                hover:bg-white hover:text-black active:bg-gray-200 active:text-black"
               >
                 {loading ? "Loading..." : "SHOW LESS"}
               </button>

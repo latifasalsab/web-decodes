@@ -59,15 +59,15 @@ export default function BookADemo() {
     
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
                     <Button 
-                        variant="default" 
-                        className="bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white px-6 py-2.5 rounded-3xl font-semibold hover:opacity-90 transition-all shadow-lg text-sm cursor-pointer"
+                        variant="gradientOutline" 
+                        className="px-6 py-2.5 rounded-3xl font-semibold text-sm"
                     >
                         BOOK A DEMO
                     </Button>
     
                     <Button 
-                        variant="outline" 
-                        className="border-2 border-[#0421DE] bg-transparent text-gray-300 px-6 py-2.5 rounded-3xl font-semibold hover:bg-transparent hover:text-gray-300 transition-all text-sm cursor-pointer"
+                        variant="outlineToDefault" 
+                        className="px-6 py-2.5 rounded-3xl font-semibold text-sm"
                     >
                         LEARN MORE
                     </Button>
