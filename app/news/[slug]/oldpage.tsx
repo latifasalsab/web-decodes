@@ -2,7 +2,6 @@
 import { useParams } from "next/navigation";
 import Link from "next/link";
 
-// Data dummy, sebaiknya nanti diambil dari API atau file terpisah
 const newsData = [
   {
     slug: "ai-project-management-tool",

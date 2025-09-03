@@ -1,17 +1,23 @@
-"use client";
-import { useParams } from "next/navigation";
-import React from "react";
-import Link from "next/link";
-import Joinus  from '../../components/JoinUs/JoinUs';
+import { NewsItem, TrendingNews } from "@/app/types/news";
 
+export const trendingNews: TrendingNews = {
+  id: 1,
+  slug: "decodes-officially-reaches",
+  tittle: "Decodes Officially Reaches 100+ Clients by 2025",
+  category: "Business Strategy",
+  description: "Amidst rapid technological developments, Decodes is taking a major step by collaborating with several local startups. This collaboration is not just a business partnership, but a concrete effort to accelerate digital transformation in Indonesia.",
+  date: "January 27, 2025",
+  image: "/news/news_1.png",
+};
 
-const newsData = [
+export const newsData: NewsItem[] = [
   {
     slug: "decodes-officially-reaches",
     title: "Decodes Officially Reaches 100+ Clients by 2025",
     date: "January 27, 2025",
     author: "By Decodes Media",
     image: "/news/news_1.png",
+    description: "Amidst rapid technological developments, Decodes is taking a major step by collaborating with several local startups.",
     content: [
       "Amidst rapid technological developments, Decodes is taking a major step by collaborating with several local startups. This collaboration is not just a business partnership, but a concrete effort to accelerate digital transformation in Indonesia.",
       "Through this initiative, Decodes aims to deliver innovations that address the challenges of modern industry. Working with startups, Decodes develops relevant digital solutions, from data-driven systems to services that support business efficiency. This initiative is expected to open up new opportunities for both small businesses and large corporations, helping them better prepare for the digital era.",
@@ -38,13 +44,13 @@ const newsData = [
       }
     ]
   },
-
   {
     slug: "creative-branding-strategies",
     title: "Creative Branding Strategies to Elevate Business Identity",
     date: "August 19, 2025",
     author: "By Decodes Media",
     image: "/news/news_2.png",
+    description: "Decodes introduces a revolutionary approach that blends modern design principles with data-driven insights.",
     content: [
       "Amidst rapid technological developments, Decodes is taking a major step by collaborating with several local startups. This collaboration is not just a business partnership, but a concrete effort to accelerate digital transformation in Indonesia.",
       "Through this initiative, Decodes aims to deliver innovations that address the challenges of modern industry. Working with startups, Decodes develops relevant digital solutions, from data-driven systems to services that support business efficiency. This initiative is expected to open up new opportunities for both small businesses and large corporations, helping them better prepare for the digital era.",
@@ -71,13 +77,13 @@ const newsData = [
       }
     ]
   },
-
   {
     slug: "AI-Powered-Chatbots",
     title: "AI-Powered Chatbots Transforming Customer Engagement",
     date: "August 21, 2025",
     author: "By Decodes Media",
     image: "/news/news_3.png",
+    description: "To meet the growing demand for performance and security, Decodes has launched its next-generation web development services.",
     content: [
       "Amidst rapid technological developments, Decodes is taking a major step by collaborating with several local startups. This collaboration is not just a business partnership, but a concrete effort to accelerate digital transformation in Indonesia.",
       "Through this initiative, Decodes aims to deliver innovations that address the challenges of modern industry. Working with startups, Decodes develops relevant digital solutions, from data-driven systems to services that support business efficiency. This initiative is expected to open up new opportunities for both small businesses and large corporations, helping them better prepare for the digital era.",
@@ -104,13 +110,13 @@ const newsData = [
       }
     ]
   },
-
   {
     slug: "Decodes-Collaborates",
     title: "Decodes Collaborates with Local Startups to Drive Digital Transformation",
     date: "August 22, 2025",
     author: "By Decodes Media",
     image: "/news/news_4.png",
+    description: "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation.",
     content: [
       "Amidst rapid technological developments, Decodes is taking a major step by collaborating with several local startups. This collaboration is not just a business partnership, but a concrete effort to accelerate digital transformation in Indonesia.",
       "Through this initiative, Decodes aims to deliver innovations that address the challenges of modern industry. Working with startups, Decodes develops relevant digital solutions, from data-driven systems to services that support business efficiency. This initiative is expected to open up new opportunities for both small businesses and large corporations, helping them better prepare for the digital era.",
@@ -137,18 +143,15 @@ const newsData = [
       }
     ]
   },
- 
 ];
 
-
-const otherNews = [
+export const otherNews: NewsItem[] = [
   {
     id: 1,
     slug: "creative-branding-strategies",
     category: "Design",
     tittle: "Creative Branding Strategies to Elevate Business Identity",
-    description:
-      "Decodes introduces a revolutionary approach that blends modern design principles with data-driven insights. This strategy allows businesses to create impactful brand stories, improve market reach.",
+    description: "Decodes introduces a revolutionary approach that blends modern design principles with data-driven insights. This strategy allows businesses to create impactful brand stories, improve market reach.",
     date: "22 January, 2025",
     image: "/news/news_2.png",
   },
@@ -157,8 +160,7 @@ const otherNews = [
     slug: "AI-Powered-Chatbots",
     category: "Technology",
     tittle: "AI-Powered Chatbots Transforming Customer Engagement",
-    description:
-      "To meet the growing demand for performance and security, Decodes has launched its next-generation web development services. These solutions are tailored to ensure faster load times, seamless integrations, and adaptive designs that provide an excellent user experience on any device.",
+    description: "To meet the growing demand for performance and security, Decodes has launched its next-generation web development services. These solutions are tailored to ensure faster load times, seamless integrations, and adaptive designs that provide an excellent user experience on any device.",
     date: "25 January, 2025",
     image: "/news/news_3.png",
   },
@@ -167,8 +169,7 @@ const otherNews = [
     slug: "Decodes-Collaborates",
     category: "Business Strategy",
     tittle: "Decodes Collaborates with Local Startups to Drive Digital Transformation",
-    description:
-      "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
+    description: "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
     date: "28 January, 2025",
     image: "/news/news_4.png",
   },
@@ -177,161 +178,26 @@ const otherNews = [
     slug: "Decodes-Strengthens",
     category: "Business Strategy",
     tittle: "Decodes Strengthens Cybersecurity for Local Businesses",
-    description:
-      "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
+    description: "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
     date: "27 January, 2025",
     image: "/news/news_5.png",
   },
-
   {
     id: 6,
     slug: "Decodes-Hosts",
     category: "Technology",
-    tittle: "Decodes Hosts Tech Forum 2025 to Accelerate Indonesia’s Digital Future",
-    description:
-      "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
+    tittle: "Decodes Hosts Tech Forum 2025 to Accelerate Indonesia's Digital Future",
+    description: "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
     date: "30 December, 2025",
     image: "/news/news_6.png",
   },
-
   {
     id: 7,
     slug: "Decodes-Introduces",
     category: "Design",
     tittle: "Decodes Introduces Cloud Solutions for Agile Digital Transformation",
-    description:
-      "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
+    description: "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
     date: "10 December, 2025",
     image: "/news/news_7.png",
   },
 ];
-
-export default function NewsDetailPage() {
-  const params = useParams();
-  const { slug } = params;
-  const selectedNews = newsData.find((n) => n.slug === slug) || newsData[0];
-  const currentIndex = newsData.findIndex((n) => n.slug === slug);
-  const nextIndex = (currentIndex + 1) % newsData.length;
-  const nextSlug = newsData[nextIndex].slug;
-  const filteredOtherNews = otherNews.filter((news) => news.slug !== slug);
-
-  return (
-    <div className="min-h-screen text-white">
-      <div className="max-w-7xl mx-auto px-8 sm:px-6 lg:px-0">
-        <div>
-          <h1 className="text-2xl md:text-4xl font-bold mb-2 pt-32 leading-tight">
-            {selectedNews.title}
-          </h1>
-        </div>
-        <div className="flex flex-col md:flex-row md:items-center gap-2 text-white text-sm mb-6">
-          <span>{selectedNews.date}</span>
-          <span className="hidden md:inline">|</span>
-          <span>{selectedNews.author}</span>
-        </div>
-
-        <div className="mb-8 rounded-lg overflow-hidden">
-          <img
-            src={selectedNews.image}
-            alt={selectedNews.title}
-            className="w-full h-full  object-cover"
-            style={{ objectPosition: 'center' }}
-          />
-        </div>
-
-        <div className="prose prose-invert max-w-none mb-8">
-          {selectedNews.content.map((p, i) => (
-            <p key={i} className="text-gray-300 leading-relaxed mb-4">
-              {p}
-            </p>
-          ))}
-        </div>
-
-        <div className="mb-8">
-          <h3 className="font-bold mb-2">Program Details</h3>
-          <ul className="list-disc pl-6 text-gray-300">
-            {selectedNews.program.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mb-8">
-          <h3 className="font-bold mb-2">Objectives & Impact</h3>
-          <ul className="list-disc pl-6 text-gray-300">
-            {selectedNews.objectives.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mb-8">
-          <h3 className="font-bold mb-2">Quote from a source</h3>
-          {selectedNews.quotes.map((q, i) => (
-            <div key={i} className="mb-4">
-              <div className="font-semibold mb-1">{q.from}</div>
-              <blockquote className="border-l-4 border-gray-600 pl-4 italic text-gray-300">{q.text}</blockquote>
-            </div>
-          ))}
-        </div>
-        <div className="flex justify-end">
-          <Link
-            href={`/news/${nextSlug}`}
-            className="group inline-flex items-center gap-2 mt-8 px-6 py-2 rounded-full bg-transparent border border-white text-white font-semibold transition-all duration-300 disabled:opacity-50 cursor-pointer
-            hover:bg-white hover:text-black active:bg-gray-200 active:text-black"
-          >
-            NEXT
-            <img src="/icons/panah.png" alt="Arrow Right" className="w-4 h-4 block group-hover:hidden" />
-            <img src="/icons/panah_hitam.png" alt="Arrow Right" className="w-4 h-4 hidden group-hover:block"/>
-          </Link>
-        </div>
-
-        {/* Other News */}
-        <div className="mt-16">
-          <h2 className="text-2xl font-bold mb-8">Other News</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-              {filteredOtherNews.slice(0, 3).map((news, i) => (
-              <Link href={`/news/${news.slug}`} key={i} className="block group">
-                <div className="bg-[#1F1F1F] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/20 group cursor-pointer">
-                  <div className="relative overflow-hidden">
-                    <div className="w-full h-48 bg-gray-800 relative">
-                      <img
-                        src={news.image}
-                        alt={news.tittle}
-                        className="w-full h-full object-cover group group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="p-3">
-                    <div className="mb-1">
-                      <span className="text-xs font-semibold text-white">
-                        {news.category}
-                      </span>
-                    </div>
-
-                    <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 group-hover:text-purple-400 transition-colors duration-200">
-                      {news.tittle}
-                    </h3>
-
-                    <p className="text-white text-sm leading-relaxed mb-3 line-clamp-2">
-                      {news.description}
-                    </p>
-
-                    <div className="pt-2">
-                      <div className="flex items-center space-x-2">
-                        <span className="text-white text-sm">
-                          {news.date}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-      <Joinus />
-    </div>
-  );
-}

@@ -40,8 +40,7 @@ export default function Home() {
 
 
   return (
-    <div className='relative w-screen bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
-      <NavbarProps />
+    <div className='flex flex-col items-center justify-center max-w-[100%] mx-auto'>
       <div className="w-full min-h-screen flex flex-col items-center justify-center
         bg-cover bg-center bg-no-repeat bg-fixed
         before:absolute before:inset-0 before:bg-black/20 before:z-0 pt-20"
@@ -243,8 +242,6 @@ export default function Home() {
       <BookADemo />
 
       <Logos />
-
-      <Footer />
     </div>
   );
 }

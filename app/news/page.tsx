@@ -1,14 +1,12 @@
 "use client";
-import { motion } from 'motion/react';
-import NavbarProps from "../components/Navbar/Navbar";
-import Footer from '../components/Footer/Footer';
+import { motion } from 'framer-motion';
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import JoinUs from '../components/JoinUs/JoinUs';
 import Link from "next/link";
 import Image from "next/image";
 
-import { trendingNews, newsData } from "@/data/newsData";
+import { trendingNews, newsData } from "@/app/data/newsData";
 
 export default function NewsPage() {
   const [visibleCount, setVisibleCount] = useState(3);
@@ -38,8 +36,7 @@ export default function NewsPage() {
   };
 
   return (
-    <div className='relative bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto'>
-      <NavbarProps />
+    <div className='flex flex-col items-center justify-center max-w-[100%] mx-auto'>
       <div className="relative w-full flex items-center justify-center h-screen">
         <div
           className="absolute inset-0 bg-cover bg-center brightness-65"
@@ -195,7 +192,6 @@ export default function NewsPage() {
         </div>
 
         <JoinUs />
-        <Footer />
       </div>
     </div>
   );

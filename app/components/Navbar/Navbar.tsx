@@ -64,6 +64,8 @@ export default function NavbarProps() {
     return false;
   };
 
+  if (pathname === "/login") return null;
+
   return (
     <div ref={navbarRef}>
       <Navbar className="fixed w-[90%] left-1/2 -translate-x-1/2">
