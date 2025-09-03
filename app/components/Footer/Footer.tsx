@@ -47,11 +47,11 @@ export default function Footer() {
 
         <div className="flex flex-col w-full lg:w-auto lg:items-end items-center gap-4 mt-8 lg:mt-8">
             <div className="flex gap-3 lg:gap-2 items-center">
-            <div className="flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid">
-                <p className="text-white text-xs lg:text-sm xl:text-base">INSTAGRAM</p>
+            <div className="group flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid transition-all duration-300 hover:bg-white cursor-pointer">
+                <p className="text-white text-xs lg:text-sm xl:text-base group-hover:text-black">INSTAGRAM</p>
             </div>
-            <div className="flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid">
-                <p className="text-white text-xs lg:text-sm xl:text-base">LINKEDIN</p>
+            <div className="group flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid transition-all duration-300 hover:bg-white cursor-pointer">
+                <p className="text-white text-xs lg:text-sm xl:text-base group-hover:text-black">LINKEDIN</p>
             </div>
             </div>
             <p className="text-white text-xs lg:text-xs xl:text-sm text-center lg:text-right">

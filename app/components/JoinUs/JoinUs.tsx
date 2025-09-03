@@ -53,8 +53,9 @@ export default function JoinUs() {
                         focus:ring-0 focus:outline-none"
                     />
                     <Button
+                        variant="gradientOutline"
                         onClick={handleSubmit}
-                        className="absolute right-1 top-1/2 -translate-y-1/2 bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white px-6 py-1 rounded-full font-semibold text-sm cursor-pointer"
+                        className="absolute right-1 top-1/2 -translate-y-1/2 px-6 py-1 rounded-full font-semibold text-sm cursor-pointer"
                     >
                         JOIN NOW
                     </Button>

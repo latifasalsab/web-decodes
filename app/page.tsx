@@ -322,7 +322,8 @@ const ExpandedCard: React.FC<ExpandedCardProps> = React.memo(({
 
             <div className="absolute bottom-4 md:bottom-6 left-0 right-0 flex justify-center">
               <Button 
-                className="w-70 bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white rounded-3xl shadow-md hover:opacity-90 transition-all px-6 md:px-8 py-2 md:py-3 text-sm md:text-base cursor-pointer"
+                variant="gradientOutline"
+                className="w-70 px-6 md:px-8 py-2 md:py-3 text-sm md:text-base cursor-pointer rounded-3xl shadow-md "
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.stopPropagation();
                 }}

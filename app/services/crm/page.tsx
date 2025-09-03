@@ -281,8 +281,8 @@ export default function CRNService() {
                         onClick={() => openModal(plan.id)}
                         className={`w-full transition-all duration-300 cursor-pointer ${
                             plan.popular
-                            ? 'text-white'
-                            : 'bg-transparent border-2 border-[#363FE4] text-white'
+                            ? 'bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white'
+                            : 'bg-transparent border-2 border-[#363FE4] text-white hover:bg-gradient-to-r hover:from-[#0421DE] hover:to-[#5D56E9] hover:text-white hover:border-none'
                         }`}
                         >
                             REGIST NOW
@@ -371,9 +371,11 @@ export default function CRNService() {
 
                         {/* Action Buttons */}
                         <div className="p-6 pt-0">
-                        <button className="w-full bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] hover:from-[#4338ca] hover:to-[#6d28d9] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 cursor-pointer">
+                        <Button 
+                            variant="gradientOutline"
+                            className="w-full transition-all duration-300 cursor-pointer">
                             CONFIRM AND PAY
-                        </button>
+                        </Button>
                         </div>
                     </div>
                     </div>
