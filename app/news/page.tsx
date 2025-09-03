@@ -8,7 +8,7 @@ import JoinUs from '../components/JoinUs/JoinUs';
 import Link from "next/link";
 import Image from "next/image";
 
-import { trendingNews, newsData } from "@/data/newsData";
+import { trendingNews, newsData } from "@/app/data/newsData";
 
 export default function NewsPage() {
   const [visibleCount, setVisibleCount] = useState(3);
