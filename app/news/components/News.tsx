@@ -14,7 +14,7 @@ export default function NewsClient() {
   const [search, setSearch] = useState("");
 
   const filteredNews = newsData.filter((news) =>
-    (news.title || news.title || "").toLowerCase().includes(search.toLowerCase()) ||
+    (news.title || "").toLowerCase().includes(search.toLowerCase()) ||
     news.description.toLowerCase().includes(search.toLowerCase())
   );
 

@@ -24,7 +24,7 @@ export default function NewsGrid({ news, visibleCount, loading, hasMore, showLes
                   <div className="w-full h-48 bg-gray-800 relative">
                     <Image
                       src={newsItem.image}
-                      alt={newsItem.title || newsItem.title || ""}
+                      alt={newsItem.title || ""}
                       width={400}
                       height={200}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -34,7 +34,7 @@ export default function NewsGrid({ news, visibleCount, loading, hasMore, showLes
                 <div className="p-3">
                   <span className="text-xs font-semibold text-white">{newsItem.category}</span>
                   <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 group-hover:text-purple-400 transition-colors duration-200">
-                    {newsItem.title || newsItem.title}
+                    {newsItem.title}
                   </h3>
                   <p className="text-white text-sm leading-relaxed mb-3 line-clamp-2">
                     {newsItem.description}

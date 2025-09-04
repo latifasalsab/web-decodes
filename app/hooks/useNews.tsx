@@ -6,7 +6,7 @@ export const useNewsFilter = (newsData: NewsItem[]) => {
 
   const filteredNews = useMemo(() => {
     return newsData.filter((news) =>
-      (news.title || news.title || "").toLowerCase().includes(search.toLowerCase()) ||
+      (news.title || "").toLowerCase().includes(search.toLowerCase()) ||
       news.description.toLowerCase().includes(search.toLowerCase())
     );
   }, [newsData, search]);
