@@ -4,7 +4,7 @@ export default function Logos() {
   const logos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const loopLogos = [...logos, ...logos];
   return (
-    <div className="flex max-w-7xl px-6 md:px-10 lg:px-0 w-full justify-between items-center my-8">
+    <div className="flex max-w-7xl px-6 md:px-10 lg:px-0 w-full justify-between items-center my-8 cursor-pointer">
         <div className='flex justify-center w-[80%] md:w-[90%]'>
             <div className='wrapper-a overflow-hidden relative'>
             <div className='wrapper-b'>

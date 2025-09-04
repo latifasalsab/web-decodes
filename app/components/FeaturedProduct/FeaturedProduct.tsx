@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { useFeaturedProduct } from "../../hooks/useProduct";
 import { featuredProducts } from "../../data/productData";
 import { FeaturedProductProps, ProductItem } from "../../types/home";
@@ -108,16 +109,18 @@ const ProductCard: React.FC<{
           </div>
 
           <div className="absolute bottom-4 md:bottom-6 left-0 right-0 flex justify-center">
-            <Button 
-              variant="gradientOutline"
-              className="w-70 px-6 md:px-8 py-2 md:py-3 text-sm md:text-base cursor-pointer rounded-3xl shadow-md "
-              onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                e.stopPropagation();
-              }}
-              aria-label={`${item.button.text} for ${item.alt}`}
-            >
-              {item.button.text}
-            </Button>
+            <Link href={item.button.link} passHref>
+              <Button 
+                variant="gradientOutline"
+                className="w-70 px-6 md:px-8 py-2 md:py-3 text-sm md:text-base cursor-pointer rounded-3xl shadow-md "
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.stopPropagation();
+                }}
+                aria-label={`${item.button.text} for ${item.alt}`}
+              >
+                {item.button.text}
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

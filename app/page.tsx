@@ -1,4 +1,3 @@
-
 import React from "react";
 import BookADemo from "./components/BookADemo/BookADemo";
 import Logos from './components/Logos/Logos';
@@ -8,12 +7,10 @@ import HeroHome from "./components/HeroHome/HeroHome";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Home | Decodes",
 }
 
 export default function Home() {
-
-
   return (
     <div className='flex flex-col items-center justify-center max-w-[100%] mx-auto'>
       <HeroHome />

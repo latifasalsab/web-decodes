@@ -53,7 +53,7 @@ const HeroHome = () => {
             ease: "easeInOut",
           }}
         >
-          <Link href="/services">
+          <Link href="/services/chatbot">
             <Button className="text-white justify-center px-6 py-3 sm:px-8 sm:py-4
                              text-sm sm:text-base font-medium
                              hover:scale-105 transition-transform duration-200 cursor-pointer">
