@@ -8,17 +8,22 @@ export default function Logos() {
         <div className='flex justify-center w-[80%] md:w-[90%]'>
             <div className='wrapper-a overflow-hidden relative'>
             <div className='wrapper-b'>
-                {loopLogos.map((num, idx) => (
-                <Image
-                    key={idx}
+                {loopLogos.map((num, idx) => {
+                const uniqueKey = `logo-${num}-${idx}`;
+                return (
+                    <Image
+                    key={uniqueKey}
                     src={`/logo/logo${num}.png`}
                     alt={`Logo ${num}`}
                     width={60}
                     height={60}
                     className="item"
-                    style={{ animationDelay: `calc(20s / ${logos.length} * (${logos.length} - ${idx}) * -1)` }}
-                />
-                ))}
+                    style={{
+                        animationDelay: `calc(20s / ${logos.length} * (${logos.length} - ${idx}) * -1)`,
+                    }}
+                    />
+                );
+                })}
             </div>
             </div>
         </div>

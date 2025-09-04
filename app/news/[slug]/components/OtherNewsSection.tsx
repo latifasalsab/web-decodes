@@ -9,7 +9,7 @@ export default function OtherNewsSection({ otherNews, currentSlug }: Readonly<{ 
       <h2 className="text-2xl font-bold mb-8">Other News</h2>
       <div className="grid md:grid-cols-3 gap-8">
         {filteredOtherNews.slice(0, 3).map((news, index) => (
-          <Link href={`/news/${news.slug}`} key={index} className="block group">
+          <Link href={`/news/${news.slug}`} key={index + 1} className="block group">
             <div className="bg-[#1F1F1F] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/20 group cursor-pointer">
               <div className="relative overflow-hidden">
                 <div className="w-full h-48 bg-gray-800 relative">

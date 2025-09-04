@@ -1,7 +1,7 @@
 import { NewsItem } from "@/app/types/news";
 import Link from "next/link";
 
-export default function NewsDetailContent({ news, nextSlug }: { news: NewsItem; nextSlug: string }) {
+export default function NewsDetailContent({ news, nextSlug }: Readonly<{ news: NewsItem; nextSlug: string }>) {
   return (
     <div className="max-w-7xl mx-auto px-8 sm:px-6 lg:px-0">
       <div>
@@ -27,20 +27,20 @@ export default function NewsDetailContent({ news, nextSlug }: { news: NewsItem; 
 
       {news.content && (
         <div className="prose prose-invert max-w-none mb-8">
-          {news.content.map((paragraph, index) => (
-            <p key={index} className="text-gray-300 leading-relaxed mb-4">
-              {paragraph}
+            {news.content.map((paragraph) => (
+            <p key={paragraph} className="text-gray-300 leading-relaxed mb-4">
+                {paragraph}
             </p>
-          ))}
+            ))}
         </div>
-      )}
+       )}
 
       {news.program && news.program.length > 0 && (
         <div className="mb-8">
           <h3 className="font-bold mb-2">Program Details</h3>
           <ul className="list-disc pl-6 text-gray-300">
             {news.program.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li key={item}>{item}</li>
             ))}
           </ul>
         </div>
@@ -51,7 +51,7 @@ export default function NewsDetailContent({ news, nextSlug }: { news: NewsItem; 
           <h3 className="font-bold mb-2">Objectives & Impact</h3>
           <ul className="list-disc pl-6 text-gray-300">
             {news.objectives.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li key={item}>{item}</li>
             ))}
           </ul>
         </div>
@@ -59,15 +59,18 @@ export default function NewsDetailContent({ news, nextSlug }: { news: NewsItem; 
 
       {news.quotes && news.quotes.length > 0 && (
         <div className="mb-8">
-          <h3 className="font-bold mb-2">Quote from a source</h3>
-          {news.quotes.map((quote, index) => (
-            <div key={index} className="mb-4">
-              <div className="font-semibold mb-1">{quote.from}</div>
-              <blockquote className="border-l-4 border-gray-600 pl-4 italic text-gray-300">
-                {quote.text}
-              </blockquote>
-            </div>
-          ))}
+            <h3 className="font-bold mb-2">Quote from a source</h3>
+            {news.quotes.map((quote) => {
+            const key = `${quote.from}-${quote.text.slice(0, 20)}`; // unik dan stabil
+            return (
+                <div key={key} className="mb-4">
+                <div className="font-semibold mb-1">{quote.from}</div>
+                <blockquote className="border-l-4 border-gray-600 pl-4 italic text-gray-300">
+                    {quote.text}
+                </blockquote>
+                </div>
+            );
+            })}
         </div>
       )}
 
@@ -76,7 +79,7 @@ export default function NewsDetailContent({ news, nextSlug }: { news: NewsItem; 
           href={`/news/${nextSlug}`}
           className="group inline-flex items-center gap-2 mt-8 px-6 py-2 rounded-full bg-transparent border border-white text-white font-semibold transition-all duration-300 disabled:opacity-50 cursor-pointer hover:bg-white hover:text-black active:bg-gray-200 active:text-black"
         >
-          NEXT
+          NEXT{' '}
           <img src="/icons/panah.png" alt="Arrow Right" className="w-4 h-4 block group-hover:hidden" />
           <img src="/icons/panah_hitam.png" alt="Arrow Right" className="w-4 h-4 hidden group-hover:block"/>
         </Link>
