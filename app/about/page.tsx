@@ -1,5 +1,10 @@
 import HeroSection from './components/AboutHeroSection';
 import ContentSection from './components/AboutContentSection';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "About Us",
+}
 
 export default function AboutPage() {
   return (
