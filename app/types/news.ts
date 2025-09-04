@@ -7,7 +7,6 @@ export interface NewsItem {
   id?: number;
   slug: string;
   title?: string;
-  tittle?: string; //nanti kalo udah fix ini dihapus ya
   category?: string;
   description: string;
   date: string;

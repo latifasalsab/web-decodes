@@ -15,7 +15,7 @@ export default function OtherNewsSection({ otherNews, currentSlug }: Readonly<{ 
                 <div className="w-full h-48 bg-gray-800 relative">
                   <img
                     src={news.image}
-                    alt={news.tittle || news.title || ""}
+                    alt={news.title || news.title || ""}
                     className="w-full h-full object-cover group group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -29,7 +29,7 @@ export default function OtherNewsSection({ otherNews, currentSlug }: Readonly<{ 
                 </div>
 
                 <h3 className="text-xl font-bold text-white mb-2 line-clamp-2 group-hover:text-purple-400 transition-colors duration-200">
-                  {news.tittle || news.title}
+                  {news.title || news.title}
                 </h3>
 
                 <p className="text-white text-sm leading-relaxed mb-3 line-clamp-2">

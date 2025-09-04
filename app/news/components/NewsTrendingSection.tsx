@@ -32,7 +32,7 @@ export default function NewsTrendingSection({ trendingNews }: Readonly<{ trendin
                   </span>
                 </div>
                 <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-tight">
-                  {trendingNews.tittle}
+                  {trendingNews.title}
                 </h1>
                 <p className="text-white text-sm leading-relaxed max-w-7xl">
                   {trendingNews.description}
