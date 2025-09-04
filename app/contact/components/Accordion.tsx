@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import type { FormData, ContactCardProps, AccordionItemType } from "../../types/contact";
+import type { AccordionItemType } from "../../types/contact";
 
 interface CustomAccordionProps {
   items: AccordionItemType[];

@@ -1,8 +1,7 @@
-
-import CustomAccordion from "./component/Accordion";
+import CustomAccordion from "./components/Accordion";
 import { contactFAQData } from "../data/faqData";
-import CardContact from "./component/cardContact";
-import HeroMotion from "./component/HeroMotion"; 
+import CardContact from "./components/cardContact";
+import HeroMotion from "./components/HeroMotion"; 
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-      <div>
+    <div>
       <HeroMotion />
       
       <div className="w-full px-6 bg-black min-h-screen">
