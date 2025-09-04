@@ -1,5 +1,4 @@
-import NavbarProps from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
+
 import CustomAccordion from "./component/Accordion";
 import { contactFAQData } from "../data/faqData";
 import CardContact from "./component/cardContact";
@@ -7,18 +6,9 @@ import HeroMotion from "./component/HeroMotion";
 
 export default function ContactPage() {
   return (
-    <div className="relative bg-[#000] flex flex-col items-center justify-center w-full max-w-[100%] mx-auto custom-scrollbar">
-      <NavbarProps />
-
-      <div className="relative w-full flex items-center justify-center h-screen">
-        <div
-          className="absolute inset-0 bg-cover bg-center brightness-65"
-          style={{ backgroundImage: "url('/contact/img_herocontact.png')" }}
-        ></div>
-        <HeroMotion />
-      </div>
-
-      {/* isi */}
+      <div>
+      <HeroMotion />
+      
       <div className="w-full px-6 bg-black min-h-screen">
         <div className="max-w-7xl mx-auto py-18 bg-black">
           <div className="grid gird-cols-1 lg:grid-cols-2 gap-12 items-start bg-black">
@@ -41,7 +31,6 @@ export default function ContactPage() {
         </div>
           <CardContact />
       </div>
-      <Footer />
     </div>
   );
 }
