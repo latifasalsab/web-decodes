@@ -11,7 +11,10 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Decodes",
+  title: {
+    template: "%s | Decodes",
+    default: "Untitled"
+  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.ico",

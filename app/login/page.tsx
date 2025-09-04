@@ -1,6 +1,11 @@
 import { JSX } from "react";
 import Image from 'next/image';
 import LoginContainer from './components/LoginContainer';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Login",
+}
 
 export default function LoginPage(): JSX.Element {
     return (
