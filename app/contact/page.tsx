@@ -3,6 +3,11 @@ import CustomAccordion from "./component/Accordion";
 import { contactFAQData } from "../data/faqData";
 import CardContact from "./component/cardContact";
 import HeroMotion from "./component/HeroMotion"; 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Contact",
+}
 
 export default function ContactPage() {
   return (

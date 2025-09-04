@@ -1,10 +1,15 @@
-"use client";
-import React, { useState, useMemo, useCallback} from "react";
+// "use client";
+import React from "react";
 import BookADemo from "./components/BookADemo/BookADemo";
 import Logos from './components/Logos/Logos';
 import { FeaturedProduct } from "./components/FeaturedProduct/FeaturedProduct";
 import TheValue from "./components/TheValue/TheValue";
 import HeroHome from "./components/HeroHome/HeroHome";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Home",
+}
 
 export default function Home() {
 
