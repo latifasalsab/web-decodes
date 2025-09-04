@@ -7,7 +7,7 @@ export interface NewsItem {
   id?: number;
   slug: string;
   title?: string;
-  tittle?: string; // Keep both for backward compatibility
+  tittle?: string; //nanti kalo udah fix ini dihapus ya
   category?: string;
   description: string;
   date: string;
@@ -22,14 +22,4 @@ export interface NewsItem {
 export interface TrendingNews extends NewsItem {
   id: number;
   category: string;
-}
-
-export interface NewsPageProps {
-  trendingNews: TrendingNews;
-  newsData: NewsItem[];
-}
-
-export interface NewsDetailProps {
-  newsData: NewsItem[];
-  otherNews: NewsItem[];
 }
