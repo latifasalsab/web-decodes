@@ -101,6 +101,7 @@ export default function LoginForm({ onShowForgot, onShowRegister, onLogin }: Log
             <Button 
               type="submit"
               disabled={!isFormValid}
+              variant="gradientOutline"
               className="w-full px-3 py-2 xl:px-4 xl:py-3 rounded-lg text-white text-base cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >
               SIGN IN

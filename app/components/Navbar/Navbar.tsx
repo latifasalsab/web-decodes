@@ -75,7 +75,7 @@ export default function NavbarProps() {
           <div className="flex items-center gap-2 ml-8">
             <NavbarButton
               href="/login"
-              variant="primary"
+              variant="gradientOutline"
               className="rounded-full shadow-md cursor-pointer"
             >
               LOGIN
@@ -165,7 +165,7 @@ export default function NavbarProps() {
             <div className="flex w-full flex-col gap-4 mt-4">
               <NavbarButton
                 href="/login"
-                variant="secondary"
+                variant="gradientOutline"
                 className="w-full bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white cursor-pointer"
               >
                 Login
