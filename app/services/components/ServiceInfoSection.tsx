@@ -1,4 +1,3 @@
-// components/ServiceInfoSection.tsx
 import Image from 'next/image';
 import { ServiceData } from '@/app/types/service';
 
