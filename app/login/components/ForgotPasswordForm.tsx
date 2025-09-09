@@ -61,6 +61,7 @@ export default function ForgotPasswordForm({
                     <Button 
                         onClick={handleSubmit}
                         disabled={!email}
+                        variant="gradientOutline"
                         className="w-full px-3 py-2 xl:px-4 xl:py-3 rounded-lg text-white text-base"
                     >
                         SEND EMAIL

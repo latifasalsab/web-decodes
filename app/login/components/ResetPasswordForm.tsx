@@ -72,6 +72,7 @@ export default function ResetPasswordForm({
                     
                     <Button 
                         onClick={handleSubmit}
+                        variant="gradientOutline"
                         disabled={!passwords.newPassword || !passwords.confirmPassword}
                         className="w-full px-3 py-2 xl:px-4 xl:py-3 rounded-lg text-white text-base"
                     >

@@ -1,4 +1,3 @@
-
 "use client";
 import { newsData, trendingNews } from "@/app/data/newsData";
 import React, { useState } from "react";
@@ -13,12 +12,14 @@ export default function NewsClient() {
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
 
-  const filteredNews = newsData.filter((news) =>
-    (news.title || "").toLowerCase().includes(search.toLowerCase()) ||
-    news.description.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredNews = newsData
+    .filter((news) => news.slug !== trendingNews.slug)
+    .filter((news) =>
+      (news.title || "").toLowerCase().includes(search.toLowerCase()) ||
+      news.description.toLowerCase().includes(search.toLowerCase())
+    );
 
-  const hasMore = visibleCount + 1 < filteredNews.length;
+  const hasMore = visibleCount < filteredNews.length;
   const showLess = !hasMore && filteredNews.length > 3;
 
   const handleLoadMore = async () => {

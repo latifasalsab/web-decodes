@@ -11,6 +11,30 @@ export const trendingNews: TrendingNews = {
   image: "/news/news_1.png",
 };
 
+const parseDate = (dateString: string): Date => {
+  const monthMap: { [key: string]: string } = {
+    'januari': 'january',
+    'februari': 'february',
+    'maret': 'march',
+    'april': 'april',
+    'mei': 'may',
+    'juni': 'june',
+    'juli': 'july',
+    'agustus': 'august',
+    'september': 'september',
+    'oktober': 'october',
+    'november': 'november',
+    'desember': 'december'
+  };
+  
+  let normalizedDate = dateString.toLowerCase();
+  Object.keys(monthMap).forEach(indonesian => {
+    normalizedDate = normalizedDate.replace(indonesian, monthMap[indonesian]);
+  });
+  
+  return new Date(normalizedDate);
+};
+
 export const newsData: NewsItem[] = [
   {
     slug: "decodes-officially-reaches",
@@ -42,6 +66,54 @@ export const newsData: NewsItem[] = [
       {
         from: "From Startup Partner",
         text: "Joining this collaboration gives us the opportunity to grow faster with the support of Decodes' resources and network. We are confident that together we can make a real impact, said Arif Santoso, Founder of TechNova Indonesia."
+      }
+    ]
+  },
+  {
+    slug: "Decodes-Hosts",
+    title: "Decodes Hosts Tech Forum 2025 to Accelerate Indonesia's Digital Future",
+    date: "December 30, 2025",
+    author: "By Decodes Media",
+    image: "/news/news_6.png",
+    description: "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
+    content: [
+      "Amidst rapid technological developments, Decodes is taking a major step by collaborating with several local startups.",
+      "Through this initiative, Decodes aims to deliver innovations that address the challenges of modern industry."
+    ],
+    program: [
+      "Development of digital solutions that support business efficiency",
+    ],
+    objectives: [
+      "This collaboration is expected to strengthen the competitiveness of Indonesian startups."
+    ],
+    quotes: [
+      {
+        from: "From Decodes",
+        text: "We believe the best innovations come from collaboration."
+      }
+    ]
+  },
+  {
+    slug: "Decodes-Introduces",
+    title: "Decodes Introduces Cloud Solutions for Agile Digital Transformation",
+    date: "December 10, 2025",
+    author: "By Decodes Media",
+    image: "/news/news_7.png",
+    description: "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
+    content: [
+      "Amidst rapid technological developments, Decodes is taking a major step by collaborating with several local startups.",
+      "Through this initiative, Decodes aims to deliver innovations that address the challenges of modern industry."
+    ],
+    program: [
+      "Development of digital solutions that support business efficiency",
+    ],
+    objectives: [
+      "This collaboration is expected to strengthen the competitiveness of Indonesian startups."
+    ],
+    quotes: [
+      {
+        from: "From Decodes",
+        text: "We believe the best innovations come from collaboration."
       }
     ]
   },
@@ -143,55 +215,7 @@ export const newsData: NewsItem[] = [
       }
     ]
   },
-  {
-    slug: "Decodes-Hosts",
-    title: "Decodes Hosts Tech Forum 2025 to Accelerate Indonesia's Digital Future",
-    date: "December 30, 2025",
-    author: "By Decodes Media",
-    image: "/news/news_6.png",
-    description: "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
-    content: [
-      "Amidst rapid technological developments, Decodes is taking a major step by collaborating with several local startups.",
-      "Through this initiative, Decodes aims to deliver innovations that address the challenges of modern industry."
-    ],
-    program: [
-      "Development of digital solutions that support business efficiency",
-    ],
-    objectives: [
-      "This collaboration is expected to strengthen the competitiveness of Indonesian startups."
-    ],
-    quotes: [
-      {
-        from: "From Decodes",
-        text: "We believe the best innovations come from collaboration."
-      }
-    ]
-  },
-  {
-    slug: "Decodes-Introduces",
-    title: "Decodes Introduces Cloud Solutions for Agile Digital Transformation",
-    date: "December 10, 2025",
-    author: "By Decodes Media",
-    image: "/news/news_7.png",
-    description: "Through strategic partnerships with local startups, Decodes accelerates digital transformation by fostering innovation, empowering businesses, and creating scalable solutions for the future.",
-    content: [
-      "Amidst rapid technological developments, Decodes is taking a major step by collaborating with several local startups.",
-      "Through this initiative, Decodes aims to deliver innovations that address the challenges of modern industry."
-    ],
-    program: [
-      "Development of digital solutions that support business efficiency",
-    ],
-    objectives: [
-      "This collaboration is expected to strengthen the competitiveness of Indonesian startups."
-    ],
-    quotes: [
-      {
-        from: "From Decodes",
-        text: "We believe the best innovations come from collaboration."
-      }
-    ]
-  },
-];
+].sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime());
 
 export const otherNews: NewsItem[] = [
   {
@@ -248,4 +272,4 @@ export const otherNews: NewsItem[] = [
     date: "10 December, 2025",
     image: "/news/news_7.png",
   },
-];
+].sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime());

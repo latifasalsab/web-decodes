@@ -11,7 +11,7 @@ export default function NewsGrid({ news, visibleCount, loading, hasMore, showLes
   onLoadMore: () => void;
   onLoadLess: () => void;
 }>) {
-  const visibleNews = news.slice(1, visibleCount + 1);
+  const visibleNews = news.slice(0, visibleCount);
 
   return (
     <div className="h-auto flex items-center px-2 md:px-10">

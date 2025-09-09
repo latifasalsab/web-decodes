@@ -215,7 +215,6 @@ export default function RegisterForm({ onShowLogin, onRegisterSuccess }: Registe
                     </p>
                 </div>
                 
-                {/* Stepper Indicator */}
                 <div className="flex items-center justify-center gap-3">
                     {registerSteps.map((stepObj, idx) => (
                         <div key={stepObj.label} className="flex flex-col items-center gap-2">
@@ -233,16 +232,14 @@ export default function RegisterForm({ onShowLogin, onRegisterSuccess }: Registe
                     ))}
                 </div>
                 
-                {/* Stepper Form */}
                 <div className="w-full flex-1">
                     {registerSteps[step].render(registerValues[step], handleChange)}
                 </div>
                 
-                {/* Stepper Navigation */}
                 <div className="flex w-full justify-between gap-4">
                     <Button
                         variant="secondary"
-                        className="rounded w-[47%] px-6 flex-1 sm:flex-none"
+                        className="rounded w-[47%] px-6 flex-1 sm:flex-none hover:bg-transparent hover:border hover:text-white active:bg-gray-200 active:text-black"
                         onClick={handleBack}
                         disabled={step === 0}
                         type="button"
@@ -251,19 +248,21 @@ export default function RegisterForm({ onShowLogin, onRegisterSuccess }: Registe
                     </Button>
                     {step < registerSteps.length - 1 ? (
                         <Button
-                            className="rounded w-[47%] px-6 flex-1 sm:flex-none bg-[#a084f7] hover:bg-[#8f6ff7]"
+                            className="rounded w-[47%] px-6 flex-1 sm:flex-none"
                             onClick={handleNext}
                             disabled={!isStepValid(step)}
                             type="button"
+                            variant="gradientOutline"
                         >
                             Next
                         </Button>
                     ) : (
                         <Button
-                            className="rounded w-[47%] px-6 flex-1 sm:flex-none bg-[#a084f7] hover:bg-[#8f6ff7]"
+                            className="rounded w-[47%] px-6 flex-1 sm:flex-none"
                             onClick={handleRegister}
                             disabled={!isStepValid(step)}
                             type="button"
+                            variant="gradientOutline"
                         >
                             Register
                         </Button>
