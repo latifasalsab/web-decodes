@@ -16,7 +16,7 @@ export default function NewsGrid({ news, visibleCount, loading, hasMore, showLes
   return (
     <div className="h-auto flex items-center px-2 md:px-10">
       <div className="max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-0">
           {visibleNews.map((newsItem) => (
             <Link href={`/news/${newsItem.slug}`} key={newsItem.slug} className="block">
               <div className="bg-[#1F1F1F] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-gray-900/20 group cursor-pointer">

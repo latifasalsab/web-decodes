@@ -22,10 +22,11 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
 
         gradientOutline:
-        "bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white rounded-full font-semibold transition-all duration-300 hover:bg-none hover:bg-transparent hover:border hover:border-[#0421DE] hover:text-white",
+        "bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white rounded-full font-semibold transition-all duration-300 hover:bg-none hover:bg-transparent border-transparent hover:border hover:border-[#0421DE] hover:text-white",
         outlineToDefault:
-        "bg-transparent border-2 border-[#0421DE]  text-white rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#0421DE] hover:to-[#5D56E9] hover:border-none hover:text-white"
-
+        "bg-transparent border-2 border-[#0421DE]  text-white rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#0421DE] hover:to-[#5D56E9] hover:border-none hover:text-white",
+        buttonHoverDark:
+        "bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white rounded-full font-semibold transition-all duration-300 hover:from-[#0318a8] hover:to-[#403bb9] hover:text-white",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3 rounded-full",

@@ -1,4 +1,16 @@
 import { Button } from "@/components/ui/button"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
 
 export default function BookADemo() {
     return (
@@ -58,12 +70,27 @@ export default function BookADemo() {
                     </div>
     
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
-                    <Button 
-                        variant="gradientOutline" 
-                        className="px-6 py-2.5 rounded-3xl font-semibold text-sm"
-                    >
-                        BOOK A DEMO
-                    </Button>
+                    <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                            <Button 
+                                variant="gradientOutline" 
+                                className="px-6 py-2.5 rounded-3xl font-semibold text-sm"
+                            >
+                                BOOK A DEMO
+                            </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent className="bg-gray-950 border-gray-700">
+                            <AlertDialogHeader>
+                                <AlertDialogTitle className="text-white font-bold text-lg">Thank you for your interest</AlertDialogTitle>
+                                <AlertDialogDescription className="text-gray-300 text-sm">
+                                    We'll be contacting you within 24 hours to arrange your personalized demo. Please keep an eye on your inbox.
+                                </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                                <AlertDialogAction>Oke</AlertDialogAction>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialog>
     
                     <Button 
                         variant="outlineToDefault" 

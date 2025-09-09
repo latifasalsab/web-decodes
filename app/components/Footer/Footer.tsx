@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -55,13 +56,28 @@ export default function Footer() {
 
         <div className="flex flex-col w-full lg:w-auto lg:items-end items-center gap-4 mt-8 lg:mt-8">
             <div className="flex gap-3 lg:gap-2 items-center">
-            <div className="group flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid transition-all duration-300 hover:bg-white cursor-pointer">
-                <p className="text-white text-xs lg:text-sm xl:text-base group-hover:text-black">INSTAGRAM</p>
-            </div>
-            <div className="group flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid transition-all duration-300 hover:bg-white cursor-pointer">
-                <p className="text-white text-xs lg:text-sm xl:text-base group-hover:text-black">LINKEDIN</p>
-            </div>
-            </div>
+                <Link
+                    href="https://www.instagram.com/bydecodes?igsh=amRzaWM4azZwM3R3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid transition-all duration-300 hover:bg-white cursor-pointer"
+                >
+                    <p className="text-white text-xs lg:text-sm xl:text-base group-hover:text-black">
+                    INSTAGRAM
+                    </p>
+                </Link>
+
+                <Link
+                    href="https://www.linkedin.com/company/decodes-media/posts/?feedView=all"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center py-2 px-4 rounded-full border border-neutral-400 border-solid transition-all duration-300 hover:bg-white cursor-pointer"
+                >
+                    <p className="text-white text-xs lg:text-sm xl:text-base group-hover:text-black">
+                    LINKEDIN
+                    </p>
+                </Link>
+                </div>
             <p className="text-white text-xs lg:text-xs xl:text-sm text-center lg:text-right">
             ©2025 PT Byde Cloudata Ekosistem. All Rights Reserved
             </p>

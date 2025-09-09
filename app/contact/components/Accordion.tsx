@@ -32,7 +32,7 @@ const CustomAccordion: React.FC<CustomAccordionProps> = ({
           value={item.id} 
           className="bg-gray-800 rounded-lg border-none"
         >
-          <AccordionTrigger className="text-white hover:no-underline px-6 py-3 text-left">
+          <AccordionTrigger className="text-white hover:no-underline px-6 py-3 text-left cursor-pointer">
             {item.question}
           </AccordionTrigger>
           <AccordionContent className="text-white px-6 pb-4">
