@@ -21,7 +21,9 @@ export interface AccordionItemType {
 export interface ValidationErrors {
   fullName: boolean;
   phoneNumber: boolean;
+  phoneNumberInvalid: boolean;
   email: boolean;
+  emailInvalid: boolean;
   businessName: boolean;
   subject: boolean;
   messages: boolean;

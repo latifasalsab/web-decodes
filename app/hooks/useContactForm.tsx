@@ -14,7 +14,9 @@ export const useContactForm = (onSubmit?: (data: FormData) => void): UseContactF
   const [errors, setErrors] = useState<ValidationErrors>({
     fullName: false,
     phoneNumber: false,
+    phoneNumberInvalid: false, 
     email: false,
+    emailInvalid: false,
     businessName: false,
     subject: false,
     messages: false,
@@ -22,6 +24,19 @@ export const useContactForm = (onSubmit?: (data: FormData) => void): UseContactF
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhoneNumber = (phone: string): boolean => {
+    const cleanPhone = phone.replace(/\D/g, '');
+    const phoneRegex = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
+    
+    return phoneRegex.test(cleanPhone);
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -36,6 +51,8 @@ export const useContactForm = (onSubmit?: (data: FormData) => void): UseContactF
       setErrors((prev) => ({
         ...prev,
         [name]: false,
+        ...(name === 'email' && { emailInvalid: false }),
+        ...(name === 'phoneNumber' && { phoneNumberInvalid: false }),
       }));
     }
   };
@@ -44,14 +61,15 @@ export const useContactForm = (onSubmit?: (data: FormData) => void): UseContactF
     const newErrors: ValidationErrors = {
       fullName: formData.fullName.trim() === "",
       phoneNumber: formData.phoneNumber.trim() === "",
+      phoneNumberInvalid: formData.phoneNumber.trim() !== "" && !validatePhoneNumber(formData.phoneNumber),
       email: formData.email.trim() === "",
+      emailInvalid: formData.email.trim() !== "" && !validateEmail(formData.email),
       businessName: formData.businessName.trim() === "",
       subject: formData.subject.trim() === "",
       messages: formData.messages.trim() === "",
     };
 
     setErrors(newErrors);
-    
     
     return !Object.values(newErrors).some(error => error);
   };
@@ -60,21 +78,7 @@ export const useContactForm = (onSubmit?: (data: FormData) => void): UseContactF
     setIsSubmitted(true);
     
     if (validateForm()) {
-      
       setShowDialog(true);
-    } else {
-      
-      setTimeout(() => {
-        setErrors({
-          fullName: false,
-          phoneNumber: false,
-          email: false,
-          businessName: false,
-          subject: false,
-          messages: false,
-        });
-        setIsSubmitted(false);
-      }, 3000); 
     }
   };
 
@@ -84,7 +88,6 @@ export const useContactForm = (onSubmit?: (data: FormData) => void): UseContactF
     } else {
       console.log("Form submitted:", formData);
     }
-    
     
     setFormData({
       fullName: "",
@@ -97,7 +100,9 @@ export const useContactForm = (onSubmit?: (data: FormData) => void): UseContactF
     setErrors({
       fullName: false,
       phoneNumber: false,
+      phoneNumberInvalid: false,
       email: false,
+      emailInvalid: false,
       businessName: false,
       subject: false,
       messages: false,
@@ -114,11 +119,6 @@ export const useContactForm = (onSubmit?: (data: FormData) => void): UseContactF
   const handleCancelSubmit = () => {
     setShowDialog(false);
   };
-
-  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
-
-
-
 
   return {
     formData,

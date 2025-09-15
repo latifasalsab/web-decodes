@@ -109,6 +109,12 @@ const ContactCard: React.FC<ContactCardProps> = ({
                           <span>This field is required</span>
                         </div>
                       )}
+                      {errors.phoneNumberInvalid && (
+                        <div className="flex items-center mt-1 text-red-500 text-xs">
+                          <span className="mr-1">!</span>
+                          <span>Please enter a valid phone number</span>
+                        </div>
+                      )}
                     </div>
 
                     <div>
@@ -130,6 +136,12 @@ const ContactCard: React.FC<ContactCardProps> = ({
                         <div className="flex items-center mt-1 text-red-500 text-xs">
                           <span className="mr-1">!</span>
                           <span>This field is required</span>
+                        </div>
+                      )}
+                      {errors.emailInvalid && (
+                        <div className="flex items-center mt-1 text-red-500 text-xs">
+                          <span className="mr-1">!</span>
+                          <span>Please enter a valid email address</span>
                         </div>
                       )}
                     </div>
@@ -290,7 +302,7 @@ const ContactCard: React.FC<ContactCardProps> = ({
 
 
       <AlertDialog open={showSuccessDialog} onOpenChange={handleCloseSuccessDialog}>
-        <AlertDialogContent className="bg-black border-white border-2 text-white">
+        <AlertDialogContent className="bg-black border-gray-500 border-2 text-white">
           <AlertDialogHeader>
             <AlertDialogTitle className="text-white">Message Sent Successfully!</AlertDialogTitle>
             <AlertDialogDescription className="text-gray-300">
