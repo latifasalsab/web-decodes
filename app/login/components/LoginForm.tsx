@@ -15,15 +15,64 @@ interface LoginFormProps {
 export default function LoginForm({ onShowForgot, onShowRegister, onLogin }: LoginFormProps) {
   const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [rememberMe, setRememberMe] = useState(false);
+  const [errors, setErrors] = useState({ email: '', password: '' });
+
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const isValidPassword = (password: string) => {
+    return password.length >= 8;
+  };
+
+  const validateForm = () => {
+    const newErrors = { email: '', password: '' };
+    
+    if (!loginData.email) {
+      newErrors.email = 'Please enter your email address';
+    } else if (!isValidEmail(loginData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+    
+    if (!loginData.password) {
+      newErrors.password = 'Please enter your password';
+    } else if (!isValidPassword(loginData.password)) {
+      newErrors.password = 'Please enter a password with a minimum of 8 characters';
+    }
+    
+    setErrors(newErrors);
+    return !newErrors.email && !newErrors.password;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (isFormValid) {
+    if (validateForm()) {
       onLogin(loginData.email);
     }
   };
 
-  const isFormValid = loginData.email && loginData.password;
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const email = e.target.value;
+    setLoginData({...loginData, email});
+    
+    if (errors.email && email) {
+      if (isValidEmail(email)) {
+        setErrors({...errors, email: ''});
+      }
+    }
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const password = e.target.value;
+    setLoginData({...loginData, password});
+    
+    if (errors.password && password) {
+      if (isValidPassword(password)) {
+        setErrors({...errors, password: ''});
+      }
+    }
+  };
 
   return (
     <div className="relative w-full p-10 min-h-[80vh] flex flex-col justify-center py-16">
@@ -54,10 +103,15 @@ export default function LoginForm({ onShowForgot, onShowRegister, onLogin }: Log
               type="email"
               placeholder="Enter your email"
               value={loginData.email}
-              onChange={e => setLoginData({...loginData, email: e.target.value})}
-              className="w-full px-3 py-2 xl:px-4 xl:py-3 rounded-lg bg-[#3a3a3a] text-white border-none outline-none focus:bg-[#4a4a4a] transition-colors placeholder-white/50"
+              onChange={handleEmailChange}
+              className={`w-full px-3 py-2 xl:px-4 xl:py-3 rounded-lg bg-[#3a3a3a] text-white border-none outline-none focus:bg-[#4a4a4a] transition-colors placeholder-white/50 ${
+                errors.email ? 'ring-2 ring-red-500' : ''
+              }`}
               required
             />
+            {errors.email && (
+              <p className="text-red-400 text-xs mt-1">{errors.email}</p>
+            )}
           </div>
           
           <div className="w-full flex flex-col gap-2">
@@ -66,13 +120,18 @@ export default function LoginForm({ onShowForgot, onShowRegister, onLogin }: Log
               <input
                 name="password"
                 type="password"
-                placeholder="Enter your password"
+                placeholder="Enter your password (min. 8 characters)"
                 value={loginData.password}
-                onChange={e => setLoginData({...loginData, password: e.target.value})}
-                className="w-full px-3 py-2 xl:px-4 xl:py-3 pr-12 rounded-lg bg-[#3a3a3a] text-white border-none outline-none focus:bg-[#4a4a4a] transition-colors placeholder-white/50"
+                onChange={handlePasswordChange}
+                className={`w-full px-3 py-2 xl:px-4 xl:py-3 pr-12 rounded-lg bg-[#3a3a3a] text-white border-none outline-none focus:bg-[#4a4a4a] transition-colors placeholder-white/50 ${
+                  errors.password ? 'ring-2 ring-red-500' : ''
+                }`}
                 required
               />
             </div>
+            {errors.password && (
+              <p className="text-red-400 text-xs mt-1">{errors.password}</p>
+            )}
           </div>
           
           <div className="flex flex-col gap-4">
@@ -100,7 +159,6 @@ export default function LoginForm({ onShowForgot, onShowRegister, onLogin }: Log
             
             <Button 
               type="submit"
-              disabled={!isFormValid}
               variant="gradientOutline"
               className="w-full px-3 py-2 xl:px-4 xl:py-3 rounded-lg text-white text-base cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             >

@@ -3,7 +3,8 @@ import ContentSection from './components/AboutContentSection';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About",
+  description: "Learn more about Decodes, our vision, mission, and team on the About page."
 }
 
 export default function AboutPage() {

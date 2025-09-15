@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Contact",
+  description: "Get in touch with the Decodes team for inquiries, collaborations, or more information through the Contact page."
 }
 
 export default function ContactPage() {
@@ -33,7 +34,7 @@ export default function ContactPage() {
               <CustomAccordion items={contactFAQData} />
           </div>
         </div>
-          <CardContact />
+        <CardContact />
       </div>
     </div>
   );

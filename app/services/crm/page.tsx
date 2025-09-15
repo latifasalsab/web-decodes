@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "CRM Service",
+  description: "Learn about Decodes CRM services to optimize your business processes and customer relationships."
 }
 
 export default function CRMService() {
