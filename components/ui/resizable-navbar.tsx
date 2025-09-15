@@ -364,7 +364,8 @@ export const NavbarButton = ({
     gradient:
       "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
     gradientOutline:
-      "bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white rounded-full font-semibold transition-all duration-300 hover:bg-none hover:bg-transparent hover:border hover:border-[#0421DE] hover:text-white",
+      // "bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white rounded-full font-semibold transition-all duration-300 hover:bg-none hover:bg-transparent hover:border hover:border-[#0421DE] hover:text-white",
+      "bg-gradient-to-r from-[#0421DE] to-[#5D56E9] text-white rounded-full font-semibold transition-all duration-300 hover:bg-none hover:bg-transparent border-transparent hover:border hover:border-[#0421DE] hover:text-white"
   };
 
   return (

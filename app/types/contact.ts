@@ -17,3 +17,25 @@ export interface AccordionItemType {
   question: string;
   answer: string;
 }
+
+export interface ValidationErrors {
+  fullName: boolean;
+  phoneNumber: boolean;
+  email: boolean;
+  businessName: boolean;
+  subject: boolean;
+  messages: boolean;
+}
+
+export interface UseContactFormReturn {
+  formData: FormData;
+  errors: ValidationErrors;
+  isSubmitted: boolean;
+  showDialog: boolean;
+  showSuccessDialog: boolean;
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
+  handleSubmit: () => void;
+  handleConfirmSubmit: () => void;
+  handleCancelSubmit: () => void;
+  handleCloseSuccessDialog: () => void;
+}

@@ -1,14 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
+import type { ContactCardProps } from "../../types/contact";
+import { useContactForm } from "../../hooks/useContactForm";
+import Image from "next/image";
 import {
   Card,
   CardContent,
   CardDescription,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
-import type { FormData, ContactCardProps } from "../../types/contact";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,49 +19,36 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { useContactForm } from "../../hooks/useContactForm";
-import { useRouter } from "next/navigation";
 
 
 
-const ContactCard: React.FC<ContactCardProps> = ({ onSubmit, className = "" }) => {
-  const [formData, setFormData] = useState<FormData>({
-    fullName: "",
-    phoneNumber: "",
-    email: "",
-    businessName: "",
-    subject: "",
-    messages: "",
-  });
 
+const ContactCard: React.FC<ContactCardProps> = ({ 
+  onSubmit,
+  className = ""
+}) => {
   const {
-    formData: formState,
+    formData,
+    errors,
+    isSubmitted,
+    showDialog,
+    showSuccessDialog,
     handleInputChange,
-    handleSubmitClick,
-    handleCloseDialog,
-    isDialogOpen,
-    setIsDialogOpen,
-    dialogType,
+    handleSubmit,
+    handleConfirmSubmit,
+    handleCancelSubmit,
+    handleCloseSuccessDialog,
   } = useContactForm(onSubmit);
 
-  const router = useRouter();
-
-const handleConfirmSubmit = () => {
-  onSubmit?.(formData);
-
-  setIsDialogOpen(false);
-
-  router.push("/");
-};
-
   return (
-    <div className={`w-full h-full bg-black flex items-center justify-center py-18 ${className}`}>
+    <div
+      className={`w-full h-full bg-black flex items-center justify-center py-18 ${className}`}
+    >
       <Card className="w-full max-w-7xl bg-black border-2 rounded-4xl border-white">
         <CardContent className="p-0">
           <div className="flex flex-col lg:flex-row">
-
+            
             <div className="flex-1">
               <div className="p-6 pb-6">
                 <CardTitle className="text-white text-xl font-semibold mb-2">
@@ -75,75 +63,114 @@ const handleConfirmSubmit = () => {
 
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
+                  
                   <div className="space-y-4">
                     <div>
-                      <label htmlFor="fullName" className="block text-white text-sm mb-2">
+                      <label
+                        htmlFor="fullName"
+                        className="block text-white text-sm mb-2"
+                      >
                         Full Name
                       </label>
                       <input
                         type="text"
                         name="fullName"
                         placeholder="Enter your full name"
-                        value={formState.fullName}
+                        value={formData.fullName}
                         onChange={handleInputChange}
                         className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded-md px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm"
                       />
+                      {errors.fullName && (
+                        <div className="flex items-center mt-1 text-red-500 text-xs">
+                          <span className="mr-1">!</span>
+                          <span>This field is required</span>
+                        </div>
+                      )}
                     </div>
 
                     <div>
-                      <label htmlFor="phoneNumber" className="block text-white text-sm mb-2">
+                      <label
+                        htmlFor="phoneNumber"
+                        className="block text-white text-sm mb-2"
+                      >
                         Phone Number
                       </label>
                       <input
                         type="tel"
                         name="phoneNumber"
                         placeholder="Enter your phone number"
-                        value={formState.phoneNumber}
+                        value={formData.phoneNumber}
                         onChange={handleInputChange}
                         className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm"
                       />
+                      {errors.phoneNumber && (
+                        <div className="flex items-center mt-1 text-red-500 text-xs">
+                          <span className="mr-1">!</span>
+                          <span>This field is required</span>
+                        </div>
+                      )}
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-white text-sm mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-white text-sm mb-2"
+                      >
                         Email
                       </label>
                       <input
                         type="email"
                         name="email"
                         placeholder="Enter your email"
-                        value={formState.email}
+                        value={formData.email}
                         onChange={handleInputChange}
                         className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm"
                       />
+                      {errors.email && (
+                        <div className="flex items-center mt-1 text-red-500 text-xs">
+                          <span className="mr-1">!</span>
+                          <span>This field is required</span>
+                        </div>
+                      )}
                     </div>
 
                     <div>
-                      <label htmlFor="businessName" className="block text-white text-sm mb-2">
+                      <label
+                        htmlFor="businessName"
+                        className="block text-white text-sm mb-2"
+                      >
                         Business Name
                       </label>
                       <input
                         type="text"
                         name="businessName"
                         placeholder="Enter your business name"
-                        value={formState.businessName}
+                        value={formData.businessName}
                         onChange={handleInputChange}
                         className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm"
                       />
+                      {errors.businessName && (
+                        <div className="flex items-center mt-1 text-red-500 text-xs">
+                          <span className="mr-1">!</span>
+                          <span>This field is required</span>
+                        </div>
+                      )}
                     </div>
                   </div>
 
-
+                  
                   <div className="space-y-4">
                     <div>
-                      <label htmlFor="subject" className="block text-white text-sm mb-2">
+                      <label
+                        htmlFor="subject"
+                        className="block text-white text-sm mb-2"
+                      >
                         Subject
                       </label>
                       <div className="relative">
                         <select
                           name="subject"
-                          value={formState.subject}
+                          value={formData.subject}
                           onChange={handleInputChange}
                           className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded-lg px-3 py-2 text-white focus:outline-none focus:border-cyan-400 text-sm appearance-none cursor-pointer"
                         >
@@ -170,69 +197,52 @@ const handleConfirmSubmit = () => {
                           </svg>
                         </div>
                       </div>
+                      {errors.subject && (
+                        <div className="flex items-center mt-1 text-red-500 text-xs">
+                          <span className="mr-1">!</span>
+                          <span>This field is required</span>
+                        </div>
+                      )}
                     </div>
 
                     <div className="flex-1">
-                      <label htmlFor="messages" className="block text-white text-sm mb-2">
+                      <label
+                        htmlFor="messages"
+                        className="block text-white text-sm mb-2"
+                      >
                         Messages
                       </label>
                       <textarea
                         name="messages"
                         placeholder="Enter your messages"
-                        value={formState.messages}
+                        value={formData.messages}
                         onChange={handleInputChange}
                         rows={6}
                         className="w-full bg-[#1F1F1F] border-[#1F1F1F] rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400 text-sm resize-none"
                       />
+                      {errors.messages && (
+                        <div className="flex items-center mt-1 text-red-500 text-xs">
+                          <span className="mr-1">!</span>
+                          <span>This field is required</span>
+                        </div>
+                      )}
                     </div>
 
-
                     <div className="mt-auto flex justify-center">
-                      <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                        <AlertDialogTrigger asChild>
-                          <Button
-                            onClick={handleSubmitClick}
-                            variant="gradientOutline"
-                            className="w-auto sm:w-auto text-white font-medium py-3 px-24 sm:px-24 text-sm items-center cursor-pointer"
-                          >
-                            SUBMIT
-                          </Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent className="bg-gray-950 border-gray-700">
-                          <AlertDialogHeader>
-                            <AlertDialogTitle className="text-white font-bold text-lg">
-                              {dialogType === "empty"
-                                ? "Please complete the form!"
-                                : "Submission Confirmation"}
-                            </AlertDialogTitle>
-                            <AlertDialogDescription className="text-gray-300 text-sm">
-                              {dialogType === "empty"
-                                ? "Please complete all required fields (Full Name, Phone Number, Email, Subject, and Messages) before submitting your message."
-                                : "Are you sure you want to send this message? Please make sure all the information you entered is correct."}
-                            </AlertDialogDescription>
-                          </AlertDialogHeader>
-                          <AlertDialogFooter>
-                            <AlertDialogCancel
-                              onClick={handleCloseDialog}
-                              className="bg-gray-700 text-white hover:bg-gray-600 border-none"
-                            >
-                              {dialogType === "empty" ? "Got it" : "Cancel"}
-                            </AlertDialogCancel>
-                            {dialogType === "confirm" && (
-                              <AlertDialogAction onClick={handleConfirmSubmit}>
-                                Yes, Send
-                              </AlertDialogAction>
-                            )}
-                          </AlertDialogFooter>
-                        </AlertDialogContent>
-                      </AlertDialog>
+                      <Button
+                        onClick={handleSubmit}
+                        variant="gradientOutline"
+                        className="w-auto sm:w-auto text-white font-medium py-3 px-24 sm:px-24 text-sm items-center cursor-pointer"
+                      >
+                        SUBMIT
+                      </Button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-
+            
             <div className="p-6 flex items-start justify-center lg:justify-start lg:order-last">
               <Image
                 src="/contact/img_contact.png"
@@ -245,6 +255,62 @@ const handleConfirmSubmit = () => {
           </div>
         </CardContent>
       </Card>
+
+      
+
+      <AlertDialog open={showDialog} onOpenChange={handleCancelSubmit}>
+        <AlertDialogContent className="bg-black border-gray-500 border-2 text-white">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="text-white">Confirm Submission</AlertDialogTitle>
+            <AlertDialogDescription className="text-gray-300">
+              Are you sure you want to submit your message? Please review your information before continuing.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel
+                onClick={handleCancelSubmit}
+                className="pbg-transparent border-2 border-[#0421DE] text-white rounded-full font-semibold px-6 py-2.5 text-sm transition-all duration-300 hover:bg-gradient-to-r hover:from-[#0421DE] hover:to-[#5D56E9] hover:border-none hover:text-white"
+            >
+               Cancel              
+            </AlertDialogCancel>
+
+            <AlertDialogAction asChild>
+              <Button 
+                variant="gradientOutline"                
+                onClick={handleConfirmSubmit} 
+                className="px-6 py-2.5 rounded-3xl font-semibold text-sm"
+                
+              >
+                Send Message
+              </Button>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+
+      <AlertDialog open={showSuccessDialog} onOpenChange={handleCloseSuccessDialog}>
+        <AlertDialogContent className="bg-black border-white border-2 text-white">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="text-white">Message Sent Successfully!</AlertDialogTitle>
+            <AlertDialogDescription className="text-gray-300">
+              Thank you for contacting us. We have received your message and will get back to you soon.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction asChild>
+              <Button 
+                variant="gradientOutline"                
+                onClick={handleCloseSuccessDialog} 
+                className="px-6 py-2.5 rounded-3xl font-semibold text-sm"
+              >
+                OK
+              </Button>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
     </div>
   );
 };

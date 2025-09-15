@@ -1,7 +1,7 @@
 import { useState } from "react";
-import type { FormData } from "../types/contact";
+import type { FormData, ValidationErrors, UseContactFormReturn } from "../types/contact";
 
-export const useContactForm = (onSubmit?: (data: FormData) => void) => {
+export const useContactForm = (onSubmit?: (data: FormData) => void): UseContactFormReturn => {
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
     phoneNumber: "",
@@ -11,35 +11,71 @@ export const useContactForm = (onSubmit?: (data: FormData) => void) => {
     messages: "",
   });
 
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [dialogType, setDialogType] = useState<"empty" | "confirm">("empty");
+  const [errors, setErrors] = useState<ValidationErrors>({
+    fullName: false,
+    phoneNumber: false,
+    email: false,
+    businessName: false,
+    subject: false,
+    messages: false,
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
 
   const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
 
-  const isFormEmpty = () => {
-    return (
-      !formData.fullName.trim() ||
-      !formData.phoneNumber.trim() ||
-      !formData.email.trim() ||
-      !formData.subject.trim() ||
-      !formData.messages.trim()
-    );
-  };
-
-  const handleSubmitClick = () => {
-    if (isFormEmpty()) {
-      setDialogType("empty");
-    } else {
-      setDialogType("confirm");
+    if (isSubmitted && value.trim() !== "") {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: false,
+      }));
     }
-    setIsDialogOpen(true);
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: ValidationErrors = {
+      fullName: formData.fullName.trim() === "",
+      phoneNumber: formData.phoneNumber.trim() === "",
+      email: formData.email.trim() === "",
+      businessName: formData.businessName.trim() === "",
+      subject: formData.subject.trim() === "",
+      messages: formData.messages.trim() === "",
+    };
+
+    setErrors(newErrors);
+    
+    
+    return !Object.values(newErrors).some(error => error);
+  };
+
+  const handleSubmit = () => {
+    setIsSubmitted(true);
+    
+    if (validateForm()) {
+      
+      setShowDialog(true);
+    } else {
+      
+      setTimeout(() => {
+        setErrors({
+          fullName: false,
+          phoneNumber: false,
+          email: false,
+          businessName: false,
+          subject: false,
+          messages: false,
+        });
+        setIsSubmitted(false);
+      }, 3000); 
+    }
   };
 
   const handleConfirmSubmit = () => {
@@ -48,9 +84,8 @@ export const useContactForm = (onSubmit?: (data: FormData) => void) => {
     } else {
       console.log("Form submitted:", formData);
     }
-    setIsDialogOpen(false);
-
-    // Reset form 
+    
+    
     setFormData({
       fullName: "",
       phoneNumber: "",
@@ -59,20 +94,42 @@ export const useContactForm = (onSubmit?: (data: FormData) => void) => {
       subject: "",
       messages: "",
     });
+    setErrors({
+      fullName: false,
+      phoneNumber: false,
+      email: false,
+      businessName: false,
+      subject: false,
+      messages: false,
+    });
+    setIsSubmitted(false);
+    setShowDialog(false);
+    setShowSuccessDialog(true);
   };
 
-  const handleCloseDialog = () => {
-    setIsDialogOpen(false);
+  const handleCloseSuccessDialog = () => {
+    setShowSuccessDialog(false)
+  }
+
+  const handleCancelSubmit = () => {
+    setShowDialog(false);
   };
+
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+
+
+
 
   return {
     formData,
+    errors,
+    isSubmitted,
+    showDialog,
+    showSuccessDialog, 
     handleInputChange,
-    handleSubmitClick,
+    handleSubmit,
     handleConfirmSubmit,
-    handleCloseDialog,
-    isDialogOpen,
-    setIsDialogOpen,
-    dialogType,
+    handleCancelSubmit,
+    handleCloseSuccessDialog,
   };
 };

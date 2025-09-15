@@ -76,7 +76,7 @@ export default function NavbarProps() {
             <NavbarButton
               href="/login"
               variant="gradientOutline"
-              className="rounded-full shadow-md cursor-pointer"
+              className="rounded-full cursor-pointer"
             >
               LOGIN
             </NavbarButton>
