@@ -8,6 +8,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Home | Decodes",
+  description: "Welcome to Decodes. Discover innovative products, solutions, and the latest updates to empower your business and enhance your lifestyle.",
 }
 
 export default function Home() {

@@ -16,10 +16,41 @@ export default function ForgotPasswordForm({
     onForgotSubmit 
 }: ForgotPasswordFormProps) {
     const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
+
+    const isValidEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const validateEmail = () => {
+        if (!email) {
+            setError('Please enter your email address');
+            return false;
+        } else if (!isValidEmail(email)) {
+            setError('Please enter a valid email address');
+            return false;
+        }
+        setError('');
+        return true;
+    };
 
     const handleSubmit = () => {
-        onForgotSubmit(email);
-        onShowReset();
+        if (validateEmail()) {
+            onForgotSubmit(email);
+            onShowReset();
+        }
+    };
+
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const emailValue = e.target.value;
+        setEmail(emailValue);
+        
+        if (error && emailValue) {
+            if (isValidEmail(emailValue)) {
+                setError('');
+            }
+        }
     };
 
     return (
@@ -53,16 +84,20 @@ export default function ForgotPasswordForm({
                             name='email'
                             placeholder="Enter your email"
                             value={email}
-                            onChange={e => setEmail(e.target.value)}
-                            className="w-full px-3 py-2 xl:px-4 xl:py-3 rounded-lg bg-[#3a3a3a] text-white border-none outline-none focus:bg-[#4a4a4a] transition-colors placeholder-white/50"
+                            onChange={handleEmailChange}
+                            className={`w-full px-3 py-2 xl:px-4 xl:py-3 rounded-lg bg-[#3a3a3a] text-white border-none outline-none focus:bg-[#4a4a4a] transition-colors placeholder-white/50 ${
+                                error ? 'ring-2 ring-red-500' : ''
+                            }`}
                         />
+                        {error && (
+                            <p className="text-red-400 text-xs mt-1">{error}</p>
+                        )}
                     </div>
                     
                     <Button 
                         onClick={handleSubmit}
-                        disabled={!email}
                         variant="gradientOutline"
-                        className="w-full px-3 py-2 xl:px-4 xl:py-3 rounded-lg text-white text-base"
+                        className="w-full px-3 py-2 xl:px-4 xl:py-3 rounded-lg text-white text-base cursor-pointer"
                     >
                         SEND EMAIL
                     </Button>

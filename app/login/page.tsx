@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Login",
+  description: "Access your Decodes account securely through the Login page."
 }
 
 export default function LoginPage(): JSX.Element {

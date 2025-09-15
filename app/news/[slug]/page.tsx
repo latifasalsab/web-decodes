@@ -27,13 +27,14 @@ export async function generateMetadata({
     const post = await getNewsPost(params.slug)
     
     return {
-      title: post.title, 
+      title: post.title,
+      description: post.description || "Read the full details of this news article from Decodes.",
     }
     
   } catch (error) {
-    console.log(`Exception while doing something: ${error}`);
     return {
       title: 'News Not Found',
+      description: "The news article you are looking for could not be found.",
     }
   }
 }

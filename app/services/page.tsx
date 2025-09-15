@@ -4,7 +4,8 @@ import ServiceCardSection from "./components/ServicesCardSection";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Service",
+  title: "Services",
+  description: "Explore the services offered by Decodes to support your business and technology needs."
 }
 
 export default function NewsPage() {
